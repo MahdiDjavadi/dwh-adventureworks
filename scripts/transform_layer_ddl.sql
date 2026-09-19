@@ -157,7 +157,13 @@ GO
 
 CREATE TABLE [transform].[Store] (
     [BusinessEntityID]          INT            NULL,
-    [Name]                      NVARCHAR (50)  NULL
+    [Name]                      NVARCHAR (50)  NULL,
+    [SalesPersonID]             INT            NULL,
+    [SquareFeet]                INT            NULL,
+    [YearOpend]                 INT            NULL,
+    [NumberEmployees]           INT            NULL,
+    [Speciality]                NVARCHAR (50)  NULL,
+    [Brands]                    INT            NULL
 );
 GO
 

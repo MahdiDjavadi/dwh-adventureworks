@@ -156,8 +156,10 @@ IF OBJECT_ID('[extract].[Store]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [extract].[Store] (
-    [BusinessEntityID]          INT            NULL,
-    [Name]                      NVARCHAR (50)  NULL
+    [BusinessEntityID]          INT             NULL,
+    [Name]                      NVARCHAR (50)   NULL,
+    [SalesPersonID]             INT             NULL,
+    [Demographics]              XML             NULL
 );
 GO
 
