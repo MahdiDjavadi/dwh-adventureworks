@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="KPI"
   DTS:CreatorName="KPI\Mahdi"
-  DTS:DTSID="{D6A8C094-1E25-4280-9600-ED5BB8016453}"
+  DTS:DTSID="{A4D1156B-50C5-4624-A1CE-A8A470C82FF2}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1016.0"
   DTS:LocaleID="2057"
-  DTS:ObjectName="extract_layer"
+  DTS:ObjectName="Sales_Business_Process"
   DTS:PackageType="5"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{E1152A48-54F4-435B-B154-96FA43002F7B}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{30728A27-6A39-4A5D-BC6B-2B59290FE013}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5803,20 +5803,1243 @@ FROM
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Transform Layer (SILVER)\SQL | Truncate Transform Product"
+          DTS:refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{def3dda4-0371-4521-8ace-58f8c74c630f}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT | Transform ProductCategory"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DST | Transform ProductCategory"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[transform].[ProductCategory]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory.Connections[OleDbConnection]"
+                      connectionManagerID="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory.Inputs[OLE DB Destination Input].Columns[Name]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Name"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Output].Columns[Name]" />
+                        <inputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory.Inputs[OLE DB Destination Input].Columns[ProductCategoryID]"
+                          cachedDataType="i4"
+                          cachedName="ProductCategoryID"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategoryID]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Output].Columns[ProductCategoryID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategoryID]"
+                          dataType="i4"
+                          name="ProductCategoryID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC | Extract ProductCategory"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[extract].[ProductCategory]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+      [ProductCategoryID]
+      ,[Name]
+FROM [Production].[ProductCategory]
+GO</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Connections[OleDbConnection]"
+                      connectionManagerID="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Output].Columns[Name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          length="50"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Output].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Output].Columns[ProductCategoryID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Output].ExternalColumns[ProductCategoryID]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Output].Columns[ProductCategoryID]"
+                          name="ProductCategoryID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Output].ExternalColumns[ProductCategoryID]"
+                          dataType="i4"
+                          name="ProductCategoryID" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Error Output].Columns[ProductCategoryID]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Error Output].Columns[ProductCategoryID]"
+                          name="ProductCategoryID" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          name="Name" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory.Paths[OLE DB Source Output]"
+                  endId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{30db6c0d-2348-47d2-96d7-dc2e5cb88723}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT | Transform ProductModel"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DST | Transform ProductModel"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[transform].[ProductModel]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel.Connections[OleDbConnection]"
+                      connectionManagerID="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel.Inputs[OLE DB Destination Input].Columns[ProductModelID]"
+                          cachedDataType="i4"
+                          cachedName="ProductModelID"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel.Inputs[OLE DB Destination Input].ExternalColumns[ProductModelID]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Output].Columns[ProductModelID]" />
+                        <inputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel.Inputs[OLE DB Destination Input].Columns[Name]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Name"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Output].Columns[Name]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel.Inputs[OLE DB Destination Input].ExternalColumns[ProductModelID]"
+                          dataType="i4"
+                          name="ProductModelID" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC | Extract ProductModel"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[extract].[ProductModel]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [ProductModelID]
+      ,[Name]
+FROM [Production].[ProductModel]
+GO</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Connections[OleDbConnection]"
+                      connectionManagerID="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Output].Columns[Name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          length="50"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Output].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Output].Columns[ProductModelID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Output].ExternalColumns[ProductModelID]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Output].Columns[ProductModelID]"
+                          name="ProductModelID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Output].ExternalColumns[ProductModelID]"
+                          dataType="i4"
+                          name="ProductModelID" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Error Output].Columns[ProductModelID]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Error Output].Columns[ProductModelID]"
+                          name="ProductModelID" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          name="Name" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel.Paths[OLE DB Source Output]"
+                  endId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{486052c6-dcbe-4be7-9f12-140dafe9c300}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT | Transform ProductSubCategory"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DST | Transform ProductSubcategory"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[extract].[ProductSubcategory]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Connections[OleDbConnection]"
+                      connectionManagerID="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Inputs[OLE DB Destination Input].Columns[Name]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Name"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output].Columns[Name]" />
+                        <inputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Inputs[OLE DB Destination Input].Columns[ProductSubcategoryID]"
+                          cachedDataType="i4"
+                          cachedName="ProductSubcategoryID"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Inputs[OLE DB Destination Input].ExternalColumns[ProductSubcategoryID]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output].Columns[ProductSubcategoryID]" />
+                        <inputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Inputs[OLE DB Destination Input].Columns[ProductCategoryID]"
+                          cachedDataType="i4"
+                          cachedName="ProductCategoryID"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategoryID]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output].Columns[ProductCategoryID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Inputs[OLE DB Destination Input].ExternalColumns[ProductSubcategoryID]"
+                          dataType="i4"
+                          name="ProductSubcategoryID" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategoryID]"
+                          dataType="i4"
+                          name="ProductCategoryID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC | Extract ProductSubcategory"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[extract].[ProductSubcategory]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [ProductSubcategoryID]
+      ,[ProductCategoryID]
+      ,[Name]
+FROM [Production].[ProductSubcategory]
+GO</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Connections[OleDbConnection]"
+                      connectionManagerID="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output].Columns[ProductSubcategoryID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output].ExternalColumns[ProductSubcategoryID]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output].Columns[ProductSubcategoryID]"
+                          name="ProductSubcategoryID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output].Columns[ProductCategoryID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output].ExternalColumns[ProductCategoryID]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output].Columns[ProductCategoryID]"
+                          name="ProductCategoryID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output].Columns[Name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          length="50"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output].ExternalColumns[ProductSubcategoryID]"
+                          dataType="i4"
+                          name="ProductSubcategoryID" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output].ExternalColumns[ProductCategoryID]"
+                          dataType="i4"
+                          name="ProductCategoryID" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Error Output].Columns[ProductSubcategoryID]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Error Output].Columns[ProductSubcategoryID]"
+                          name="ProductSubcategoryID" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Error Output].Columns[ProductCategoryID]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Error Output].Columns[ProductCategoryID]"
+                          name="ProductCategoryID" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          name="Name" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory.Paths[OLE DB Source Output]"
+                  endId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{eabbc06d-08a1-472d-a835-9a9a20bd477a}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT | Transform UnitMeasure"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DST | Transform UnitMeasure"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[transform].[UnitMeasure]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure.Connections[OleDbConnection]"
+                      connectionManagerID="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure.Inputs[OLE DB Destination Input].Columns[Name]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Name"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Output].Columns[Name]" />
+                        <inputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure.Inputs[OLE DB Destination Input].Columns[UnitMeasureCode]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="UnitMeasureCode"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure.Inputs[OLE DB Destination Input].ExternalColumns[UnitMeasureCode]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Output].Columns[UnitMeasureCode]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure.Inputs[OLE DB Destination Input].ExternalColumns[UnitMeasureCode]"
+                          dataType="wstr"
+                          length="3"
+                          name="UnitMeasureCode" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC | Extract UnitMeasure"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[extract].[UnitMeasure]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [UnitMeasureCode]
+      ,[Name]
+FROM [Production].[UnitMeasure]
+GO</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Connections[OleDbConnection]"
+                      connectionManagerID="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Output].Columns[Name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          length="50"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Output].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Output].Columns[UnitMeasureCode]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Output].ExternalColumns[UnitMeasureCode]"
+                          length="3"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Output].Columns[UnitMeasureCode]"
+                          name="UnitMeasureCode"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Output].ExternalColumns[UnitMeasureCode]"
+                          dataType="wstr"
+                          length="3"
+                          name="UnitMeasureCode" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Error Output].Columns[UnitMeasureCode]"
+                          dataType="wstr"
+                          length="3"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Error Output].Columns[UnitMeasureCode]"
+                          name="UnitMeasureCode" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          name="Name" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure.Paths[OLE DB Source Output]"
+                  endId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Transform Layer (SILVER)\SQL | Truncate Product"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{09f6b5da-feaa-4acb-bd89-e9520611412e}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="SQL | Truncate Transform Product"
+          DTS:ObjectName="SQL | Truncate Product"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [transform].[Product];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Transform Layer (SILVER)\SQL | Truncate ProductCategory"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{cec99072-7c58-4400-9213-2ee758a5b5bb}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL | Truncate ProductCategory"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [transform].[ProductCategory];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Transform Layer (SILVER)\SQL | Truncate ProductModel"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{75efc33b-a186-4726-a997-a6dacb5e2451}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL | Truncate ProductModel"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [transform].[ProductModel];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Transform Layer (SILVER)\SQL | Truncate ProductSubCategory"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{e6ee5f8a-4a07-4da9-a1c8-2b1769a5b170}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL | Truncate ProductSubCategory"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}"
-              SQLTask:SqlStatementSource="TRUNCATE TABLE [transform].[Product];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [transform].[ProductSubcategory];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Transform Layer (SILVER)\SQL | Truncate UnitMeasure"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{b277bcf6-d02b-4797-8743-4653889a2033}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL | Truncate UnitMeasure"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [transform].[UnitMeasure];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -5825,10 +7048,42 @@ FROM
           DTS:refId="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
           DTS:DTSID="{c78c45b9-9551-4989-9b15-cebf9b20b8fc}"
-          DTS:From="Package\Transform Layer (SILVER)\SQL | Truncate Transform Product"
+          DTS:From="Package\Transform Layer (SILVER)\SQL | Truncate Product"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\Transform Layer (SILVER)\DFT | Transform Product" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{89990500-DC2C-419A-B12E-4DD02F8A00B2}"
+          DTS:From="Package\Transform Layer (SILVER)\SQL | Truncate ProductModel"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Transform Layer (SILVER)\DFT | Transform ProductModel" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{3966ED45-5C62-422E-AC79-447DC9661665}"
+          DTS:From="Package\Transform Layer (SILVER)\SQL | Truncate ProductSubCategory"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{7440F07C-FC92-4FAF-83E9-6B444BEA3E5E}"
+          DTS:From="Package\Transform Layer (SILVER)\SQL | Truncate ProductCategory"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{A4D411AD-5A41-4A5E-8981-CE4FD92F4F82}"
+          DTS:From="Package\Transform Layer (SILVER)\SQL | Truncate UnitMeasure"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -6166,23 +7421,143 @@ FROM
           Id="Package\Transform Layer (SILVER)\DFT | Transform Product"
           TopLeft="323.055555555555,35" />
         <NodeLayout
-          Size="241,42"
-          Id="Package\Transform Layer (SILVER)\SQL | Truncate Transform Product"
+          Size="238,42"
+          Id="Package\Transform Layer (SILVER)\SQL | Truncate Product"
           TopLeft="30,29" />
         <EdgeLayout
           Id="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint]"
-          TopLeft="271,53">
+          TopLeft="268,53">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="52.0555555555554,0"
+              EndConnector="55.0555555555554,0"
               Start="0,0"
-              End="44.5555555555554,0">
+              End="47.5555555555554,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="44.5555555555554,0" />
+                    End="47.5555555555554,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="241,42"
+          Id="Package\Transform Layer (SILVER)\SQL | Truncate ProductModel"
+          TopLeft="32.7857142857142,87" />
+        <NodeLayout
+          Size="224,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform ProductModel"
+          TopLeft="328.619047619048,90" />
+        <EdgeLayout
+          Id="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint 1]"
+          TopLeft="273.785714285714,109.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54.8333333333335,0"
+              Start="0,0"
+              End="47.3333333333335,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="47.3333333333335,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="249,42"
+          Id="Package\Transform Layer (SILVER)\SQL | Truncate ProductSubCategory"
+          TopLeft="33.7857142857142,151.777777777778" />
+        <NodeLayout
+          Size="256,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory"
+          TopLeft="328.84126984127,146.888888888889" />
+        <EdgeLayout
+          Id="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint 2]"
+          TopLeft="282.785714285714,170.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="46.0555555555554,0"
+              Start="0,0"
+              End="38.5555555555554,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="38.5555555555554,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="231,42"
+          Id="Package\Transform Layer (SILVER)\SQL | Truncate ProductCategory"
+          TopLeft="34.7777777777778,210.888888888889" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory"
+          TopLeft="330.611111111111,206.888888888889" />
+        <EdgeLayout
+          Id="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint 3]"
+          TopLeft="265.777777777778,229.888888888889">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64.8333333333333,0"
+              Start="0,0"
+              End="57.3333333333333,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="57.3333333333333,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Transform Layer (SILVER)\SQL | Truncate UnitMeasure"
+          TopLeft="39.7857142857143,280" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure"
+          TopLeft="327.619047619048,280" />
+        <EdgeLayout
+          Id="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint 4]"
+          TopLeft="251.785714285714,301">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75.8333333333334,0"
+              Start="0,0"
+              End="68.3333333333334,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="68.3333333333334,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6197,33 +7572,33 @@ FROM
           PanelSize="609,846"
           Size="609,889"
           Id="Package\Transform Layer (SILVER)"
-          TopLeft="820,31.4285714285714" />
+          TopLeft="964,31.0649350649351" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="688.785714285714,412.845238095238">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="131.214285714286,63.0833333333339"
+              EndConnector="275.214285714286,62.7196969696975"
               Start="0,0"
-              End="123.714285714286,63.0833333333339">
+              End="267.714285714286,62.7196969696975">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="61.6071428571428,0" />
+                    End="133.607142857143,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="61.6071428571428,0"
-                    Point2="65.6071428571428,0"
-                    Point3="65.6071428571428,4" />
+                    Point1="133.607142857143,0"
+                    Point2="137.607142857143,0"
+                    Point3="137.607142857143,4" />
                   <mssgle:LineSegment
-                    End="65.6071428571428,59.0833333333339" />
+                    End="137.607142857143,58.7196969696975" />
                   <mssgle:CubicBezierSegment
-                    Point1="65.6071428571428,59.0833333333339"
-                    Point2="65.6071428571428,63.0833333333339"
-                    Point3="69.6071428571428,63.0833333333339" />
+                    Point1="137.607142857143,58.7196969696975"
+                    Point2="137.607142857143,62.7196969696975"
+                    Point3="141.607142857143,62.7196969696975" />
                   <mssgle:LineSegment
-                    End="123.714285714286,63.0833333333339" />
+                    End="267.714285714286,62.7196969696975" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7014,6 +8389,223 @@ FROM
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Transform Layer (SILVER)\DFT | Transform Product\DST | Transform Product">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Transform Layer (SILVER)\DFT | Transform ProductModel">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel"
+          TopLeft="414.5,538.5" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel"
+          TopLeft="777.22222222222,538.61111111111" />
+        <EdgeLayout
+          Id="Package\Transform Layer (SILVER)\DFT | Transform ProductModel.Paths[OLE DB Source Output]"
+          TopLeft="594.5,559.555555555555">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="182.72222222222,0"
+              Start="0,0"
+              End="175.22222222222,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="175.22222222222,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\SRC | Extract ProductModel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform Layer (SILVER)\DFT | Transform ProductModel\DST | Transform ProductModel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="187,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory"
+          TopLeft="412.666666666667,189" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory"
+          TopLeft="775.66666666667,185" />
+        <EdgeLayout
+          Id="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory.Paths[OLE DB Source Output]"
+          TopLeft="599.666666666667,208">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="176.000000000003,0"
+              Start="0,0"
+              End="168.500000000003,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="168.500000000003,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\DST | Transform ProductSubcategory">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\DST | Transform ProductCategory"
+          TopLeft="775.24358974359,294.589743589744" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory\SRC | Extract ProductCategory"
+          TopLeft="415.166666666667,291.333333333333" />
+        <EdgeLayout
+          Id="Package\Transform Layer (SILVER)\DFT | Transform ProductCategory.Paths[OLE DB Source Output]"
+          TopLeft="598.16666666667,313.961538461538">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="177.076923076924,0"
+              Start="0,0"
+              End="169.576923076924,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="169.576923076924,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure"
+          TopLeft="416.833333333336,417.333333333333" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure"
+          TopLeft="779.66666666667,419.500000000001" />
+        <EdgeLayout
+          Id="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure.Paths[OLE DB Source Output]"
+          TopLeft="597.83333333334,439.416666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="181.83333333333,0"
+              Start="0,0"
+              End="174.33333333333,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="174.33333333333,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\SRC | Extract UnitMeasure">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform Layer (SILVER)\DFT | Transform UnitMeasure\DST | Transform UnitMeasure">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
