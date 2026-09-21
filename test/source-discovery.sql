@@ -72,4 +72,4 @@ SELECT
     COUNT(*) AS row_count
 FROM Sales.SalesTerritory
 GROUP BY Name
-HAVING COUNT(*) > 1; -- Name is unique => valid for Business Key candidate
+HAVING COUNT(*) > 1; -- Name is unique => Business Key candidate
