@@ -59,8 +59,8 @@ IF OBJECT_ID('[transform].[ProductModel]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [transform].[ProductModel](
-	[ProductModelID]            INT             NULL,
-	[Name]                      NVARCHAR (50)   NULL,
+	[ProductModelID]            INT            NULL,
+	[Name]                      NVARCHAR (50)  NULL,
 );
 GO
 
@@ -72,8 +72,8 @@ IF OBJECT_ID('[transform].[ProductCategory]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [transform].[ProductCategory](
-	[ProductCategoryID] 		INT 		       NULL,
-    [Name]                NVARCHAR (50)  NULL
+	[ProductCategoryID] 		    INT 		       NULL,
+    [Name]                    NVARCHAR (50)  NULL
 );
 GO
 
@@ -85,9 +85,9 @@ IF OBJECT_ID('[transform].[ProductSubcategory]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [transform].[ProductSubcategory] (
-    [ProductSubcategoryID]      INT             NULL,
-    [ProductCategoryID]         INT             NULL,
-    [Name]                      NVARCHAR (50)   NULL
+    [ProductSubcategoryID]    INT             NULL,
+    [ProductCategoryID]       INT             NULL,
+    [Name]                    NVARCHAR (50)   NULL
 );
 GO
 
@@ -99,8 +99,8 @@ IF OBJECT_ID('[transform].[UnitMeasure]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [transform].[UnitMeasure](
-	[UnitMeasureCode]           NCHAR (3)     NULL,
-	[Name]                      NVARCHAR (50) NULL
+	[UnitMeasureCode]           NCHAR (3)       NULL,
+	[Name]                      NVARCHAR (50)   NULL
 );
 GO
 
@@ -112,10 +112,10 @@ IF OBJECT_ID('[transform].[SalesTerritory]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [transform].[SalesTerritory] (
-    [TerritoryID]               INT              NULL,
-    [Name]                      NVARCHAR (50)    NULL,
-    [CountryRegionCode]         NVARCHAR (3)     NULL,
-    [Group]                     NVARCHAR (50)    NULL
+    [TerritoryID]             INT             NULL,
+    [Name]                    NVARCHAR (50)   NULL,
+    [CountryRegionCode]       NVARCHAR (3)    NULL,
+    [Group]                   NVARCHAR (50)   NULL
 );
 GO
 
@@ -140,11 +140,11 @@ IF OBJECT_ID('[transform].[Customer]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [transform].[Customer] (
-    [CustomerID]                INT             NULL,
-    [PersonID]                  INT             NULL,
-    [StoreID]                   INT             NULL,
-    [TerritoryID]               INT             NULL,
-    [AccountNumber]             VARCHAR (10)    NULL
+    [CustomerID]              INT             NULL,
+    [PersonID]                INT             NULL,
+    [StoreID]                 INT             NULL,
+    [TerritoryID]             INT             NULL,
+    [AccountNumber]           VARCHAR (10)    NULL
 );
 Go
 
@@ -156,14 +156,14 @@ IF OBJECT_ID('[transform].[Store]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [transform].[Store] (
-    [BusinessEntityID]          INT            NULL,
-    [Name]                      NVARCHAR (50)  NULL,
-    [SalesPersonID]             INT            NULL,
-    [SquareFeet]                INT            NULL,
-    [YearOpend]                 INT            NULL,
-    [NumberEmployees]           INT            NULL,
-    [Speciality]                NVARCHAR (50)  NULL,
-    [Brands]                    INT            NULL
+    [BusinessEntityID]        INT            NULL,
+    [Name]                    NVARCHAR (50)  NULL,
+    [SalesPersonID]           INT            NULL,
+    [SquareFeet]              INT            NULL,
+    [YearOpend]               INT            NULL,
+    [NumberEmployees]         INT            NULL,
+    [Specialty]               NVARCHAR (50)  NULL,
+    [Brands]                  NVARCHAR (50)  NULL
 );
 GO
 
@@ -175,10 +175,10 @@ IF OBJECT_ID('[transform].[Person]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [transform].[Person] (
-    [BusinessEntityID]          INT            NULL,
-    [PersonType]                NVARCHAR (50)  NULL,
-    [FirstName]                 NVARCHAR (50)  NULL,
-    [LastName]                  NVARCHAR (50)  NULL,
-    [EmailPromotion]            NVARCHAR (50)  NULL
+    [BusinessEntityID]        INT            NULL,
+    [PersonType]              NVARCHAR (50)  NULL,
+    [FirstName]               NVARCHAR (50)  NULL,
+    [LastName]                NVARCHAR (50)  NULL,
+    [EmailPromotion]          NVARCHAR (50)  NULL
 );
 GO
