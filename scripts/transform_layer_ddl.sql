@@ -32,22 +32,22 @@ IF OBJECT_ID('[transform].[Product]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [transform].[Product](
-	[ProductID]                 INT           NULL,
-	[Name]                      NVARCHAR(50)  NULL,
-	[ProductNumber]             NVARCHAR(25)  NULL,
-	[Color]                     NVARCHAR(15)  NULL,
-	[Size]                      NVARCHAR(5)   NULL,
-	[SizeUnitMeasureCode]       NCHAR(3)      NULL,
-	[WeightUnitMeasureCode]     NCHAR(3)      NULL,
-	[Weight]                    [decimal](8, 2) NULL,
-	[Class]                     NCHAR(2)      NULL,
-	[Style]                     NCHAR(2)      NULL,
-	[ProductLine]               NCHAR(2)      NULL,
-	[ProductSubcategoryID]      INT           NULL,
-	[ProductModelID]            INT           NULL,
-	[SellStartDate]             [datetime]      NULL,
-	[SellEndDate]               [datetime]      NULL,
-	[DiscontinuedDate]          [datetime]      NULL,
+	[ProductID]                 INT             NULL,
+	[Name]                      NVARCHAR (50)   NULL,
+	[ProductNumber]             NVARCHAR (25)   NULL,
+	[Color]                     NVARCHAR (20)   NULL,
+	[Size]                      NVARCHAR (10)   NULL,
+	[SizeUnitMeasureCode]       NCHAR (3)       NULL,
+	[WeightUnitMeasureCode]     NCHAR (3)       NULL,
+	[Weight]                    NVARCHAR (10)   NULL,
+	[Class]                     NVARCHAR (10)   NULL,
+	[Style]                     NVARCHAR (10)   NULL,
+	[ProductLine]               NVARCHAR (10)   NULL,
+	[ProductSubcategoryID]      INT             NULL,
+	[ProductModelID]            INT             NULL,
+	[SellStartDate]             DATETIME        NULL,
+	[SellEndDate]               DATETIME        NULL,
+	[DiscontinuedDate]          DATETIME        NULL,
 );
 GO
 
@@ -59,8 +59,8 @@ IF OBJECT_ID('[transform].[ProductModel]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [transform].[ProductModel](
-	[ProductModelID]            INT           NULL,
-	[Name]                      NVARCHAR(50)  NULL,
+	[ProductModelID]            INT             NULL,
+	[Name]                      NVARCHAR (50)   NULL,
 );
 GO
 
@@ -72,8 +72,8 @@ IF OBJECT_ID('[transform].[ProductCategory]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [transform].[ProductCategory](
-	[ProductCategoryID] 		INT 		  NULL,
-    [Name]                      NVARCHAR(50)  NULL
+	[ProductCategoryID] 		INT 		       NULL,
+    [Name]                NVARCHAR (50)  NULL
 );
 GO
 

@@ -32,22 +32,22 @@ IF OBJECT_ID('[extract].[Product]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [extract].[Product](
-	[ProductID]                 INT           NULL,
-	[Name]                      NVARCHAR(50)  NULL,
-	[ProductNumber]             NVARCHAR(25)  NULL,
-	[Color]                     NVARCHAR(15)  NULL,
-	[Size]                      NVARCHAR(5)   NULL,
-	[SizeUnitMeasureCode]       [nchar](3)      NULL,
-	[WeightUnitMeasureCode]     [nchar](3)      NULL,
-	[Weight]                    [decimal](8, 2) NULL,
-	[Class]                     [nchar](2)      NULL,
-	[Style]                     [nchar](2)      NULL,
-	[ProductLine]               [nchar](2)      NULL,
-	[ProductSubcategoryID]      INT           NULL,
-	[ProductModelID]            INT           NULL,
-	[SellStartDate]             [datetime]      NULL,
-	[SellEndDate]               [datetime]      NULL,
-	[DiscontinuedDate]          [datetime]      NULL,
+	[ProductID]                 INT               NULL,
+	[Name]                      NVARCHAR (50)     NULL,
+	[ProductNumber]             NVARCHAR (25)     NULL,
+	[Color]                     NVARCHAR (15)     NULL,
+	[Size]                      NVARCHAR (5)      NULL,
+	[SizeUnitMeasureCode]       NCHAR (3)         NULL,
+	[WeightUnitMeasureCode]     NCHAR (3)         NULL,
+	[Weight]                    DECIMAL (8, 2)    NULL,
+	[Class]                     NCHAR (2)         NULL,
+	[Style]                     NCHAR (2)         NULL,
+	[ProductLine]               NCHAR (2)         NULL,
+	[ProductSubcategoryID]      INT               NULL,
+	[ProductModelID]            INT               NULL,
+	[SellStartDate]             DATETIME          NULL,
+	[SellEndDate]               DATETIME          NULL,
+	[DiscontinuedDate]          DATETIME          NULL,
 );
 GO
 
@@ -59,8 +59,8 @@ IF OBJECT_ID('[extract].[ProductModel]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [extract].[ProductModel](
-	[ProductModelID]            INT           NULL,
-	[Name]                      NVARCHAR(50)  NULL,
+	[ProductModelID]            INT              NULL,
+	[Name]                      NVARCHAR (50)    NULL,
 );
 GO
 
@@ -73,7 +73,7 @@ GO
 
 CREATE TABLE [extract].[ProductCategory](
 	[ProductCategoryID] 		INT 			NULL,
-    [Name]                      NVARCHAR(50)  NULL
+    [Name]                      NVARCHAR (50)  NULL
 );
 GO
 
@@ -87,7 +87,7 @@ GO
 CREATE TABLE [extract].[ProductSubcategory] (
     [ProductSubcategoryID]      INT             NULL,
     [ProductCategoryID]         INT             NULL,
-    [Name]                      NVARCHAR(50)  NULL
+    [Name]                      NVARCHAR (50)   NULL
 );
 GO
 
@@ -99,8 +99,8 @@ IF OBJECT_ID('[extract].[UnitMeasure]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [extract].[UnitMeasure](
-	[UnitMeasureCode]           [nchar](3)      NULL,
-	[Name]                      NVARCHAR(50)  NULL
+	[UnitMeasureCode]           NCHAR (3)         NULL,
+	[Name]                      NVARCHAR (50)     NULL
 );
 GO
 
@@ -127,8 +127,8 @@ IF OBJECT_ID('[extract].[CountryRegion]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [extract].[CountryRegion](
-	[CountryRegionCode]         NVARCHAR (3)  NULL,
-	[Name]                      NVARCHAR (50) NULL
+	[CountryRegionCode]         NVARCHAR (3)      NULL,
+	[Name]                      NVARCHAR (50)     NULL
 );
 GO
 
