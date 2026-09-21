@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Sales_Business_Process"
   DTS:PackageType="5"
-  DTS:VersionBuild="45"
-  DTS:VersionGUID="{8E82ADF9-90F1-4177-99EC-2C47A0104790}">
+  DTS:VersionBuild="56"
+  DTS:VersionGUID="{6E1DB33B-792A-4C27-A445-F3563FFEDEE5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -4577,23 +4577,23 @@ FROM
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\SEQ | Transform (SILVER)"
+      DTS:refId="Package\Transform Layer (SILVER)"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:DTSID="{2af1427a-5e88-426f-a869-f55b10613ba7}"
+      DTS:DTSID="{3dfb273f-4143-4875-9a60-291b109faadd}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
-      DTS:ObjectName="SEQ | Transform (SILVER)">
+      DTS:ObjectName="Transform Layer (SILVER)">
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer"
+          DTS:refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{8e4a937b-ea55-4b8b-8555-f4d37b56a374}"
+          DTS:DTSID="{e49363e2-4e32-4962-987e-e463d91d4cf0}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
-          DTS:ObjectName="DFT | Transform Customer"
+          DTS:ObjectName="DFT | Transform CountryRegion"
           DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
@@ -4601,287 +4601,11 @@ FROM
               version="1">
               <components>
                 <component
-                  refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types"
-                  componentClassID="Microsoft.DataConvert"
-                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                  description="Data Conversion"
-                  name="CNV | Store Attribute Types"
-                  usesDispositions="true">
-                  <inputs>
-                    <input
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Inputs[Data Conversion Input]"
-                      name="Data Conversion Input">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Inputs[Data Conversion Input].Columns[Name]"
-                          cachedDataType="wstr"
-                          cachedLength="50"
-                          cachedName="Name"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[Name]" />
-                      </inputColumns>
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Outputs[Data Conversion Output]"
-                      exclusionGroup="1"
-                      name="Data Conversion Output"
-                      synchronousInputId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Inputs[Data Conversion Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Outputs[Data Conversion Output].Columns[Name_DT]"
-                          dataType="wstr"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          length="100"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Outputs[Data Conversion Output].Columns[Name_DT]"
-                          name="Name_DT"
-                          truncationRowDisposition="FailComponent">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Specifies the input column used as the source of data for the conversion."
-                              name="SourceInputColumnLineageID">#{Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[Name]}</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                          </properties>
-                        </outputColumn>
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Outputs[Data Conversion Error Output]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="Data Conversion Error Output"
-                      synchronousInputId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Inputs[Data Conversion Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls SalesTerritory"
-                  componentClassID="Microsoft.DerivedColumn"
-                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-                  name="DER | Handling Nulls SalesTerritory"
-                  usesDispositions="true">
-                  <inputs>
-                    <input
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls SalesTerritory.Inputs[Derived Column Input]"
-                      description="Input to the Derived Column Transformation"
-                      name="Derived Column Input">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls SalesTerritory.Inputs[Derived Column Input].Columns[Name]"
-                          cachedDataType="wstr"
-                          cachedLength="50"
-                          cachedName="Name"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="FailComponent"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[Name]"
-                          truncationRowDisposition="FailComponent"
-                          usageType="readWrite">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">[REPLACENULL]([TRIM](#{Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[Name]}),@[$Package::NullString])</property>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">REPLACENULL(TRIM(Name),@[$Package::NullString])</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls SalesTerritory.Inputs[Derived Column Input].Columns[CountryRegionCode]"
-                          cachedDataType="wstr"
-                          cachedLength="3"
-                          cachedName="CountryRegionCode"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="FailComponent"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[CountryRegionCode]"
-                          truncationRowDisposition="FailComponent"
-                          usageType="readWrite">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">[REPLACENULL]([TRIM](#{Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[CountryRegionCode]}),@[$Package::NullString])</property>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">REPLACENULL(TRIM(CountryRegionCode),@[$Package::NullString])</property>
-                          </properties>
-                        </inputColumn>
-                        <inputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls SalesTerritory.Inputs[Derived Column Input].Columns[Group]"
-                          cachedDataType="wstr"
-                          cachedLength="50"
-                          cachedName="Group"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="FailComponent"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[Group]"
-                          truncationRowDisposition="FailComponent"
-                          usageType="readWrite">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">[REPLACENULL]([TRIM](#{Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[Group]}),@[$Package::NullString])</property>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">REPLACENULL(TRIM(Group),@[$Package::NullString])</property>
-                          </properties>
-                        </inputColumn>
-                      </inputColumns>
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls SalesTerritory.Outputs[Derived Column Output]"
-                      description="Default Output of the Derived Column Transformation"
-                      exclusionGroup="1"
-                      name="Derived Column Output"
-                      synchronousInputId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls SalesTerritory.Inputs[Derived Column Input]">
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls SalesTerritory.Outputs[Derived Column Error Output]"
-                      description="Error Output of the Derived Column Transformation"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="Derived Column Error Output"
-                      synchronousInputId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls SalesTerritory.Inputs[Derived Column Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls SalesTerritory.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls SalesTerritory.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls SalesTerritory.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls SalesTerritory.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls Store"
-                  componentClassID="Microsoft.DerivedColumn"
-                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-                  name="DER | Handling Nulls Store"
-                  usesDispositions="true">
-                  <inputs>
-                    <input
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls Store.Inputs[Derived Column Input]"
-                      description="Input to the Derived Column Transformation"
-                      name="Derived Column Input">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls Store.Inputs[Derived Column Input].Columns[Name_Clean]"
-                          cachedDataType="wstr"
-                          cachedLength="100"
-                          cachedName="Name_DT"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="FailComponent"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Outputs[Data Conversion Output].Columns[Name_DT]"
-                          name="Name_Clean"
-                          truncationRowDisposition="FailComponent"
-                          usageType="readWrite">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">[REPLACENULL]([TRIM](#{Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Outputs[Data Conversion Output].Columns[Name_DT]}),@[$Package::NullString])</property>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">REPLACENULL(TRIM(Name_Clean),@[$Package::NullString])</property>
-                          </properties>
-                        </inputColumn>
-                      </inputColumns>
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls Store.Outputs[Derived Column Output]"
-                      description="Default Output of the Derived Column Transformation"
-                      exclusionGroup="1"
-                      name="Derived Column Output"
-                      synchronousInputId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls Store.Inputs[Derived Column Input]">
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls Store.Outputs[Derived Column Error Output]"
-                      description="Error Output of the Derived Column Transformation"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="Derived Column Error Output"
-                      synchronousInputId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls Store.Inputs[Derived Column Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls Store.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls Store.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls Store.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls Store.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory"
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform"
                   componentClassID="Microsoft.OLEDBDestination"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                   description="OLE DB Destination"
-                  name="DST | Transform SalesTerritory"
+                  name="DST | Transform Transform"
                   usesDispositions="true"
                   version="4">
                   <properties>
@@ -4892,7 +4616,7 @@ FROM
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[transform].[SalesTerritory]</property>
+                      name="OpenRowset">[transform].[CountryRegion]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -4934,7 +4658,7 @@ FROM
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Connections[OleDbConnection]"
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform.Connections[OleDbConnection]"
                       connectionManagerID="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}:external"
                       connectionManagerRefId="Project.ConnectionManagers[STG]"
                       description="The OLE DB runtime connection used to access the database."
@@ -4942,207 +4666,60 @@ FROM
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input]"
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform.Inputs[OLE DB Destination Input]"
                       errorOrTruncationOperation="Insert"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].Columns[TerritoryID]"
-                          cachedDataType="i4"
-                          cachedName="TerritoryID"
-                          externalMetadataColumnId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryID]"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[TerritoryID]" />
-                        <inputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].Columns[Group]"
-                          cachedDataType="wstr"
-                          cachedLength="50"
-                          cachedName="Group"
-                          externalMetadataColumnId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].ExternalColumns[Group]"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[Group]" />
-                        <inputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].Columns[CountryRegionCode]"
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform.Inputs[OLE DB Destination Input].Columns[CountryRegionCode]"
                           cachedDataType="wstr"
                           cachedLength="3"
                           cachedName="CountryRegionCode"
-                          externalMetadataColumnId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].ExternalColumns[CountryRegionCode]"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[CountryRegionCode]" />
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform.Inputs[OLE DB Destination Input].ExternalColumns[CountryRegionCode]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Output].Columns[CountryRegionCode]" />
                         <inputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].Columns[Name]"
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform.Inputs[OLE DB Destination Input].Columns[Name]"
                           cachedDataType="wstr"
                           cachedLength="50"
                           cachedName="Name"
-                          externalMetadataColumnId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[Name]" />
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Output].Columns[Name]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                          dataType="wstr"
-                          length="50"
-                          name="Name" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].ExternalColumns[CountryRegionCode]"
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform.Inputs[OLE DB Destination Input].ExternalColumns[CountryRegionCode]"
                           dataType="wstr"
                           length="3"
                           name="CountryRegionCode" />
                         <externalMetadataColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].ExternalColumns[Group]"
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
                           dataType="wstr"
                           length="50"
-                          name="Group" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryID]"
-                          dataType="i4"
-                          name="TerritoryID" />
-                      </externalMetadataColumns>
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Outputs[OLE DB Destination Error Output]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store"
-                  componentClassID="Microsoft.OLEDBDestination"
-                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-                  description="OLE DB Destination"
-                  name="DST | Transform Store"
-                  usesDispositions="true"
-                  version="4">
-                  <properties>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                      name="CommandTimeout">0</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[transform].[Store]</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the variable that contains the name of the database object used to open a rowset."
-                      name="OpenRowsetVariable"></property>
-                    <property
-                      dataType="System.String"
-                      description="The SQL command to be executed."
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the column code page to use when code page information is unavailable from the data source."
-                      name="DefaultCodePage">1252</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Forces the use of the DefaultCodePage property value when describing character data."
-                      name="AlwaysUseDefaultCodePage">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the mode used to access the database."
-                      name="AccessMode"
-                      typeConverter="AccessMode">3</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                      name="FastLoadKeepIdentity">false</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                      name="FastLoadKeepNulls">false</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                      name="FastLoadMaxInsertCommitSize">2147483647</property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store.Connections[OleDbConnection]"
-                      connectionManagerID="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[STG]"
-                      description="The OLE DB runtime connection used to access the database."
-                      name="OleDbConnection" />
-                  </connections>
-                  <inputs>
-                    <input
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store.Inputs[OLE DB Destination Input]"
-                      errorOrTruncationOperation="Insert"
-                      errorRowDisposition="FailComponent"
-                      hasSideEffects="true"
-                      name="OLE DB Destination Input">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store.Inputs[OLE DB Destination Input].Columns[Name_DT]"
-                          cachedDataType="wstr"
-                          cachedLength="100"
-                          cachedName="Name_DT"
-                          externalMetadataColumnId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Outputs[Data Conversion Output].Columns[Name_DT]" />
-                        <inputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store.Inputs[OLE DB Destination Input].Columns[BusinessEntityID]"
-                          cachedDataType="i4"
-                          cachedName="BusinessEntityID"
-                          externalMetadataColumnId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[BusinessEntityID]" />
-                      </inputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                          dataType="wstr"
-                          length="100"
                           name="Name" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
-                          dataType="i4"
-                          name="BusinessEntityID" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store.Outputs[OLE DB Destination Error Output]"
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform.Outputs[OLE DB Destination Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store.Inputs[OLE DB Destination Input]">
+                      synchronousInputId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform.Inputs[OLE DB Destination Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -5151,11 +4728,11 @@ FROM
                   </outputs>
                 </component>
                 <component
-                  refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory"
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion"
                   componentClassID="Microsoft.OLEDBSource"
                   contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
                   description="OLE DB Source"
-                  name="SRC | Extract SalesTerritory"
+                  name="SRC | Extract CountryRegion"
                   usesDispositions="true"
                   version="7">
                   <properties>
@@ -5166,7 +4743,7 @@ FROM
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[extract].[SalesTerritory]</property>
+                      name="OpenRowset">[extract].[CountryRegion]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -5175,11 +4752,7 @@ FROM
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
-      [ProductCategoryID]
-      ,[Name]
-FROM [Production].[ProductCategory]
-GO</property>
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                     <property
                       dataType="System.String"
                       description="The variable that contains the SQL command to be executed."
@@ -5204,7 +4777,7 @@ GO</property>
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Connections[OleDbConnection]"
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Connections[OleDbConnection]"
                       connectionManagerID="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}:external"
                       connectionManagerRefId="Project.ConnectionManagers[STG]"
                       description="The OLE DB runtime connection used to access the database."
@@ -5212,240 +4785,71 @@ GO</property>
                   </connections>
                   <outputs>
                     <output
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output]"
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Output]"
                       name="OLE DB Source Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[Name]"
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Output].Columns[CountryRegionCode]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[Name]"
-                          length="50"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[Name]"
-                          name="Name"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[CountryRegionCode]"
-                          dataType="wstr"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[CountryRegionCode]"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Output].ExternalColumns[CountryRegionCode]"
                           length="3"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[CountryRegionCode]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Output].Columns[CountryRegionCode]"
                           name="CountryRegionCode"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[Group]"
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Output].Columns[Name]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[Group]"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Output].ExternalColumns[Name]"
                           length="50"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[Group]"
-                          name="Group"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[TerritoryID]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[TerritoryID]"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[TerritoryID]"
-                          name="TerritoryID"
-                          truncationRowDisposition="FailComponent" />
-                      </outputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[Name]"
-                          dataType="wstr"
-                          length="50"
-                          name="Name" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[CountryRegionCode]"
-                          dataType="wstr"
-                          length="3"
-                          name="CountryRegionCode" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[Group]"
-                          dataType="wstr"
-                          length="50"
-                          name="Group" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[TerritoryID]"
-                          dataType="i4"
-                          name="TerritoryID" />
-                      </externalMetadataColumns>
-                    </output>
-                    <output
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output]"
-                      isErrorOut="true"
-                      name="OLE DB Source Error Output">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[TerritoryID]"
-                          dataType="i4"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[TerritoryID]"
-                          name="TerritoryID" />
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[Name]"
-                          dataType="wstr"
-                          length="50"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[Name]"
-                          name="Name" />
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[CountryRegionCode]"
-                          dataType="wstr"
-                          length="3"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[CountryRegionCode]"
-                          name="CountryRegionCode" />
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[Group]"
-                          dataType="wstr"
-                          length="50"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[Group]"
-                          name="Group" />
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store"
-                  componentClassID="Microsoft.OLEDBSource"
-                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-                  description="OLE DB Source"
-                  name="SRC | Extract Store"
-                  usesDispositions="true"
-                  version="7">
-                  <properties>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                      name="CommandTimeout">0</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[extract].[Store]</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the variable that contains the name of the database object used to open a rowset."
-                      name="OpenRowsetVariable"></property>
-                    <property
-                      dataType="System.String"
-                      description="The SQL command to be executed."
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [ProductModelID]
-      ,[Name]
-FROM [Production].[ProductModel]
-GO</property>
-                    <property
-                      dataType="System.String"
-                      description="The variable that contains the SQL command to be executed."
-                      name="SqlCommandVariable"></property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the column code page to use when code page information is unavailable from the data source."
-                      name="DefaultCodePage">1252</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Forces the use of the DefaultCodePage property value when describing character data."
-                      name="AlwaysUseDefaultCodePage">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the mode used to access the database."
-                      name="AccessMode"
-                      typeConverter="AccessMode">0</property>
-                    <property
-                      dataType="System.String"
-                      description="The mappings between the parameters in the SQL command and variables."
-                      name="ParameterMapping"></property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Connections[OleDbConnection]"
-                      connectionManagerID="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}:external"
-                      connectionManagerRefId="Project.ConnectionManagers[STG]"
-                      description="The OLE DB runtime connection used to access the database."
-                      name="OleDbConnection" />
-                  </connections>
-                  <outputs>
-                    <output
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Output]"
-                      name="OLE DB Source Output">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[Name]"
-                          dataType="wstr"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[Name]"
-                          length="50"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[Name]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Output].Columns[Name]"
                           name="Name"
                           truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
-                          name="BusinessEntityID"
-                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Output].ExternalColumns[CountryRegionCode]"
+                          dataType="wstr"
+                          length="3"
+                          name="CountryRegionCode" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Output].ExternalColumns[Name]"
                           dataType="wstr"
                           length="50"
                           name="Name" />
-                        <externalMetadataColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
-                          dataType="i4"
-                          name="BusinessEntityID" />
                       </externalMetadataColumns>
                     </output>
                     <output
-                      refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Error Output]"
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Error Output]"
                       isErrorOut="true"
                       name="OLE DB Source Error Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
-                          dataType="i4"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
-                          name="BusinessEntityID" />
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Error Output].Columns[CountryRegionCode]"
+                          dataType="wstr"
+                          length="3"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Error Output].Columns[CountryRegionCode]"
+                          name="CountryRegionCode" />
                         <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Error Output].Columns[Name]"
                           dataType="wstr"
                           length="50"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Error Output].Columns[Name]"
                           name="Name" />
                         <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -5456,73 +4860,14 @@ GO</property>
               </components>
               <paths>
                 <path
-                  refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer.Paths[Data Conversion Output]"
-                  endId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls Store.Inputs[Derived Column Input]"
-                  name="Data Conversion Output"
-                  startId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Outputs[Data Conversion Output]" />
-                <path
-                  refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer.Paths[Derived Column Output]"
-                  endId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store.Inputs[OLE DB Destination Input]"
-                  name="Derived Column Output"
-                  startId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls Store.Outputs[Derived Column Output]" />
-                <path
-                  refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer.Paths[Derived Column Output1]"
-                  endId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input]"
-                  name="Derived Column Output"
-                  startId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls SalesTerritory.Outputs[Derived Column Output]" />
-                <path
-                  refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer.Paths[OLE DB Source Output]"
-                  endId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types.Inputs[Data Conversion Input]"
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion.Paths[OLE DB Source Output]"
+                  endId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform.Inputs[OLE DB Destination Input]"
                   name="OLE DB Source Output"
-                  startId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer.Paths[OLE DB Source Output1]"
-                  endId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls SalesTerritory.Inputs[Derived Column Input]"
-                  name="OLE DB Source Output"
-                  startId="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output]" />
+                  startId="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion.Outputs[OLE DB Source Output]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\SEQ | Transform (SILVER)\SQL | Truncate Transform Customer"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{2f6f94a6-d131-464c-a9e5-5c23bf8be7dc}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="SQL | Truncate Transform Customer"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}"
-              SQLTask:SqlStatementSource="Truncate TABLE [transform].[SalesTerritory];&#xA;Truncate TABLE [transform].[Store];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-          </DTS:ObjectData>
-        </DTS:Executable>
-      </DTS:Executables>
-      <DTS:PrecedenceConstraints>
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\SEQ | Transform (SILVER).PrecedenceConstraints[Constraint]"
-          DTS:CreationName=""
-          DTS:DTSID="{556655fc-b1f0-43c1-9b74-90b0efe12253}"
-          DTS:From="Package\SEQ | Transform (SILVER)\SQL | Truncate Transform Customer"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint"
-          DTS:To="Package\SEQ | Transform (SILVER)\DFT | Transform Customer" />
-      </DTS:PrecedenceConstraints>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Transform Layer (SILVER)"
-      DTS:CreationName="STOCK:SEQUENCE"
-      DTS:Description="Sequence Container"
-      DTS:DTSID="{3dfb273f-4143-4875-9a60-291b109faadd}"
-      DTS:ExecutableType="STOCK:SEQUENCE"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Transform Layer (SILVER)">
-      <DTS:Variables />
-      <DTS:Executables>
         <DTS:Executable
           DTS:refId="Package\Transform Layer (SILVER)\DFT | Transform Customer"
           DTS:CreationName="Microsoft.Pipeline"
@@ -8614,6 +7959,353 @@ GO</property>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{8e4a937b-ea55-4b8b-8555-f4d37b56a374}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT | Transform SalesTerritory"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DST | Transform SalesTerritory"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[transform].[SalesTerritory]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Connections[OleDbConnection]"
+                      connectionManagerID="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].Columns[TerritoryID]"
+                          cachedDataType="i4"
+                          cachedName="TerritoryID"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryID]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[TerritoryID]" />
+                        <inputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].Columns[Group]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Group"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].ExternalColumns[Group]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[Group]" />
+                        <inputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].Columns[CountryRegionCode]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="CountryRegionCode"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].ExternalColumns[CountryRegionCode]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[CountryRegionCode]" />
+                        <inputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].Columns[Name]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Name"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[Name]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].ExternalColumns[CountryRegionCode]"
+                          dataType="wstr"
+                          length="3"
+                          name="CountryRegionCode" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].ExternalColumns[Group]"
+                          dataType="wstr"
+                          length="50"
+                          name="Group" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryID]"
+                          dataType="i4"
+                          name="TerritoryID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC | Extract SalesTerritory"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[extract].[SalesTerritory]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+      [ProductCategoryID]
+      ,[Name]
+FROM [Production].[ProductCategory]
+GO</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Connections[OleDbConnection]"
+                      connectionManagerID="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[Name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          length="50"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[CountryRegionCode]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[CountryRegionCode]"
+                          length="3"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[CountryRegionCode]"
+                          name="CountryRegionCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[Group]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[Group]"
+                          length="50"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[Group]"
+                          name="Group"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[TerritoryID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[TerritoryID]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].Columns[TerritoryID]"
+                          name="TerritoryID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[CountryRegionCode]"
+                          dataType="wstr"
+                          length="3"
+                          name="CountryRegionCode" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[Group]"
+                          dataType="wstr"
+                          length="50"
+                          name="Group" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output].ExternalColumns[TerritoryID]"
+                          dataType="i4"
+                          name="TerritoryID" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[TerritoryID]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[TerritoryID]"
+                          name="TerritoryID" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          name="Name" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[CountryRegionCode]"
+                          dataType="wstr"
+                          length="3"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[CountryRegionCode]"
+                          name="CountryRegionCode" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[Group]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[Group]"
+                          name="Group" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory.Paths[OLE DB Source Output]"
+                  endId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Transform Layer (SILVER)\DFT | Transform Store"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
@@ -8725,8 +8417,7 @@ GO</property>
                           lineageId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[YearOpened]" />
                         <inputColumn
                           refId="Package\Transform Layer (SILVER)\DFT | Transform Store\DST | Transform Store.Inputs[OLE DB Destination Input].Columns[NumberEmployees]"
-                          cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedDataType="i4"
                           cachedName="NumberEmployees"
                           externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform Store\DST | Transform Store.Inputs[OLE DB Destination Input].ExternalColumns[NumberEmployees]"
                           lineageId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[NumberEmployees]" />
@@ -8739,7 +8430,8 @@ GO</property>
                           lineageId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[Specialty]" />
                         <inputColumn
                           refId="Package\Transform Layer (SILVER)\DFT | Transform Store\DST | Transform Store.Inputs[OLE DB Destination Input].Columns[Brands]"
-                          cachedDataType="i4"
+                          cachedDataType="wstr"
+                          cachedLength="50"
                           cachedName="Brands"
                           externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform Store\DST | Transform Store.Inputs[OLE DB Destination Input].ExternalColumns[Brands]"
                           lineageId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[Brands]" />
@@ -8832,7 +8524,7 @@ GO</property>
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[extract].[Store]</property>
+                      name="OpenRowset"></property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -8903,15 +8595,6 @@ FROM
                           name="BusinessEntityID"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[SalesPersonID]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[SalesPersonID]"
-                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[SalesPersonID]"
-                          name="SalesPersonID"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[StoreName]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
@@ -8920,6 +8603,15 @@ FROM
                           length="50"
                           lineageId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[StoreName]"
                           name="StoreName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[SalesPersonID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[SalesPersonID]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[SalesPersonID]"
+                          name="SalesPersonID"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[SquareFeet]"
@@ -8940,25 +8632,6 @@ FROM
                           name="YearOpened"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[NumberEmployees]"
-                          dataType="wstr"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[NumberEmployees]"
-                          length="50"
-                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[NumberEmployees]"
-                          name="NumberEmployees"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[Brands]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[Brands]"
-                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[Brands]"
-                          name="Brands"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[Specialty]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
@@ -8968,6 +8641,25 @@ FROM
                           lineageId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[Specialty]"
                           name="Specialty"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[NumberEmployees]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[NumberEmployees]"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[NumberEmployees]"
+                          name="NumberEmployees"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[Brands]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[Brands]"
+                          length="50"
+                          lineageId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].Columns[Brands]"
+                          name="Brands"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -8976,14 +8668,14 @@ FROM
                           dataType="i4"
                           name="BusinessEntityID" />
                         <externalMetadataColumn
-                          refId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[SalesPersonID]"
-                          dataType="i4"
-                          name="SalesPersonID" />
-                        <externalMetadataColumn
                           refId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[StoreName]"
                           dataType="wstr"
                           length="50"
                           name="StoreName" />
+                        <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[SalesPersonID]"
+                          dataType="i4"
+                          name="SalesPersonID" />
                         <externalMetadataColumn
                           refId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[SquareFeet]"
                           dataType="i4"
@@ -8993,6 +8685,11 @@ FROM
                           dataType="i4"
                           name="YearOpened" />
                         <externalMetadataColumn
+                          refId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[Specialty]"
+                          dataType="wstr"
+                          length="50"
+                          name="Specialty" />
+                        <externalMetadataColumn
                           refId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[NumberEmployees]"
                           dataType="i4"
                           name="NumberEmployees" />
@@ -9001,11 +8698,6 @@ FROM
                           dataType="wstr"
                           length="50"
                           name="Brands" />
-                        <externalMetadataColumn
-                          refId="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store.Outputs[OLE DB Source Output].ExternalColumns[Specialty]"
-                          dataType="wstr"
-                          length="50"
-                          name="Specialty" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -9370,6 +9062,23 @@ GO</property>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\Transform Layer (SILVER)\SQL | Truncate CountryRegion"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{426acc17-3cfa-4f97-a65e-6e575a8695d9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL | Truncate CountryRegion"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="9">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}"
+              SQLTask:SqlStatementSource="Truncate TABLE [transform].[CountryRegion];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Transform Layer (SILVER)\SQL | Truncate Customer"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -9472,6 +9181,23 @@ GO</property>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\Transform Layer (SILVER)\SQL | Truncate SalesTerritory"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2f6f94a6-d131-464c-a9e5-5c23bf8be7dc}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL | Truncate SalesTerritory"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="8">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}"
+              SQLTask:SqlStatementSource="Truncate TABLE [transform].[SalesTerritory];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Transform Layer (SILVER)\SQL | Truncate Store"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -9515,6 +9241,22 @@ GO</property>
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
           DTS:To="Package\Transform Layer (SILVER)\DFT | Transform Product" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint1]"
+          DTS:CreationName=""
+          DTS:DTSID="{556655fc-b1f0-43c1-9b74-90b0efe12253}"
+          DTS:From="Package\Transform Layer (SILVER)\SQL | Truncate SalesTerritory"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint2]"
+          DTS:CreationName=""
+          DTS:DTSID="{4a89bec2-6a9c-4ce3-903c-53620a3399c3}"
+          DTS:From="Package\Transform Layer (SILVER)\SQL | Truncate CountryRegion"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
@@ -9563,6 +9305,14 @@ GO</property>
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 6"
           DTS:To="Package\Transform Layer (SILVER)\DFT | Transform Person" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint 7]"
+          DTS:CreationName=""
+          DTS:DTSID="{A873DCC1-81CF-488B-B86A-D1B208B82A58}"
+          DTS:From="Package\Transform Layer (SILVER)\SQL | Truncate Store"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 7"
+          DTS:To="Package\Transform Layer (SILVER)\DFT | Transform Store" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
@@ -9894,7 +9644,7 @@ GO</property>
           PanelSize="610,720"
           Size="610,763"
           Id="Package\SEQ | Extract (BRONZE)"
-          TopLeft="78.7857142857143,31.3452380952376" />
+          TopLeft="80.0357142857143,95.0952380952373" />
         <NodeLayout
           Size="261,42"
           Id="Package\Transform Layer (SILVER)\DFT | Transform Product"
@@ -10113,39 +9863,76 @@ GO</property>
           Size="261,42"
           Id="Package\Transform Layer (SILVER)\DFT | Transform Store"
           TopLeft="321.619047619048,492.064935064935" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="609,846"
-          Size="609,889"
-          Id="Package\Transform Layer (SILVER)"
-          TopLeft="964,31.0649350649351" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\Transform Layer (SILVER)\SQL | Truncate SalesTerritory"
+          TopLeft="43,551" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="688.785714285714,412.845238095238">
+          Id="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint1]"
+          TopLeft="261,572.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="275.214285714286,62.7196969696975"
+              EndConnector="57.8333333333333,0"
               Start="0,0"
-              End="267.714285714286,62.7196969696975">
+              End="50.3333333333333,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="133.607142857143,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="133.607142857143,0"
-                    Point2="137.607142857143,0"
-                    Point3="137.607142857143,4" />
+                    End="50.3333333333333,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="270,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory"
+          TopLeft="318.833333333333,552" />
+        <EdgeLayout
+          Id="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint 7]"
+          TopLeft="281.785714285714,512.564935064935">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39.8333333333335,0"
+              Start="0,0"
+              End="32.3333333333335,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="137.607142857143,58.7196969696975" />
-                  <mssgle:CubicBezierSegment
-                    Point1="137.607142857143,58.7196969696975"
-                    Point2="137.607142857143,62.7196969696975"
-                    Point3="141.607142857143,62.7196969696975" />
+                    End="32.3333333333335,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="260,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion"
+          TopLeft="320.333333333333,627" />
+        <EdgeLayout
+          Id="Package\Transform Layer (SILVER).PrecedenceConstraints[Constraint2]"
+          TopLeft="262.5,649.375">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57.8333333333333,0"
+              Start="0,0"
+              End="50.3333333333333,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="267.714285714286,62.7196969696975" />
+                    End="50.3333333333333,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10156,26 +9943,41 @@ GO</property>
         </EdgeLayout>
         <NodeLayout
           Size="223,42"
-          Id="Package\SEQ | Transform (SILVER)\DFT | Transform Customer"
-          TopLeft="30.8333333333333,105" />
-        <NodeLayout
-          Size="225,42"
-          Id="Package\SEQ | Transform (SILVER)\SQL | Truncate Transform Customer"
-          TopLeft="30,29" />
+          Id="Package\Transform Layer (SILVER)\SQL | Truncate CountryRegion"
+          TopLeft="39.5000000000002,629.75" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="609,761"
+          Size="609,804"
+          Id="Package\Transform Layer (SILVER)"
+          TopLeft="964,86.0649350649351" />
         <EdgeLayout
-          Id="Package\SEQ | Transform (SILVER).PrecedenceConstraints[Constraint]"
-          TopLeft="142.416666666667,71">
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="690.035714285714,476.595238095237">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,34"
+              EndConnector="273.964285714286,11.4696969696977"
               Start="0,0"
-              End="0,26.5">
+              End="266.464285714286,11.4696969696977">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.5" />
+                    End="132.982142857143,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="132.982142857143,0"
+                    Point2="136.982142857143,0"
+                    Point3="136.982142857143,4" />
+                  <mssgle:LineSegment
+                    End="136.982142857143,7.46969696969774" />
+                  <mssgle:CubicBezierSegment
+                    Point1="136.982142857143,7.46969696969774"
+                    Point2="136.982142857143,11.4696969696977"
+                    Point3="140.982142857143,11.4696969696977" />
+                  <mssgle:LineSegment
+                    End="266.464285714286,11.4696969696977" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10184,13 +9986,6 @@ GO</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="303,200"
-          Size="303,243"
-          Id="Package\SEQ | Transform (SILVER)"
-          TopLeft="78.7857142857143,980.064935064935" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -11202,140 +10997,32 @@ GO</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\SEQ | Transform (SILVER)\DFT | Transform Customer">
+    design-time-name="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="211,42"
-          Id="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform Store"
-          TopLeft="1110.22222222222,564.61111111111" />
-        <NodeLayout
-          Size="191,42"
-          Id="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract Store"
-          TopLeft="148.5,567.5" />
-        <NodeLayout
-          Size="205,42"
-          Id="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls Store"
-          TopLeft="828,565" />
-        <NodeLayout
-          Size="210,42"
-          Id="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\CNV | Store Attribute Types"
-          TopLeft="445.5,567.5" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="226,42"
-          Id="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DST | Transform SalesTerritory"
-          TopLeft="1105.24358974359,324.589743589744" />
-        <NodeLayout
-          Size="245,42"
-          Id="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\DER | Handling Nulls SalesTerritory"
-          TopLeft="799.166666666667,327.5" />
+          Id="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory"
+          TopLeft="156.24358974359,236.589743589744" />
         <NodeLayout
           Size="210,42"
-          Id="Package\SEQ | Transform (SILVER)\DFT | Transform Customer\SRC | Extract SalesTerritory"
-          TopLeft="145.166666666667,320.333333333333" />
+          Id="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory"
+          TopLeft="167.166666666667,103.333333333333" />
         <EdgeLayout
-          Id="Package\SEQ | Transform (SILVER)\DFT | Transform Customer.Paths[OLE DB Source Output1]"
-          TopLeft="355.166666666667,344.916666666667">
+          Id="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory.Paths[OLE DB Source Output]"
+          TopLeft="270.705128205129,145.333333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="444,0"
+              EndConnector="0,91.256410256411"
               Start="0,0"
-              End="436.5,0">
+              End="0,83.756410256411">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="436.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ | Transform (SILVER)\DFT | Transform Customer.Paths[OLE DB Source Output]"
-          TopLeft="339.5,588.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="106,0"
-              Start="0,0"
-              End="98.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="98.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ | Transform (SILVER)\DFT | Transform Customer.Paths[Derived Column Output1]"
-          TopLeft="1044.16666666667,347.044871794872">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="61.0769230769231,0"
-              Start="0,0"
-              End="53.5769230769231,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="53.5769230769231,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ | Transform (SILVER)\DFT | Transform Customer.Paths[Derived Column Output]"
-          TopLeft="1033,585.805555555555">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="77.2222222222199,0"
-              Start="0,0"
-              End="69.7222222222199,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="69.7222222222199,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ | Transform (SILVER)\DFT | Transform Customer.Paths[Data Conversion Output]"
-          TopLeft="655.5,587.25">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="172.5,0"
-              Start="0,0"
-              End="165,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="165,0" />
+                    End="0,83.756410256411" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11347,6 +11034,32 @@ GO</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\DST | Transform SalesTerritory">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform Layer (SILVER)\DFT | Transform SalesTerritory\SRC | Extract SalesTerritory">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Transform Layer (SILVER)\DFT | Transform Customer">
     <LayoutInfo>
@@ -11520,27 +11233,27 @@ GO</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="186,42"
+          Size="253,42"
           Id="Package\Transform Layer (SILVER)\DFT | Transform Store\DST | Transform Store"
-          TopLeft="647.22222222222,100.61111111111" />
+          TopLeft="209.22222222222,130.61111111111" />
         <NodeLayout
-          Size="227,42"
+          Size="253,42"
           Id="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store"
-          TopLeft="286.5,98.5" />
+          TopLeft="203,41" />
         <EdgeLayout
           Id="Package\Transform Layer (SILVER)\DFT | Transform Store.Paths[OLE DB Source Output]"
-          TopLeft="513.5,120.555555555555">
+          TopLeft="332.61111111111,83">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="133.72222222222,0"
+              EndConnector="0,47.6111111111099"
               Start="0,0"
-              End="126.22222222222,0">
+              End="0,40.1111111111099">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="126.22222222222,0" />
+                    End="0,40.1111111111099" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11567,6 +11280,77 @@ GO</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Transform Layer (SILVER)\DFT | Transform Store\SRC | Extract Store">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform"
+          TopLeft="177,206" />
+        <NodeLayout
+          Size="246,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion"
+          TopLeft="186.333333333333,63.833333333333" />
+        <EdgeLayout
+          Id="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion.Paths[OLE DB Source Output]"
+          TopLeft="309.333333333333,105.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.333333333333,100.166666666667"
+              Start="0,0"
+              End="-10.333333333333,92.666666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.0833333333335" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46.0833333333335"
+                    Point2="0,50.0833333333335"
+                    Point3="-4,50.0833333333335" />
+                  <mssgle:LineSegment
+                    End="-6.33333333333303,50.0833333333335" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.33333333333303,50.0833333333335"
+                    Point2="-10.333333333333,50.0833333333335"
+                    Point3="-10.333333333333,54.0833333333335" />
+                  <mssgle:LineSegment
+                    End="-10.333333333333,92.666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\DST | Transform Transform">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform Layer (SILVER)\DFT | Transform CountryRegion\SRC | Extract CountryRegion">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
