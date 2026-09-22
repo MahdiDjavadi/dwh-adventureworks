@@ -259,7 +259,7 @@ CREATE TABLE dimension.dim_territory
     [territory_name_bk]         NVARCHAR (50)       NOT NULL,   -- Sales territory description.
     [territory_group]           NVARCHAR (50)       NOT NULL,   -- Geographic area to which the sales territory belong.
     [country_region_code]       NVARCHAR (3)        NOT NULL,   -- ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode.
-    [country_name]              NVARCHAR (50)       NOT NULL,   -- Country or region name.
+    [country_name]              NVARCHAR (30)       NOT NULL,   -- Country or region name.
 
 -- System metadata attributes.
     [sys_insert_date]           DATETIME2 (3)        NOT NULL,   -- System metadata: date and time when the record was inserted.
