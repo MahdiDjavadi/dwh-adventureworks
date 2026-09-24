@@ -13,6 +13,26 @@ SELECT -- Check PK/Uniqueness to check grain
     COUNT(DISTINCT Name) AS distinct_name
 FROM Sales.Store;
 
+   -- Check the structure of the Sales.SalesPerson table
+SELECT TOP (1000) * FROM Sales.SalesPerson;
+
+EXEC sp_help 'Sales.SalesPerson';
+
+SELECT -- Check PK/Uniqueness to check grain
+    COUNT(*) AS row_count,
+    COUNT(DISTINCT BusinessEntityID) AS distinct_business_entity_id
+FROM Sales.SalesPerson;
+
+   -- Check the structure of the HumanResources.Employee table
+EXEC sp_help 'HumanResources.Employee';
+
+SELECT -- Check PK/Uniqueness to check grain
+    COUNT(*) AS row_count,
+    COUNT(DISTINCT BusinessEntityID) AS distinct_id,
+    COUNT(DISTINCT NationalIDNumber) AS distinct_business_key
+FROM HumanResources.Employee;
+
+SELECT TOP (1000) * FROM HumanResources.Employee;
 
 /* ----------------------------------------------------------------------------
    02 — NULL PROFILING
@@ -34,6 +54,14 @@ SELECT
     SUM(CASE WHEN CountryRegionCode IS NULL THEN 1 ELSE 0 END) AS null_country_region_code,
     SUM(CASE WHEN [Group] IS NULL THEN 1 ELSE 0 END) AS null_group
 FROM Sales.SalesTerritory;
+
+   -- Check for Nullls in the HumanResources.Employee table for key columns
+SELECT
+    COUNT(*) AS total_rows,
+    SUM(CASE WHEN JobTitle IS NULL THEN 1 ELSE 0 END) AS null_job_title,
+    SUM(CASE WHEN HireDate IS NULL THEN 1 ELSE 0 END) AS null_hire_date,
+    SUM(CASE WHEN CurrentFlag IS NULL THEN 1 ELSE 0 END) AS null_current_flag
+FROM HumanResources.Employee;
 
 
 /* ----------------------------------------------------------------------------
@@ -72,4 +100,18 @@ SELECT
     COUNT(*) AS row_count
 FROM Sales.SalesTerritory
 GROUP BY Name
+HAVING COUNT(*) > 1; -- Name is unique => Business Key candidate
+
+   -- Check for uniqueness of the BusinessEntityID and NationalIDNumber columns in the HumanResources.Employee table
+SELECT
+    COUNT(*) AS total_rows,
+    COUNT(DISTINCT BusinessEntityID) AS distinct_primary_key,
+    COUNT(DISTINCT NationalIDNumber) AS distinct_business_key
+FROM HumanResources.Employee;
+
+SELECT
+    NationalIDNumber,
+    COUNT(*) AS row_count
+FROM HumanResources.Employee
+GROUP BY NationalIDNumber
 HAVING COUNT(*) > 1; -- Name is unique => Business Key candidate

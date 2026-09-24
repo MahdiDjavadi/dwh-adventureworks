@@ -212,12 +212,12 @@ CREATE TABLE dimension.dim_product
     [discontinued_date]       DATE                    NULL,   -- Date when the product was officially discontinued.
 
 -- System metadata attributes.
-    [sys_insert_date]         DATETIME2 (3)        NOT NULL,   -- System metadata: date and time when the record was inserted.
-    [sys_update_date]         DATETIME2 (3)            NULL,   -- System metadata: date and time when the record was last updated.
-    [sys_delete_date]         DATETIME2 (3)            NULL,   -- System metadata: date and time when the record was deleted or marked for deletion.
-    [sys_hash_value]          CHAR (64)            NOT NULL,   -- System metadata: hash value used to detect changes in source attributes.
-    [sys_data_source]         NVARCHAR (25)        NOT NULL,   -- System metadata: name of the source system.
-    [sys_source_record_id]    NVARCHAR (255)       NOT NULL,   -- System metadata: identifier of the source system or source record.
+    [sys_insert_date]         DATETIME2 (3)       NOT NULL,   -- System metadata: date and time when the record was inserted.
+    [sys_update_date]         DATETIME2 (3)           NULL,   -- System metadata: date and time when the record was last updated.
+    [sys_delete_date]         DATETIME2 (3)           NULL,   -- System metadata: date and time when the record was deleted or marked for deletion.
+    [sys_hash_value]          CHAR (64)           NOT NULL,   -- System metadata: hash value used to detect changes in source attributes.
+    [sys_data_source]         NVARCHAR (25)       NOT NULL,   -- System metadata: name of the source system.
+    [sys_source_record_id]    NVARCHAR (255)      NOT NULL,   -- System metadata: identifier of the source system or source record.
 
 -- Define constraints.
     CONSTRAINT PK_dim_product
@@ -262,12 +262,12 @@ CREATE TABLE dimension.dim_territory
     [country_name]              NVARCHAR (30)       NOT NULL,   -- Country or region name.
 
 -- System metadata attributes.
-    [sys_insert_date]           DATETIME2 (3)        NOT NULL,   -- System metadata: date and time when the record was inserted.
+    [sys_insert_date]           DATETIME2 (3)       NOT NULL,   -- System metadata: date and time when the record was inserted.
     [sys_update_date]           DATETIME2 (3)           NULL,   -- System metadata: date and time when the record was last updated.
     [sys_delete_date]           DATETIME2 (3)           NULL,   -- System metadata: date and time when the record was deleted or marked for deletion.
-    [sys_hash_value]            CHAR (64)            NOT NULL,   -- System metadata: hash value used to detect changes in source attributes.
-    [sys_data_source]           NVARCHAR (25)        NOT NULL,   -- System metadata: name of the source system.
-    [sys_source_record_id]      NVARCHAR (255)       NOT NULL,   -- System metadata: identifier of the source system or source record.
+    [sys_hash_value]            CHAR (64)           NOT NULL,   -- System metadata: hash value used to detect changes in source attributes.
+    [sys_data_source]           NVARCHAR (25)       NOT NULL,   -- System metadata: name of the source system.
+    [sys_source_record_id]      NVARCHAR (255)      NOT NULL,   -- System metadata: identifier of the source system or source record.
 
 -- Define constraints.
     CONSTRAINT PK_dim_territory
@@ -285,10 +285,11 @@ CREATE UNIQUE NONCLUSTERED INDEX UX_dim_territory_territory_name_bk
     Dimension: Store
 
     Purpose:
-        Represents the 
+        Represents the store dimension used to analyze sales by store, square feet, 
+        year opened, number of employees, speciality, and brands.
 
     Grain:
-        One row per .
+        One row per store.
 
     Source:
         Query from the transform schema's store-related tables.
@@ -307,15 +308,15 @@ CREATE TABLE dimension.dim_store
     [store_key]                 INT IDENTITY (1, 1)  NOT NULL,   --  
     [store_name]                NVARCHAR (50)        NOT NULL,   --
     [square_feet]               INT                  NOT NULL,   --
-    [year_oppend]               INT                  NOT NULL,   -- 
+    [year_opend]                INT                  NOT NULL,   -- 
     [number_employee]           INT                  NOT NULL,   --
-    [speciality]                NVARCHAR (25)        NOT NULL,
-    [brands]                    INT                  NOT NULL,
+    [specialty]                 NVARCHAR (50)        NOT NULL,   --
+    [brands]                    NVARCHAR (50)        NOT NULL,   --
 
 -- System metadata attributes.
     [sys_insert_date]           DATETIME2 (3)        NOT NULL,   -- System metadata: date and time when the record was inserted.
-    [sys_update_date]           DATETIME2 (3)            NULL,    -- System metadata: date and time when the record was last updated.
-    [sys_delete_date]           DATETIME2 (3)            NULL,    -- System metadata: date and time when the record was deleted or marked for deletion.
+    [sys_update_date]           DATETIME2 (3)            NULL,   -- System metadata: date and time when the record was last updated.
+    [sys_delete_date]           DATETIME2 (3)            NULL,   -- System metadata: date and time when the record was deleted or marked for deletion.
     [sys_hash_value]            CHAR (64)            NOT NULL,   -- System metadata: hash value used to detect changes in source attributes.
     [sys_data_source]           NVARCHAR (25)        NOT NULL,   -- System metadata: name of the source system.
     [sys_source_record_id]      NVARCHAR (255)       NOT NULL,   -- System metadata: identifier of the source system or source record.
@@ -324,3 +325,54 @@ CREATE TABLE dimension.dim_store
     CONSTRAINT PK_dim_store
         PRIMARY KEY CLUSTERED (store_key ASC)
 );
+
+
+/*
+    ------------------------------------------------------------------
+    Dimension: Sales Person
+
+    Purpose:
+        Represents the Sales Person dimension used to analyze sales by full name, job title,
+        hire date and current employee flag.
+
+    Grain:
+        One row per store.
+
+    Source:
+        Query from the transform schema's salesperson-related tables.
+    -----------------------------------------------------------------
+*/
+
+-- Check if the table exists and drop it if it does
+IF OBJECT_ID('dimension.dim_salesperson', 'U') IS NOT NULL
+    DROP TABLE dimension.dim_salesperson;
+GO
+
+-- Create the sales.dim_territory table
+CREATE TABLE dimension.dim_salesperson
+(
+-- Main dimension attributes.
+    [salesperson_key]           INT IDENTITY (1, 1)  NOT NULL,   --  
+    [national_number_bk]        NVARCHAR (20)        NOT NULL,   --
+    [full_name]                 NVARCHAR (50)        NOT NULL,   -- 
+    [job_tiltle]                NVARCHAR (50)        NOT NULL,   --
+    [hire_date]                 DATE                 NOT NULL,   --
+    [is_current_employee]       NVARCHAR (20)        NOT NULL,   -- 'Active' / 'Terminated'
+
+-- System metadata attributes.
+    [sys_insert_date]           DATETIME2 (3)        NOT NULL,   -- System metadata: date and time when the record was inserted.
+    [sys_update_date]           DATETIME2 (3)            NULL,   -- System metadata: date and time when the record was last updated.
+    [sys_delete_date]           DATETIME2 (3)            NULL,   -- System metadata: date and time when the record was deleted or marked for deletion.
+    [sys_hash_value]            CHAR (64)            NOT NULL,   -- System metadata: hash value used to detect changes in source attributes.
+    [sys_data_source]           NVARCHAR (25)        NOT NULL,   -- System metadata: name of the source system.
+    [sys_source_record_id]      NVARCHAR (255)       NOT NULL,   -- System metadata: identifier of the source system or source record.
+
+-- Define constraints.
+    CONSTRAINT PK_dim_salesperson
+        PRIMARY KEY CLUSTERED (salesperson_key ASC)
+);
+
+-- Create a unique non-clustered index on the national_number_bk column 
+-- to enforce uniqueness and improve query performance
+CREATE UNIQUE NONCLUSTERED INDEX UX_dim_salesperson_national_number_bk
+        ON dimension.dim_salesperson (national_number_bk);

@@ -15,9 +15,11 @@
         extract.UnitMeasure
         extract.SalesTerritory
         extract.Customer
-        Saextractles.Store
+        extract.Store
         extract.Person
         extract.CountryRegion
+        extract.SalesPerson
+        extract.Employee
  ========================================================================
  */
 
@@ -72,8 +74,8 @@ IF OBJECT_ID('[transform].[ProductCategory]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [transform].[ProductCategory](
-	[ProductCategoryID] 		    INT 		       NULL,
-    [Name]                    NVARCHAR (50)  NULL
+	[ProductCategoryID] 		  INT 		     NULL,
+   [Name]                    NVARCHAR (50)  NULL
 );
 GO
 
@@ -182,3 +184,30 @@ CREATE TABLE [transform].[Person] (
     [EmailPromotion]          NVARCHAR (50)  NULL
 );
 GO
+
+-- =====================================================================
+-- This script drops then creates the SalesPerson table in the transform layer.
+-- =====================================================================
+IF OBJECT_ID('[transform].[SalesPerson]', 'U') IS NOT NULL
+    DROP TABLE [transform].[SalesPerson];
+GO
+
+CREATE TABLE [transform].[SalesPerson] (
+    [BusinessEntityID]          INT            NULL
+);
+
+-- =====================================================================
+-- This script drops then creates the Employee table in the transform layer.
+-- =====================================================================
+IF OBJECT_ID('[transform].[Employee]', 'U') IS NOT NULL
+    DROP TABLE [transform].[Employee];
+GO
+
+CREATE TABLE [transform].[Employee] (
+    [BusinessEntityID]          INT            NULL,
+    [NationalIDNumber]          NVARCHAR (15)  NULL,
+    [JobTitle]                  NVARCHAR (50)  NULL,   
+    [HireDate]                  DATE           NULL,
+    [CurrentFlag]               NVARCHAR (20)  NULL
+);
+

@@ -14,10 +14,12 @@
         Production.ProductModel
         Production.UnitMeasure
         Sales.SalesTerritory
+        Sales.SalesPerson
         Sales.Customer
         Sales.Store
         Person.Person
         Person.CountryRegion
+        HumanResources.Employee
  ========================================================================
  */
 
@@ -72,8 +74,8 @@ IF OBJECT_ID('[extract].[ProductCategory]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [extract].[ProductCategory](
-	[ProductCategoryID] 		INT 			NULL,
-    [Name]                      NVARCHAR (50)  NULL
+	[ProductCategoryID] 		    INT 			NULL,
+  [Name]                      NVARCHAR (50)  NULL
 );
 GO
 
@@ -99,8 +101,8 @@ IF OBJECT_ID('[extract].[UnitMeasure]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [extract].[UnitMeasure](
-	[UnitMeasureCode]           NCHAR (3)         NULL,
-	[Name]                      NVARCHAR (50)     NULL
+	  [UnitMeasureCode]           NCHAR (3)         NULL,
+	  [Name]                      NVARCHAR (50)     NULL
 );
 GO
 
@@ -127,8 +129,8 @@ IF OBJECT_ID('[extract].[CountryRegion]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [extract].[CountryRegion](
-	[CountryRegionCode]         NVARCHAR (3)      NULL,
-	[Name]                      NVARCHAR (50)     NULL
+	  [CountryRegionCode]         NVARCHAR (3)      NULL,
+	  [Name]                      NVARCHAR (50)     NULL
 );
 GO
 
@@ -176,4 +178,32 @@ CREATE TABLE [extract].[Person] (
     [FirstName]                 NVARCHAR (50)  NULL,
     [LastName]                  NVARCHAR (50)  NULL,
     [EmailPromotion]            INT            NULL
+);
+
+
+-- =====================================================================
+-- This script drops then creates the SalesPerson table in the extract layer.
+-- =====================================================================
+IF OBJECT_ID('[extract].[SalesPerson]', 'U') IS NOT NULL
+    DROP TABLE [extract].[SalesPerson];
+GO
+
+CREATE TABLE [extract].[SalesPerson] (
+    [BusinessEntityID]          INT            NULL
+);
+
+
+-- =====================================================================
+-- This script drops then creates the Employee table in the extract layer.
+-- =====================================================================
+IF OBJECT_ID('[extract].[Employee]', 'U') IS NOT NULL
+    DROP TABLE [extract].[Employee];
+GO
+
+CREATE TABLE [extract].[Employee] (
+    [BusinessEntityID]          INT            NULL,
+    [NationalIDNumber]          NVARCHAR (15)  NULL,
+    [JobTitle]                  NVARCHAR (50)  NULL,   
+    [HireDate]                  DATE           NULL,
+    [CurrentFlag]               BIT            NULL
 );
