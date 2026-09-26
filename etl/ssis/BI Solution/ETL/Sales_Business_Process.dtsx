@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Sales_Business_Process"
   DTS:PackageType="5"
-  DTS:VersionBuild="171"
-  DTS:VersionGUID="{FC810EDB-C234-480E-8A10-CBFB3DC6672B}">
+  DTS:VersionBuild="182"
+  DTS:VersionGUID="{75BFC4BA-132A-4463-ADDC-5AAD61940384}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -5303,7 +5303,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate CountryRegion"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5320,7 +5320,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate Customer"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5337,7 +5337,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate Employee"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5354,7 +5354,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate Person"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5371,7 +5371,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate Product"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5388,7 +5388,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate ProductCategory"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5405,7 +5405,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate ProductModel"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5422,7 +5422,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate ProductSubcategory"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5439,7 +5439,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate SalesPerson"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5456,7 +5456,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate SalesTerritory"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5473,7 +5473,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate Store"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5490,7 +5490,7 @@ FROM
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate UnitMeasure"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -13833,6 +13833,223 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
               version="1">
               <components>
                 <component
+                  refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="CMD | Update DimSalesperson"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE dimension.dim_salesperson
+SET
+    job_tiltle                       = ?,
+    hire_date                     = ?,
+    is_current_employee   = ?,
+    full_name                    = ?,
+    sys_hash_value          = ?,
+    sys_update_date        = ?
+WHERE
+    salesperson_key        = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Connections[OleDbConnection]"
+                      connectionManagerID="{1B3A8471-77E7-4C35-8961-F917CE737C38}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[JobTitle]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="JobTitle"
+                          externalMetadataColumnId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[JobTitle]" />
+                        <inputColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[HireDate]"
+                          cachedDataType="dbDate"
+                          cachedName="HireDate"
+                          externalMetadataColumnId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[HireDate]" />
+                        <inputColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[IsCurrentEmployee]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="IsCurrentEmployee"
+                          externalMetadataColumnId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          lineageId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[IsCurrentEmployee]" />
+                        <inputColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[FullName_CNV]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="FullName_CNV"
+                          externalMetadataColumnId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          lineageId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Output].Columns[FullName_CNV]" />
+                        <inputColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[RowHash]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="64"
+                          cachedName="RowHash"
+                          externalMetadataColumnId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          lineageId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Outputs[Output 0].Columns[RowHash]" />
+                        <inputColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[sys_update_date]"
+                          cachedDataType="date"
+                          cachedName="sys_update_date"
+                          externalMetadataColumnId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          lineageId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Outputs[Derived Column Output].Columns[sys_update_date]" />
+                        <inputColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[salesperson_key]"
+                          cachedDataType="i4"
+                          cachedName="salesperson_key"
+                          externalMetadataColumnId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                          lineageId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[salesperson_key]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          dataType="wstr"
+                          length="50"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          dataType="dbDate"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          dataType="wstr"
+                          length="20"
+                          name="Param_2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          dataType="wstr"
+                          length="50"
+                          name="Param_3">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          codePage="1252"
+                          dataType="str"
+                          length="64"
+                          name="Param_4">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          dataType="dbTimeStamp2"
+                          name="Param_5"
+                          scale="3">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">1073741889</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                          dataType="i4"
+                          name="Param_6">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CNV | FullName Attribute Types"
                   componentClassID="Microsoft.DataConvert"
                   contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -15444,6 +15661,104 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   </outputs>
                 </component>
                 <component
+                  refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="SPL | New vs Existing Salesperson"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Inputs[Conditional Split Input].Columns[RowHash]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="64"
+                          cachedName="RowHash"
+                          lineageId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Outputs[Output 0].Columns[RowHash]" />
+                        <inputColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Inputs[Conditional Split Input].Columns[sys_hash_value_Existing]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="64"
+                          cachedName="sys_hash_value_Existing"
+                          lineageId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[sys_hash_value_Existing]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Outputs[changed]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="changed"
+                      synchronousInputId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">#{Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Outputs[Output 0].Columns[RowHash]} != #{Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[sys_hash_value_Existing]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">RowHash != sys_hash_value_Existing</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Outputs[Conditional Split Default Output]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Conditional Split Default Output"
+                      synchronousInputId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SRC | Query Load Salesperson"
                   componentClassID="Microsoft.OLEDBSource"
                   contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -15663,6 +15978,11 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
               </components>
               <paths>
                 <path
+                  refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson.Paths[changed]"
+                  endId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Inputs[Derived Column Input]"
+                  name="changed"
+                  startId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Outputs[changed]" />
+                <path
                   refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson.Paths[Data Conversion Output]"
                   endId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\DER | Derived Metadata Information.Inputs[Derived Column Input]"
                   name="Data Conversion Output"
@@ -15678,8 +15998,13 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
                   name="Derived Column Output"
                   startId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Outputs[Derived Column Output]" />
                 <path
+                  refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson.Paths[Derived Column Output2]"
+                  endId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input]"
+                  name="Derived Column Output"
+                  startId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Outputs[Derived Column Output]" />
+                <path
                   refId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson.Paths[Lookup Match Output]"
-                  endId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Inputs[Derived Column Input]"
+                  endId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Inputs[Conditional Split Input]"
                   name="Lookup Match Output"
                   startId="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output]" />
                 <path
@@ -18713,6 +19038,7 @@ FROM     transform.SalesTerritory     AS st
           DTS:refId="Package\SEQ | Load (GOLD)\SQL | Truncate DimCustomer"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{b2edaa41-7921-4343-bb96-ee5fe60bd66e}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -18730,12 +19056,13 @@ FROM     transform.SalesTerritory     AS st
           DTS:refId="Package\SEQ | Load (GOLD)\SQL | Truncate DimProduct"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{bed0584e-02d1-4dd3-bdd8-f344b39a50be}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate DimProduct"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -18747,12 +19074,13 @@ FROM     transform.SalesTerritory     AS st
           DTS:refId="Package\SEQ | Load (GOLD)\SQl | Truncate DimSalesperson"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{6284516a-3ec9-4089-9a43-7d7de6a067fe}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="SQl | Truncate DimSalesperson"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -18769,7 +19097,7 @@ FROM     transform.SalesTerritory     AS st
           DTS:LocaleID="-1"
           DTS:ObjectName="SQl | Truncate DimStore"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -18786,12 +19114,29 @@ FROM     transform.SalesTerritory     AS st
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate DimTerritory"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{1B3A8471-77E7-4C35-8961-F917CE737C38}"
               SQLTask:SqlStatementSource="TRUNCATE TABLE [dimension].[dim_territory];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ | Load (GOLD)\SQL | Update ETL Metadata"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{EE18CEC3-9551-4CDA-BCA4-B9A375009A3A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL | Update ETL Metadata"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{1B3A8471-77E7-4C35-8961-F917CE737C38}"
+              SQLTask:SqlStatementSource="UPDATE dimension.dim_salesperson&#xA;SET sys_delete_date = GETDATE()&#xA;WHERE sys_delete_date IS NULL&#xA;  AND national_number_bk NOT IN (&#xA;      SELECT e.NationalIDNumber&#xA;      FROM [STG_AdventureWorks].[transform].[SalesPerson] s&#xA;      INNER JOIN [STG_AdventureWorks].[transform].[Employee] e ON e.BusinessEntityID = s.BusinessEntityID&#xA;  );" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -18844,6 +19189,14 @@ FROM     transform.SalesTerritory     AS st
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 3"
           DTS:To="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQ | Load (GOLD).PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{A64EE0F0-A758-4F37-B817-37DFE048EC8E}"
+          DTS:From="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\SEQ | Load (GOLD)\SQL | Update ETL Metadata" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -24126,7 +24479,7 @@ GO</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate CountryRegion"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -24143,7 +24496,7 @@ GO</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate Customer"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -24160,7 +24513,7 @@ GO</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate Employee"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="10">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -24177,7 +24530,7 @@ GO</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate Person"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="11">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -24194,7 +24547,7 @@ GO</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate Product"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -24211,7 +24564,7 @@ GO</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate ProductCategory"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -24228,7 +24581,7 @@ GO</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate ProductModel"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -24245,7 +24598,7 @@ GO</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate ProductSubCategory"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -24262,7 +24615,7 @@ GO</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate SalesPerson"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -24279,7 +24632,7 @@ GO</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate SalesTerritory"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -24296,7 +24649,7 @@ GO</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate Store"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="10">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -24313,7 +24666,7 @@ GO</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL | Truncate UnitMeasure"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="11">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -24846,7 +25199,7 @@ GO</property>
         <NodeLayout
           Size="210,42"
           Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson"
-          TopLeft="750,435" />
+          TopLeft="432,435" />
         <NodeLayout
           Size="217,42"
           Id="Package\SEQ | Load (GOLD)\DFT | Load DimStore"
@@ -25003,26 +25356,52 @@ GO</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="454,11"
+              EndConnector="136,11"
               Start="0,0"
-              End="446.5,11">
+              End="128.5,11">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="223,0" />
+                    End="64,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="223,0"
-                    Point2="227,0"
-                    Point3="227,4" />
+                    Point1="64,0"
+                    Point2="68,0"
+                    Point3="68,4" />
                   <mssgle:LineSegment
-                    End="227,7" />
+                    End="68,7" />
                   <mssgle:CubicBezierSegment
-                    Point1="227,7"
-                    Point2="227,11"
-                    Point3="231,11" />
+                    Point1="68,7"
+                    Point2="68,11"
+                    Point3="72,11" />
                   <mssgle:LineSegment
-                    End="446.5,11" />
+                    End="128.5,11" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="210,42"
+          Id="Package\SEQ | Load (GOLD)\SQL | Update ETL Metadata"
+          TopLeft="749,429" />
+        <EdgeLayout
+          Id="Package\SEQ | Load (GOLD).PrecedenceConstraints[Constraint 4]"
+          TopLeft="642,453">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="107,0"
+              Start="0,0"
+              End="99.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="99.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -25034,8 +25413,8 @@ GO</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="1127,550"
-          Size="1127,593"
+          PanelSize="1195,560"
+          Size="1195,603"
           Id="Package\SEQ | Load (GOLD)"
           TopLeft="276.275974025978,1694.24855699856" />
         <NodeLayout
@@ -25457,26 +25836,26 @@ GO</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-368.224025974022,478.290764790765"
+              EndConnector="-334.224025974022,478.290764790768"
               Start="0,0"
-              End="-368.224025974022,470.790764790765">
+              End="-334.224025974022,470.790764790768">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,235.145382395383" />
+                    End="0,235.145382395384" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,235.145382395383"
-                    Point2="0,239.145382395383"
-                    Point3="-4,239.145382395383" />
+                    Point1="0,235.145382395384"
+                    Point2="0,239.145382395384"
+                    Point3="-4,239.145382395384" />
                   <mssgle:LineSegment
-                    End="-364.224025974022,239.145382395383" />
+                    End="-330.224025974022,239.145382395384" />
                   <mssgle:CubicBezierSegment
-                    Point1="-364.224025974022,239.145382395383"
-                    Point2="-368.224025974022,239.145382395383"
-                    Point3="-368.224025974022,243.145382395383" />
+                    Point1="-330.224025974022,239.145382395384"
+                    Point2="-334.224025974022,239.145382395384"
+                    Point3="-334.224025974022,243.145382395384" />
                   <mssgle:LineSegment
-                    End="-368.224025974022,470.790764790765" />
+                    End="-334.224025974022,470.790764790768" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -25636,7 +26015,7 @@ GO</property>
     design-time-name="Package\SEQ | Extract (BRONZE)\DFT | Extract Employee">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="191,42"
           Id="Package\SEQ | Extract (BRONZE)\DFT | Extract Employee\DST | Extract Employee"
@@ -25664,7 +26043,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -26028,7 +26409,7 @@ GO</property>
     design-time-name="Package\SEQ | Extract (BRONZE)\DFT | Extract SalesPerson">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="201,42"
           Id="Package\SEQ | Extract (BRONZE)\DFT | Extract SalesPerson\DST | Extract SalesPerson"
@@ -26056,7 +26437,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -26350,7 +26733,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-27.53947265625,9.0270724826389,55.0789453125,11.2236328125"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -26372,7 +26757,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-8.40058376736151,5,55.0789453125,11.2236328125"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -26395,7 +26782,7 @@ GO</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,14.0008680555555,96.3827734375,11.609375"
+              BoundingBox="-80.51173828125,14.0008680555555,161.0234765625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -26440,7 +26827,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="12.6549717881945,5,55.0789453125,11.2236328125"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -26566,7 +26955,7 @@ GO</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-178.650583767361,64.8888888888889,55.0789453125,11.2236328125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -26590,7 +26979,7 @@ GO</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="5.0994162326385,5,55.0789453125,11.2236328125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -26662,7 +27051,7 @@ GO</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="66.5308355034725,31.7270208766201,96.3827734375,11.609375"
+              BoundingBox="34.2104839409725,31.7270208766201,161.0234765625,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -26697,9 +27086,7 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -26733,9 +27120,7 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -26770,7 +27155,7 @@ GO</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="1.90497178819449,1,55.0789453125,11.2236328125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -26829,9 +27214,7 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -26933,7 +27316,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -26955,7 +27340,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -26989,7 +27376,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -27047,7 +27436,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -27069,7 +27460,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -27151,19 +27544,23 @@ GO</property>
     design-time-name="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="222,42"
-          Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SRC | Query Load Salesperson"
-          TopLeft="73,48" />
+          Size="229,42"
+          Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CNV | FullName Attribute Types"
+          TopLeft="104,154" />
         <NodeLayout
           Size="271,42"
           Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert"
           TopLeft="193,405" />
         <NodeLayout
-          Size="234,42"
-          Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SCP | Calculate Hash Value"
-          TopLeft="845,161" />
+          Size="222,42"
+          Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SRC | Query Load Salesperson"
+          TopLeft="73,48" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson"
+          TopLeft="786,427" />
         <NodeLayout
           Size="237,42"
           Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP"
@@ -27179,11 +27576,63 @@ GO</property>
         <NodeLayout
           Size="260,42"
           Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\DER | Handle Match Values To Update"
-          TopLeft="784,428" />
+          TopLeft="772,553" />
         <NodeLayout
-          Size="229,42"
-          Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CNV | FullName Attribute Types"
-          TopLeft="104,154" />
+          Size="234,42"
+          Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\SCP | Calculate Hash Value"
+          TopLeft="845,161" />
+        <NodeLayout
+          Size="241,42"
+          Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson\CMD | Update DimSalesperson"
+          TopLeft="786,639" />
+        <EdgeLayout
+          Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson.Paths[Data Conversion Output]"
+          TopLeft="333,177">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="134,0"
+              Start="0,0"
+              End="126.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="126.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="45.41552734375,5,35.6689453125,9.6025390625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson.Paths[changed]"
+          TopLeft="904,469">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,84"
+              Start="0,0"
+              End="0,76.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-19.19259765625,32.41845703125,38.3851953125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson.Paths[Output 0]"
           TopLeft="962,203">
@@ -27215,7 +27664,45 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-118.58447265625,39.5,35.6689453125,9.6025390625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson.Paths[OLE DB Source Output]"
+          TopLeft="184,90">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="34.5,64"
+              Start="0,0"
+              End="34.5,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28"
+                    Point2="0,32"
+                    Point3="4,32" />
+                  <mssgle:LineSegment
+                    End="30.5,32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="30.5,32"
+                    Point2="34.5,32"
+                    Point3="34.5,36" />
+                  <mssgle:LineSegment
+                    End="34.5,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-0.58447265625,37,35.6689453125,9.6025390625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -27250,7 +27737,7 @@ GO</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-280.6750390625,50.5,129.350078125,16"
+              BoundingBox="-271.80638671875,50.5,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -27260,34 +27747,56 @@ GO</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="115.333333333333,114"
+              EndConnector="107.333333333333,113"
               Start="0,0"
-              End="115.333333333333,106.5">
+              End="107.333333333333,105.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.0586756077117" />
+                    End="0,41.6546521374686" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,42.0586756077117"
-                    Point2="0,46.0586756077117"
-                    Point3="4,46.0586756077117" />
+                    Point1="0,41.6546521374686"
+                    Point2="0,45.6546521374686"
+                    Point3="4,45.6546521374686" />
                   <mssgle:LineSegment
-                    End="111.333333333333,46.0586756077117" />
+                    End="103.333333333333,45.6546521374686" />
                   <mssgle:CubicBezierSegment
-                    Point1="111.333333333333,46.0586756077117"
-                    Point2="115.333333333333,46.0586756077117"
-                    Point3="115.333333333333,50.0586756077117" />
+                    Point1="103.333333333333,45.6546521374686"
+                    Point2="107.333333333333,45.6546521374686"
+                    Point3="107.333333333333,49.6546521374686" />
                   <mssgle:LineSegment
-                    End="115.333333333333,106.5" />
+                    End="107.333333333333,105.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0.606627604166682,51.0586756077117,114.120078125,16"
+              BoundingBox="-17.1400716145835,50.6546521374686,141.6134765625,11.609375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson.Paths[Derived Column Output2]"
+          TopLeft="904.25,595">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -27331,63 +27840,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson.Paths[OLE DB Source Output]"
-          TopLeft="184,90">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="34.5,64"
-              Start="0,0"
-              End="34.5,56.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,28"
-                    Point2="0,32"
-                    Point3="4,32" />
-                  <mssgle:LineSegment
-                    End="30.5,32" />
-                  <mssgle:CubicBezierSegment
-                    Point1="30.5,32"
-                    Point2="34.5,32"
-                    Point3="34.5,36" />
-                  <mssgle:LineSegment
-                    End="34.5,56.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\SEQ | Load (GOLD)\DFT | Load DimSalesperson.Paths[Data Conversion Output]"
-          TopLeft="333,177">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="134,0"
-              Start="0,0"
-              End="126.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="126.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="41.91552734375,5,35.6689453125,9.6025390625"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -27441,7 +27896,7 @@ GO</property>
     design-time-name="Package\SEQ | Load (GOLD)\DFT | Load DimStore">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="207,42"
           Id="Package\SEQ | Load (GOLD)\DFT | Load DimStore\SCP | Culculate Hash Value"
@@ -27477,7 +27932,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="24.37546875,5,41.7490625,9.568359375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -27499,7 +27956,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="10.87546875,5,41.7490625,9.568359375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -27521,7 +27980,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="32.37546875,5,41.7490625,9.568359375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -27557,7 +28018,7 @@ GO</property>
     design-time-name="Package\SEQ | Load (GOLD)\DFT | Load DimTerritory">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="232,42"
           Id="Package\SEQ | Load (GOLD)\DFT | Load DimTerritory\SCP | Culculate Hash Value"
@@ -27593,7 +28054,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-17.83447265625,39.4658203125,35.6689453125,9.568359375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -27615,7 +28078,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-17.83447265625,51.4658203125,35.6689453125,9.568359375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -27637,7 +28102,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-17.83447265625,41.688042534722,35.6689453125,9.568359375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -27778,7 +28245,15 @@ GO</property>
     design-time-name="Package\Transform Layer (SILVER)\DFT | Transform Employee">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="286,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform Employee\DER | Decoding CurrentFlag"
+          TopLeft="562,98" />
+        <NodeLayout
+          Size="280,42"
+          Id="Package\Transform Layer (SILVER)\DFT | Transform Employee\CNV | CurrentFlag Attribute Types"
+          TopLeft="96,179" />
         <NodeLayout
           Size="277,42"
           Id="Package\Transform Layer (SILVER)\DFT | Transform Employee\DST | Transform Employee"
@@ -27787,36 +28262,6 @@ GO</property>
           Size="283,42"
           Id="Package\Transform Layer (SILVER)\DFT | Transform Employee\SRC | Extract Employee"
           TopLeft="92.166666666666,64.5" />
-        <NodeLayout
-          Size="286,42"
-          Id="Package\Transform Layer (SILVER)\DFT | Transform Employee\DER | Decoding CurrentFlag"
-          TopLeft="562,98" />
-        <EdgeLayout
-          Id="Package\Transform Layer (SILVER)\DFT | Transform Employee.Paths[Derived Column Output]"
-          TopLeft="848,121.166666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="126,0"
-              Start="0,0"
-              End="118.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="118.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="280,42"
-          Id="Package\Transform Layer (SILVER)\DFT | Transform Employee\CNV | CurrentFlag Attribute Types"
-          TopLeft="96,179" />
         <EdgeLayout
           Id="Package\Transform Layer (SILVER)\DFT | Transform Employee.Paths[OLE DB Source Output]"
           TopLeft="234.833333333333,106.5">
@@ -27836,7 +28281,33 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transform Layer (SILVER)\DFT | Transform Employee.Paths[Derived Column Output]"
+          TopLeft="848,121.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="126,0"
+              Start="0,0"
+              End="118.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="118.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -27870,7 +28341,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -27906,7 +28379,7 @@ GO</property>
     design-time-name="Package\Transform Layer (SILVER)\DFT | Transform Person">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="222,42"
           Id="Package\Transform Layer (SILVER)\DFT | Transform Person\DST | Transform Person"
@@ -27942,7 +28415,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -27964,7 +28439,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -27986,7 +28463,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -28022,7 +28501,7 @@ GO</property>
     design-time-name="Package\Transform Layer (SILVER)\DFT | Transform Product">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="228,42"
           Id="Package\Transform Layer (SILVER)\DFT | Transform Product\SRC | Extract Product"
@@ -28070,7 +28549,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -28092,7 +28573,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -28114,7 +28597,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -28256,7 +28741,7 @@ GO</property>
     design-time-name="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="187,42"
           Id="Package\Transform Layer (SILVER)\DFT | Transform ProductSubCategory\SRC | Extract ProductSubcategory"
@@ -28284,7 +28769,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -28320,7 +28807,7 @@ GO</property>
     design-time-name="Package\Transform Layer (SILVER)\DFT | Transform SalesPerson">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="217,42"
           Id="Package\Transform Layer (SILVER)\DFT | Transform SalesPerson\DST | Transform SalesPerson"
@@ -28348,7 +28835,9 @@ GO</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
