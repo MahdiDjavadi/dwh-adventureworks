@@ -73,6 +73,10 @@ SELECT
     COUNT(DISTINCT BusinessEntityID) AS distinct_business_entity_id
 FROM Sales.Store;
 
+SELECT COUNT(*) AS TotalStores,
+       COUNT(Demographics) AS StoresWithDemographics
+FROM Sales.Store;
+
 SELECT
     Name,
     COUNT(*) AS row_count
@@ -115,3 +119,7 @@ SELECT
 FROM HumanResources.Employee
 GROUP BY NationalIDNumber
 HAVING COUNT(*) > 1; -- Name is unique => Business Key candidate
+
+SELECT name FROM sys.indexes
+WHERE object_id = OBJECT_ID('Sales.Product') OR object_id = OBJECT_ID('Production.Product')
+  AND is_unique = 1;

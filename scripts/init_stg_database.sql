@@ -5,7 +5,7 @@ Create Database and Schemas
 Script Purpose:
     This script creates a new databases named 'STG_AdventureWorks' after checking if they already exist. 
     If the databases exist, they are dropped and recreated. Additionally, the script sets up two schemas 
-    within each database: 'extract' and 'transform'.
+    within each database: 'extract', 'etl' and 'transform'.
 	
 WARNING:
     Running this script will drop the entire 'STG_AdventureWorks' database if it exists. 
@@ -33,4 +33,7 @@ CREATE SCHEMA extract;
 GO
 
 create SCHEMA transform;
+GO
+
+CREATE SCHEMA etl;
 GO
