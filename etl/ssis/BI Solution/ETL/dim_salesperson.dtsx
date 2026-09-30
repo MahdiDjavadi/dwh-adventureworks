@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="8/25/2026 8:32:45 AM"
+  DTS:CreationDate="9/29/2026 10:18:03 AM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="KPI"
   DTS:CreatorName="KPI\Mahdi"
-  DTS:DTSID="{7F12CA54-E51B-45AE-B57C-D3D3F4FA6677}"
+  DTS:DTSID="{8A3171E9-5CFB-4BE9-A9C7-E3CDCA2BD5C3}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1016.0"
   DTS:LocaleID="2057"
-  DTS:ObjectName="dim_store"
+  DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="429"
-  DTS:VersionGUID="{9D7D6CCC-628F-40C6-A332-1D954872437C}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{CFDBFE2A-0AD5-409E-B941-D9EFAABDEA78}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\DFT | Load DimStore"
+      DTS:refId="Package\DFT | Load DimSalesperson"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{b6bf8670-4212-448a-b1aa-c9ade42f1c7f}"
+      DTS:DTSID="{a7e88e79-f558-4753-a1d1-8bb5adbdb1ed}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="DFT | Load DimStore"
+      DTS:ObjectName="DFT | Load DimSalesperson"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -32,11 +32,11 @@
           version="1">
           <components>
             <component
-              refId="Package\DFT | Load DimStore\CMD | Update DimStore"
+              refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson"
               componentClassID="Microsoft.OLEDBCommand"
               contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
               description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
-              name="CMD | Update DimStore"
+              name="CMD | Update DimSalesperson"
               usesDispositions="true"
               version="2">
               <properties>
@@ -49,18 +49,16 @@
                   description="The SQL command to be executed."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dimension].[dim_store]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE dimension.dim_salesperson
 SET
-       [square_feet]        = ?
-      ,[year_opend]         = ?
-      ,[number_employee]    = ?
-      ,[specialty]          = ?
-      ,[brands]             = ?
-      ,[sys_update_date]    = ?
-      ,[sys_hash_value]     = ?
-      ,[store_name] = ?
+    job_tiltle                       = ?,
+    hire_date                     = ?,
+    is_current_employee   = ?,
+    full_name                    = ?,
+    sys_hash_value          = ?,
+    sys_update_date        = ?
 WHERE
-       [store_key]          = ?;</property>
+    salesperson_key        = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -68,7 +66,7 @@ WHERE
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT | Load DimStore\CMD | Update DimStore.Connections[OleDbConnection]"
+                  refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Connections[OleDbConnection]"
                   connectionManagerID="{1B3A8471-77E7-4C35-8961-F917CE737C38}:external"
                   connectionManagerRefId="Project.ConnectionManagers[DWH]"
                   description="The OLE DB runtime connection used to access the database."
@@ -76,109 +74,99 @@ WHERE
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input]"
+                  refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input]"
                   errorOrTruncationOperation="Command Execution"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Command Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].Columns[SquareFeet]"
-                      cachedDataType="i4"
-                      cachedName="SquareFeet"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[SquareFeet]" />
-                    <inputColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].Columns[YearOpend]"
-                      cachedDataType="i4"
-                      cachedName="YearOpend"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[YearOpend]" />
-                    <inputColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].Columns[NumberEmployees]"
-                      cachedDataType="i4"
-                      cachedName="NumberEmployees"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[NumberEmployees]" />
-                    <inputColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].Columns[Specialty]"
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[JobTitle]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="Specialty"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[Specialty]" />
+                      cachedName="JobTitle"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[JobTitle]" />
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].Columns[Brands]"
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[HireDate]"
+                      cachedDataType="dbDate"
+                      cachedName="HireDate"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[HireDate]" />
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[IsCurrentEmployee]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="IsCurrentEmployee"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[IsCurrentEmployee]" />
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[FullName_CNV]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="Brands"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[Brands]" />
+                      cachedName="FullName_CNV"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Output].Columns[FullName_CNV]" />
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].Columns[sys_update_date]"
-                      cachedDataType="date"
-                      cachedName="sys_update_date"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
-                      lineageId="Package\DFT | Load DimStore\DER | Handle Match Value to Update.Outputs[Derived Column Output].Columns[sys_update_date]" />
-                    <inputColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].Columns[RowHash]"
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[RowHash]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="64"
                       cachedName="RowHash"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
-                      lineageId="Package\DFT | Load DimStore\SCP | Culculate Hash Value.Outputs[Output 0].Columns[RowHash]" />
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Outputs[Output 0].Columns[RowHash]" />
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].Columns[Name]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Name"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[Name]" />
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[sys_update_date]"
+                      cachedDataType="date"
+                      cachedName="sys_update_date"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Outputs[Derived Column Output].Columns[sys_update_date]" />
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].Columns[store_key]"
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[salesperson_key]"
                       cachedDataType="i4"
-                      cachedName="store_key"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
-                      lineageId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[store_key]" />
+                      cachedName="salesperson_key"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[salesperson_key]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      dataType="i4"
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="50"
                       name="Param_0">
                       <properties>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
+                          name="DBParamInfoFlags">65</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      dataType="i4"
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="dbDate"
                       name="Param_1">
                       <properties>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
+                          name="DBParamInfoFlags">65</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      dataType="i4"
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="wstr"
+                      length="20"
                       name="Param_2">
                       <properties>
                         <property
                           dataType="System.Int32"
                           description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
+                          name="DBParamInfoFlags">65</property>
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
                       dataType="wstr"
                       length="50"
                       name="Param_3">
@@ -190,9 +178,10 @@ WHERE
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
-                      dataType="wstr"
-                      length="50"
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="64"
                       name="Param_4">
                       <properties>
                         <property
@@ -202,7 +191,7 @@ WHERE
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
                       dataType="dbTimeStamp2"
                       name="Param_5"
                       scale="3">
@@ -214,34 +203,9 @@ WHERE
                       </properties>
                     </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
-                      codePage="1252"
-                      dataType="str"
-                      length="64"
-                      name="Param_6">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
-                      dataType="wstr"
-                      length="50"
-                      name="Param_7">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                       dataType="i4"
-                      name="Param_8">
+                      name="Param_6">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -254,29 +218,29 @@ WHERE
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT | Load DimStore\CMD | Update DimStore.Outputs[OLE DB Command Output]"
+                  refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Outputs[OLE DB Command Output]"
                   exclusionGroup="1"
                   name="OLE DB Command Output"
-                  synchronousInputId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input]">
+                  synchronousInputId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT | Load DimStore\CMD | Update DimStore.Outputs[OLE DB Command Error Output]"
+                  refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Outputs[OLE DB Command Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Command Error Output"
-                  synchronousInputId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input]">
+                  synchronousInputId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\CMD | Update DimStore.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\CMD | Update DimStore.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\CMD | Update DimStore.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -285,15 +249,196 @@ WHERE
               </outputs>
             </component>
             <component
-              refId="Package\DFT | Load DimStore\DER | Handle Match Value to Update"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="DER | Handle Match Value to Update"
+              refId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="CNV | FullName Attribute Types"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\DFT | Load DimStore\DER | Handle Match Value to Update.Inputs[Derived Column Input]"
+                  refId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Inputs[Data Conversion Input].Columns[FullName]"
+                      cachedDataType="wstr"
+                      cachedLength="101"
+                      cachedName="FullName"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[FullName]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Output].Columns[FullName_CNV]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Output].Columns[FullName_CNV]"
+                      name="FullName_CNV"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[FullName]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DER | Derived Metadata Information"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Inputs[Derived Column Input].Columns[SourceID]"
+                      cachedDataType="i4"
+                      cachedName="SourceID"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[SourceID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Outputs[Derived Column Output].Columns[sys_data_source]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="18"
+                      lineageId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Outputs[Derived Column Output].Columns[sys_data_source]"
+                      name="sys_data_source"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"AdventureWorks2025"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"AdventureWorks2025"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Outputs[Derived Column Output].Columns[sys_source_record_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Outputs[Derived Column Output].Columns[sys_source_record_id]"
+                      name="sys_source_record_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,255)(DT_I4)#{Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[SourceID]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,255)(DT_I4)SourceID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DER | Handle Match Values To Update"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <externalMetadataColumns />
@@ -301,18 +446,18 @@ WHERE
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT | Load DimStore\DER | Handle Match Value to Update.Outputs[Derived Column Output]"
+                  refId="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\DFT | Load DimStore\DER | Handle Match Value to Update.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\DER | Handle Match Value to Update.Outputs[Derived Column Output].Columns[sys_update_date]"
+                      refId="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Outputs[Derived Column Output].Columns[sys_update_date]"
                       dataType="date"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT | Load DimStore\DER | Handle Match Value to Update.Outputs[Derived Column Output].Columns[sys_update_date]"
+                      lineageId="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Outputs[Derived Column Output].Columns[sys_update_date]"
                       name="sys_update_date"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -333,23 +478,23 @@ WHERE
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT | Load DimStore\DER | Handle Match Value to Update.Outputs[Derived Column Error Output]"
+                  refId="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\DFT | Load DimStore\DER | Handle Match Value to Update.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\DER | Handle Match Value to Update.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\DER | Handle Match Value to Update.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\DER | Handle Match Value to Update.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\DER | Handle Match Value to Update.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -358,119 +503,15 @@ WHERE
               </outputs>
             </component>
             <component
-              refId="Package\DFT | Load DimStore\DER | Metadata Driven"
+              refId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="DER | Metadata Driven"
+              name="DER | Handle No Match Values To Insert"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\DFT | Load DimStore\DER | Metadata Driven.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT | Load DimStore\DER | Metadata Driven.Inputs[Derived Column Input].Columns[BusinessEntityID]"
-                      cachedDataType="i4"
-                      cachedName="BusinessEntityID"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[BusinessEntityID]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT | Load DimStore\DER | Metadata Driven.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\DFT | Load DimStore\DER | Metadata Driven.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT | Load DimStore\DER | Metadata Driven.Outputs[Derived Column Output].Columns[sys_data_source]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="25"
-                      lineageId="Package\DFT | Load DimStore\DER | Metadata Driven.Outputs[Derived Column Output].Columns[sys_data_source]"
-                      name="sys_data_source"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">(dt_wstr,25)"AdventureWorks2025"</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">(dt_wstr,25)"AdventureWorks2025"</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\DFT | Load DimStore\DER | Metadata Driven.Outputs[Derived Column Output].Columns[sys_source_record_id]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="255"
-                      lineageId="Package\DFT | Load DimStore\DER | Metadata Driven.Outputs[Derived Column Output].Columns[sys_source_record_id]"
-                      name="sys_source_record_id"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">(DT_WSTR,255)(DT_I4)#{Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[BusinessEntityID]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">(DT_WSTR,255)(DT_I4)BusinessEntityID</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT | Load DimStore\DER | Metadata Driven.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\DFT | Load DimStore\DER | Metadata Driven.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT | Load DimStore\DER | Metadata Driven.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\DER | Metadata Driven.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT | Load DimStore\DER | Metadata Driven.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\DER | Metadata Driven.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT | Load DimStore\DER | Metadata Insert Time"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="DER | Metadata Insert Time"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DFT | Load DimStore\DER | Metadata Insert Time.Inputs[Derived Column Input]"
+                  refId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <externalMetadataColumns />
@@ -478,19 +519,19 @@ WHERE
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT | Load DimStore\DER | Metadata Insert Time.Outputs[Derived Column Output]"
+                  refId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\DFT | Load DimStore\DER | Metadata Insert Time.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\DER | Metadata Insert Time.Outputs[Derived Column Output].Columns[sys_insert_time]"
+                      refId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Outputs[Derived Column Output].Columns[sys_insert_date]"
                       dataType="date"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\DFT | Load DimStore\DER | Metadata Insert Time.Outputs[Derived Column Output].Columns[sys_insert_time]"
-                      name="sys_insert_time"
+                      lineageId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Outputs[Derived Column Output].Columns[sys_insert_date]"
+                      name="sys_insert_date"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -510,23 +551,23 @@ WHERE
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT | Load DimStore\DER | Metadata Insert Time.Outputs[Derived Column Error Output]"
+                  refId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\DFT | Load DimStore\DER | Metadata Insert Time.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\DER | Metadata Insert Time.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\DER | Metadata Insert Time.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\DER | Metadata Insert Time.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\DER | Metadata Insert Time.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -535,11 +576,11 @@ WHERE
               </outputs>
             </component>
             <component
-              refId="Package\DFT | Load DimStore\DES | Load DimStore"
+              refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="DES | Load DimStore"
+              name="DST | Load DimSlaesperson"
               usesDispositions="true"
               version="4">
               <properties>
@@ -550,7 +591,7 @@ WHERE
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dimension].[dim_store]</property>
+                  name="OpenRowset">[dimension].[dim_salesperson]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -592,7 +633,7 @@ WHERE
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT | Load DimStore\DES | Load DimStore.Connections[OleDbConnection]"
+                  refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Connections[OleDbConnection]"
                   connectionManagerID="{1B3A8471-77E7-4C35-8961-F917CE737C38}:external"
                   connectionManagerRefId="Project.ConnectionManagers[DWH]"
                   description="The OLE DB runtime connection used to access the database."
@@ -600,175 +641,157 @@ WHERE
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input]"
+                  refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].Columns[Brands]"
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[sys_data_source]"
                       cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Brands"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[brands]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[Brands]" />
-                    <inputColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].Columns[sys_data_source]"
-                      cachedDataType="wstr"
-                      cachedLength="25"
+                      cachedLength="18"
                       cachedName="sys_data_source"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[sys_data_source]"
-                      lineageId="Package\DFT | Load DimStore\DER | Metadata Driven.Outputs[Derived Column Output].Columns[sys_data_source]" />
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[sys_data_source]"
+                      lineageId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Outputs[Derived Column Output].Columns[sys_data_source]" />
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].Columns[sys_insert_time]"
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[sys_source_record_id]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="sys_source_record_id"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[sys_source_record_id]"
+                      lineageId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Outputs[Derived Column Output].Columns[sys_source_record_id]" />
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[sys_insert_date]"
                       cachedDataType="date"
-                      cachedName="sys_insert_time"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[sys_insert_date]"
-                      lineageId="Package\DFT | Load DimStore\DER | Metadata Insert Time.Outputs[Derived Column Output].Columns[sys_insert_time]" />
+                      cachedName="sys_insert_date"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[sys_insert_date]"
+                      lineageId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Outputs[Derived Column Output].Columns[sys_insert_date]" />
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].Columns[Name]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Name"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[store_name]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[Name]" />
-                    <inputColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].Columns[SquareFeet]"
-                      cachedDataType="i4"
-                      cachedName="SquareFeet"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[square_feet]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[SquareFeet]" />
-                    <inputColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].Columns[NumberEmployees]"
-                      cachedDataType="i4"
-                      cachedName="NumberEmployees"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[number_employee]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[NumberEmployees]" />
-                    <inputColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].Columns[Specialty]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Specialty"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[specialty]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[Specialty]" />
-                    <inputColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].Columns[YearOpend]"
-                      cachedDataType="i4"
-                      cachedName="YearOpend"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[year_opend]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[YearOpend]" />
-                    <inputColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].Columns[RowHash]"
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[RowHash]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="64"
                       cachedName="RowHash"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[sys_hash_value]"
-                      lineageId="Package\DFT | Load DimStore\SCP | Culculate Hash Value.Outputs[Output 0].Columns[RowHash]" />
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[sys_hash_value]"
+                      lineageId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Outputs[Output 0].Columns[RowHash]" />
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].Columns[sys_source_record_id]"
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[IsCurrentEmployee]"
                       cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="sys_source_record_id"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[sys_source_record_id]"
-                      lineageId="Package\DFT | Load DimStore\DER | Metadata Driven.Outputs[Derived Column Output].Columns[sys_source_record_id]" />
+                      cachedLength="20"
+                      cachedName="IsCurrentEmployee"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[is_current_employee]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[IsCurrentEmployee]" />
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].Columns[BusinessEntityID]"
-                      cachedDataType="i4"
-                      cachedName="BusinessEntityID"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[source_id_bk]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[BusinessEntityID]" />
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[HireDate]"
+                      cachedDataType="dbDate"
+                      cachedName="HireDate"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[hire_date]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[HireDate]" />
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[JobTitle]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="JobTitle"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[job_tiltle]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[JobTitle]" />
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[BusinessKey]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="BusinessKey"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[national_number_bk]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[BusinessKey]" />
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[FullName_CNV]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FullName_CNV"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[full_name]"
+                      lineageId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Output].Columns[FullName_CNV]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[store_key]"
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[salesperson_key]"
                       dataType="i4"
-                      name="store_key" />
+                      name="salesperson_key" />
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[store_name]"
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[national_number_bk]"
+                      dataType="wstr"
+                      length="20"
+                      name="national_number_bk" />
+                    <externalMetadataColumn
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[full_name]"
                       dataType="wstr"
                       length="50"
-                      name="store_name" />
+                      name="full_name" />
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[square_feet]"
-                      dataType="i4"
-                      name="square_feet" />
-                    <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[number_employee]"
-                      dataType="i4"
-                      name="number_employee" />
-                    <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[brands]"
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[job_tiltle]"
                       dataType="wstr"
                       length="50"
-                      name="brands" />
+                      name="job_tiltle" />
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[sys_insert_date]"
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[hire_date]"
+                      dataType="dbDate"
+                      name="hire_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[is_current_employee]"
+                      dataType="wstr"
+                      length="20"
+                      name="is_current_employee" />
+                    <externalMetadataColumn
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[sys_insert_date]"
                       dataType="dbTimeStamp2"
                       name="sys_insert_date"
                       scale="3" />
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[sys_update_date]"
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[sys_update_date]"
                       dataType="dbTimeStamp2"
                       name="sys_update_date"
                       scale="3" />
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[sys_delete_date]"
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[sys_delete_date]"
                       dataType="dbTimeStamp2"
                       name="sys_delete_date"
                       scale="3" />
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[sys_hash_value]"
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[sys_hash_value]"
                       codePage="1252"
                       dataType="str"
                       length="64"
                       name="sys_hash_value" />
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[sys_data_source]"
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[sys_data_source]"
                       dataType="wstr"
                       length="25"
                       name="sys_data_source" />
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[sys_source_record_id]"
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[sys_source_record_id]"
                       dataType="wstr"
                       length="255"
                       name="sys_source_record_id" />
-                    <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[specialty]"
-                      dataType="wstr"
-                      length="50"
-                      name="specialty" />
-                    <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[year_opend]"
-                      dataType="i4"
-                      name="year_opend" />
-                    <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input].ExternalColumns[source_id_bk]"
-                      dataType="i4"
-                      name="source_id_bk" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT | Load DimStore\DES | Load DimStore.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\DES | Load DimStore.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\DES | Load DimStore.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\DES | Load DimStore.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -777,7 +800,7 @@ WHERE
               </outputs>
             </component>
             <component
-              refId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP"
+              refId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
@@ -790,24 +813,20 @@ WHERE
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
-       [store_key]
-      ,[source_id_bk]
-      ,[sys_hash_value]
-  FROM [dimension].[dim_store]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select 
+salesperson_key, national_number_bk, sys_hash_value 
+from dimension.dim_salesperson 
 where sys_delete_date IS NULL;</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT
-       [store_key]
-      ,[source_id_bk]
-      ,[sys_hash_value]
-  FROM [dimension].[dim_store]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select 
+salesperson_key, national_number_bk, sys_hash_value 
+from dimension.dim_salesperson 
 where sys_delete_date IS NULL;) [refTable]
-where [refTable].[source_id_bk] = ?</property>
+where [refTable].[national_number_bk] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -838,12 +857,12 @@ where [refTable].[source_id_bk] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="store_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="source_id_bk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sys_hash_value" dataType="DT_STR" length="64" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="salesperson_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="national_number_bk" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="sys_hash_value" dataType="DT_STR" length="64" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[BusinessEntityID]};</property>
+                  name="ParameterMap">#{Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[BusinessKey]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -855,7 +874,7 @@ where [refTable].[source_id_bk] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Connections[OleDbConnection]"
+                  refId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Connections[OleDbConnection]"
                   connectionManagerID="{1B3A8471-77E7-4C35-8961-F917CE737C38}:external"
                   connectionManagerRefId="Project.ConnectionManagers[DWH]"
                   description="Connection manager used to access lookup data."
@@ -863,19 +882,20 @@ where [refTable].[source_id_bk] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Inputs[Lookup Input]"
+                  refId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Inputs[Lookup Input].Columns[BusinessEntityID]"
-                      cachedDataType="i4"
-                      cachedName="BusinessEntityID"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[BusinessEntityID]">
+                      refId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Inputs[Lookup Input].Columns[BusinessKey]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="BusinessKey"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[BusinessKey]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">source_id_bk</property>
+                          name="JoinToReferenceColumn">national_number_bk</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -888,33 +908,33 @@ where [refTable].[source_id_bk] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output]"
+                  refId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[store_key]"
+                      refId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[salesperson_key]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[store_key]"
-                      name="store_key"
+                      lineageId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[salesperson_key]"
+                      name="salesperson_key"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">store_key</property>
+                          name="CopyFromReferenceColumn">salesperson_key</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[sys_hash_value_Existing]"
+                      refId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[sys_hash_value_Existing]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Copy Column"
                       length="64"
-                      lineageId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[sys_hash_value_Existing]"
+                      lineageId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[sys_hash_value_Existing]"
                       name="sys_hash_value_Existing"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -928,30 +948,30 @@ where [refTable].[source_id_bk] = ?</property>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Outputs[Lookup No Match Output]"
+                  refId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Outputs[Lookup Error Output]"
+                  refId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -960,11 +980,11 @@ where [refTable].[source_id_bk] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\DFT | Load DimStore\SCP | Culculate Hash Value"
+              refId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value"
               componentClassID="Microsoft.ManagedComponentHost"
               contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;14"
               description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
-              name="SCP | Culculate Hash Value"
+              name="SCP | Calculate Hash Value"
               version="14">
               <properties>
                 <property
@@ -1191,12 +1211,10 @@ public class ScriptMain : UserComponent
         var sb = new StringBuilder();
 
         // ==== EDIT PER PROJECT: list only business attributes, exclude keys/dates ====
-        sb.Append(Row.Name).Append('|');
-        sb.Append(Row.Brands).Append('|');
-        sb.Append(Row.NumberEmployees).Append('|');
-        sb.Append(Row.Specialty).Append('|');
-        sb.Append(Row.SquareFeet).Append('|');
-        sb.Append(Row.YearOpend).Append('|');
+        sb.Append(Row.FullNameCNV).Append('|');
+        sb.Append(Row.HireDate).Append('|');
+        sb.Append(Row.IsCurrentEmployee).Append('|');
+        sb.Append(Row.JobTitle).Append('|');
         // ==== END EDIT ====
 
         using (var sha256 = SHA256.Create())
@@ -1231,14 +1249,14 @@ public class Input0Buffer: ScriptBuffer
     {
     }
 
-    public String Name
+    public String JobTitle
     {
         get
         {
             return Buffer.GetString(BufferColumnIndexes[0]);
         }
     }
-    public bool Name_IsNull
+    public bool JobTitle_IsNull
     {
         get
         {
@@ -1246,14 +1264,14 @@ public class Input0Buffer: ScriptBuffer
         }
     }
 
-    public Int32 SquareFeet
+    public String IsCurrentEmployee
     {
         get
         {
-            return Buffer.GetInt32(BufferColumnIndexes[1]);
+            return Buffer.GetString(BufferColumnIndexes[1]);
         }
     }
-    public bool SquareFeet_IsNull
+    public bool IsCurrentEmployee_IsNull
     {
         get
         {
@@ -1261,14 +1279,14 @@ public class Input0Buffer: ScriptBuffer
         }
     }
 
-    public Int32 YearOpend
+    public DateTime HireDate
     {
         get
         {
-            return Buffer.GetInt32(BufferColumnIndexes[2]);
+            return Buffer.GetDate(BufferColumnIndexes[2]);
         }
     }
-    public bool YearOpend_IsNull
+    public bool HireDate_IsNull
     {
         get
         {
@@ -1276,14 +1294,14 @@ public class Input0Buffer: ScriptBuffer
         }
     }
 
-    public Int32 NumberEmployees
+    public String FullNameCNV
     {
         get
         {
-            return Buffer.GetInt32(BufferColumnIndexes[3]);
+            return Buffer.GetString(BufferColumnIndexes[3]);
         }
     }
-    public bool NumberEmployees_IsNull
+    public bool FullNameCNV_IsNull
     {
         get
         {
@@ -1291,41 +1309,11 @@ public class Input0Buffer: ScriptBuffer
         }
     }
 
-    public String Specialty
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[4]);
-        }
-    }
-    public bool Specialty_IsNull
-    {
-        get
-        {
-            return IsNull(4);
-        }
-    }
-
-    public String Brands
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[5]);
-        }
-    }
-    public bool Brands_IsNull
-    {
-        get
-        {
-            return IsNull(5);
-        }
-    }
-
     public String RowHash
     {
         set
         {
-            this[6] = value;
+            this[4] = value;
         }
     }
     public bool RowHash_IsNull
@@ -1334,7 +1322,7 @@ public class Input0Buffer: ScriptBuffer
         {
             if (value)
             {
-                SetNull(6);
+                SetNull(4);
             }
             else
             {
@@ -1369,10 +1357,10 @@ public class Input0Buffer: ScriptBuffer
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3a97f712cc8b420b8328d2a78087341e.Properties.Settings.get_Default():SC_3a97f712cc8b420b8328d2a78087341e.Properties.Sett" +
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_848937eda734478ea564e32164e39b2a.Properties.Settings.get_Default():SC_848937eda734478ea564e32164e39b2a.Properties.Sett" +
     "ings")]
 
-namespace SC_3a97f712cc8b420b8328d2a78087341e.Properties {
+namespace SC_848937eda734478ea564e32164e39b2a.Properties {
     
     
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
@@ -1389,71 +1377,12 @@ namespace SC_3a97f712cc8b420b8328d2a78087341e.Properties {
 }
 ]]></arrayElement>
                     <arrayElement
-                      dataType="System.String"><![CDATA[Project]]></arrayElement>
-                    <arrayElement
-                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
-                    <arrayElement
-                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
-<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
-  <msb:PropertyGroup>
-    <msb:Language>msBuild</msb:Language>
-    <msb:CodeName>SC_3a97f712cc8b420b8328d2a78087341e</msb:CodeName>
-    <msb:DisplayName>SC_3a97f712cc8b420b8328d2a78087341e</msb:DisplayName>
-    <msb:ProjectId>{29812B25-9887-4A9D-9793-9E05E22ED225}</msb:ProjectId>
-  </msb:PropertyGroup>
-  <msb:ItemGroup>
-    <msb:Project Include="SC_3a97f712cc8b420b8328d2a78087341e.csproj" />
-    <msb:File Include="Properties\Settings.settings" />
-    <msb:File Include="Properties\AssemblyInfo.cs" />
-    <msb:File Include="Properties\Resources.resx" />
-    <msb:File Include="Properties\Resources.Designer.cs" />
-    <msb:File Include="main.cs" />
-    <msb:File Include="BufferWrapper.cs" />
-    <msb:File Include="Properties\Settings.Designer.cs" />
-    <msb:File Include="ComponentWrapper.cs" />
-  </msb:ItemGroup>
-</c:Project>]]></arrayElement>
-                    <arrayElement
-                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
-                    <arrayElement
-                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
-                    <arrayElement
-                      dataType="System.String"><![CDATA[using System.Reflection;
-using System.Runtime.CompilerServices;
-
-//
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-//
-[assembly: AssemblyTitle("SC_3a97f712cc8b420b8328d2a78087341e")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SC_3a97f712cc8b420b8328d2a78087341e")]
-[assembly: AssemblyCopyright("Copyright @  2026")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("1.0.0.0")]
-]]></arrayElement>
-                    <arrayElement
-                      dataType="System.String"><![CDATA[SC_3a97f712cc8b420b8328d2a78087341e.csproj]]></arrayElement>
+                      dataType="System.String"><![CDATA[SC_848937eda734478ea564e32164e39b2a.csproj]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[UTF8]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="Current" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -1463,11 +1392,12 @@ using System.Runtime.CompilerServices;
     <ProjectGuid>{807BAE93-72BE-40D2-BED1-D40B763353EF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SC_3a97f712cc8b420b8328d2a78087341e</RootNamespace>
-    <AssemblyName>SC_3a97f712cc8b420b8328d2a78087341e</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <RootNamespace>SC_848937eda734478ea564e32164e39b2a</RootNamespace>
+    <AssemblyName>SC_848937eda734478ea564e32164e39b2a</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1539,6 +1469,65 @@ using System.Runtime.CompilerServices;
   </ProjectExtensions>
 </Project>]]></arrayElement>
                     <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_848937eda734478ea564e32164e39b2a</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_848937eda734478ea564e32164e39b2a</msb:DisplayName>
+    <msb:ProjectId>{050189E0-FB44-44CA-BCD0-582DDE0246E5}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_848937eda734478ea564e32164e39b2a.csproj" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_848937eda734478ea564e32164e39b2a")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_848937eda734478ea564e32164e39b2a")]
+[assembly: AssemblyCopyright("Copyright @  2026")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
                       dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[UTF8]]></arrayElement>
@@ -1564,14 +1553,14 @@ using System.Runtime.CompilerServices;
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3a97f712cc8b420b8328d2a78087341e.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_848937eda734478ea564e32164e39b2a.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
     "rceManager")]
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3a97f712cc8b420b8328d2a78087341e.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_848937eda734478ea564e32164e39b2a.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
     "fo")]
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3a97f712cc8b420b8328d2a78087341e.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_848937eda734478ea564e32164e39b2a.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
     "):Void")]
 
-namespace SC_3a97f712cc8b420b8328d2a78087341e.Properties {
+namespace SC_848937eda734478ea564e32164e39b2a.Properties {
     
     
     /// <summary>
@@ -1599,7 +1588,7 @@ namespace SC_3a97f712cc8b420b8328d2a78087341e.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if ((resourceMan == null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_3a97f712cc8b420b8328d2a78087341e.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_848937eda734478ea564e32164e39b2a.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -1633,116 +1622,116 @@ namespace SC_3a97f712cc8b420b8328d2a78087341e.Properties {
                   <arrayElements
                     arrayElementCount="2">
                     <arrayElement
-                      dataType="System.String"><![CDATA[SC_3a97f712cc8b420b8328d2a78087341e.dll]]></arrayElement>
+                      dataType="System.String"><![CDATA[SC_848937eda734478ea564e32164e39b2a.dll]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAGens2oAAAAAAAAAAOAAIiALATAAABYAAAAIAAAAAAAA4jUA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAMn+tGoAAAAAAAAAAOAAIiALATAAABYAAAAIAAAAAAAA9jQA
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
-ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAJA1AABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAKQ0AABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAA6BUAAAAgAAAAFgAAAAIA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAA/BQAAAAgAAAAFgAAAAIA
 AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAYAAAAAAAAAAAAAAAAAABAAABA
-LnJlbG9jAAAMAAAAAGAAAAACAAAAHgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADE
-NQAAAAAAAEgAAAACAAUAACMAANgRAAABAAAAAAAAANg0AAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAABswBADDAAAAAQAAEXMQAAAKCgYDbwQAAAZvEQAACh98bxIA
-AAomBgNvDgAABm8RAAAKH3xvEgAACiYGA28KAAAGbxMAAAoffG8SAAAKJgYDbwwAAAZvEQAACh98
-bxIAAAomBgNvBgAABm8TAAAKH3xvEgAACiYGA28IAAAGbxMAAAoffG8SAAAKJigUAAAKCwcoFQAA
-CgZvFgAACm8XAAAKbxgAAAoMAwgoGQAACnIBAABwcgUAAHBvGgAACm8QAAAG3goHLAYHbxsAAArc
-KgABEAAAAgCEADS4AAoAAAAAHgIoFAAABioqAgMEBSgcAAAKKlICex0AAAoCex4AAAoWlG8fAAAK
-KiICFiggAAAKKlICex0AAAoCex4AAAoXlG8hAAAKKiICFyggAAAKKlICex0AAAoCex4AAAoYlG8h
-AAAKKiICGCggAAAKKlICex0AAAoCex4AAAoZlG8hAAAKKiICGSggAAAKKlICex0AAAoCex4AAAoa
-lG8fAAAKKiICGiggAAAKKlICex0AAAoCex4AAAoblG8fAAAKKiICGyggAAAKKiYCHAMoIgAACipa
-AywIAhwoIwAACipyBwAAcHMkAAAKeh4CKCUAAAoqHgIoJgAACip+AignAAAKAgJzGAAABn0BAAAE
-AgJzGQAABn0CAAAEKpIEcqQAAHAabygAAAosFQIFAgMoKQAACg4EcwMAAAZvFgAABipKKwcCA28X
-AAAGA28SAAAGLfEqBio6AigqAAAKAgN9AwAABCo6AigqAAAKAgN9BAAABCoeAigqAAAKKq5+BQAA
-BC0ecrQAAHDQBwAAAigrAAAKbywAAApzLQAACoAFAAAEfgUAAAQqGn4GAAAEKh4CgAYAAAQqGn4H
-AAAEKh4CKC4AAAoqLnMfAAAGgAcAAAQqAABCU0pCAQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAF
-AGwAAAC4BgAAI34AACQHAACIBwAAI1N0cmluZ3MAAAAArA4AACgBAAAjVVMA1A8AABAAAAAjR1VJ
-RAAAAOQPAAD0AQAAI0Jsb2IAAAAAAAAAAgAAAVcVogEJAQAAAPoBMwAWAAABAAAAJQAAAAgAAAAH
-AAAAIAAAAA8AAAAuAAAAEAAAAAEAAAADAAAAEQAAABIAAAABAAAABAAAAAEAAAAAAFoDAQAAAAAA
-BgA+Al0FBgDSAl0FBgCKAT8FDwDRBQAABgC3AXkEBgAhAnkEBgACAnkEBgC5AnkEBgBeAnkEBgB3
-AnkEBgDOAXkEBgDpAf8CCgCSAsgABgDaBCUHBgAKAFAHCgAEBcgADgD1BMgACgDCBMgACgDDBsgA
-BgB3BiMEBgBtAT8FBgAVBX0FBgC2BGQEEgA9AUQDEgCeAUQDEgAWAU8EBgBSAV0FBgD2AiUHBgAq
-BFAHBgAlBSMEBgAlAyMEBgCFACMEBgCLBCMEBgClBCMEBgDpACMEBgCRACMEBgBxB3kEAAAAABoA
-AAAAAAEAAQABABAARAQAABAAAQABAAEAEADoBAAAQQABAAMAAQAQAKUGAABNAAEAFAABABAAawYA
-AFEAAwAYAAEAEAAjBgAAUQAEABkAAAAQAIQF9AVRAAUAGgAAARAAWwb0BWkABwAeAAYAawa/AAYA
-IwbDAAEAswbHAAEAswbHABEAOATLABEABgHPABEAdQDTAFAgAAAAAMYAMQfXAAEAMCEAAAAAhhgy
-BQYAAgA4IQAAAACGGDIFXQACAEMhAAAAAIYItQBAAAUAWCEAAAAAhgiXA4QABQBhIQAAAACGCH4G
-3QAFAHYhAAAAAIYI5wOEAAUAfyEAAAAAhgg0AN0ABQCUIQAAAACGCIIDhAAFAJ0hAAAAAIYI4AXd
-AAUAsiEAAAAAhgjMA4QABQC7IQAAAACGCHoHQAAFANAhAAAAAIYI/QOEAAUA2SEAAAAAhghSBUAA
-BQDuIQAAAACGCLoDhAAFAPchAAAAAIYIOAMQAAUAASIAAAAAhginA+EABgAYIgAAAACGAEgHhAAH
-ACAiAAAAAIYAjQaEAAcAKCIAAAAAhhgyBQYABwBIIgAAAADGABgH5gAHAG0iAAAAAMYBEQfXAAsA
-gCIAAAAAxgExB9cADACCIgAAAACGGDIF8AANAJEiAAAAAIYYMgXwAA4AoCIAAAAAgxgyBQYADwCo
-IgAAAACTCBEF9gAPANQiAAAAAJMI7gD7AA8A2yIAAAAAkwj6AAABDwDjIgAAAACWCJkGBgEQAOoi
-AAAAAIYYMgUGABAA8iIAAAAAkRg4BQsBEAAAAAEATAcAAAEACgUAAAIANgYAAAMA0AQAAAEA8AIA
-AAEA8AIAAAEAIwAAAAIAvgAAAAMACgUAAAQA0AQAAAEACgUAAAEATAcAAAEAyQYAAAEAyQYAAAEA
-8AIJADIFAQARADIFBgAZADIFCgApADIFEAAxADIFEAA5ADIFEABBADIFEABJADIFEABRADIFEABZ
-ADIFEABhADIFEABpADIFBgCpADIFBgDJADIFFQDZADIFBgBxADIFBgBxAEIAJABxAEIAKgBxAEIA
-MAB5ADYBNgDhABEAOwChABkDQADhAC0GRADpACwDSgDxABkDUQD5AG0AVwABAS4BBgCBADIFXQCB
-AAoFZwCBADYGawCJACIDbwCBAAsEdACJAAEAeQCBABoEfgCBABIEAQAJATIFEACBAEgHhACBAI0G
-hACZADIFBgD5AGQGiACZAEoGkAChADIFBgAZAaMAlgAZAW0HnwCxADIFpQDRADIFBgAuAAsAKgEu
-ABMAMwEuABsAUgEuACMAWwEuACsAhAEuADMAhAEuADsAhAEuAEMAWwEuAEsAigEuAFMAhAEuAFsA
-oQFDAGMA7wHhAHsA7wHjAGsA7wHpAXMAUgEJAnMAUgEbAAMAAQAHAA8ACAARAAAAwwAPAQAAmwMT
-AQAAggYXAQAA6wMTAQAAOAAXAQAAhgMTAQAA5AUXAQAA0AMTAQAAfgcPAQAAAQQTAQAAVgUPAQAA
-vgMTAQAAPAMPAQAAqwMTAQAAFQUbAQAADgEgAQAAnQYlAQIABAADAAIABQAFAAIABgAHAAIABwAJ
-AAIACAALAAIACQANAAIACgAPAAIACwARAAIADAATAAIADQAVAAIADgAXAAIADwAZAAEAEAAbAAEA
-EQAdAAIAGwAfAAIAHAAhAAEAHQAhAAIAHgAjAASAAAABAAAAAAAAAAAAAAAAAEkAAAAEAAAAAAAA
-AAAAAACtACsAAAAAABEAAAAAAAAAAAAAALYA0wYAAAAAEQAAAAAAAAAAAAAAtgDwBgAAAAAEAAAA
-AAAAAAAAAACtACMEAAAAAAAAAAABAAAAjgUAAAAAAEdldEludDMyAFNIQTI1NgBnZXRfVVRGOAA8
-TW9kdWxlPgBJbnB1dElEAG1zY29ybGliAGdldF9ZZWFyT3BlbmQAQXBwZW5kAFNDXzNhOTdmNzEy
-Y2M4YjQyMGI4MzI4ZDJhNzgwODczNDFlAFJlcGxhY2UAZGVmYXVsdEluc3RhbmNlAElEaXNwb3Nh
-YmxlAFJ1bnRpbWVUeXBlSGFuZGxlAEdldFR5cGVGcm9tSGFuZGxlAGdldF9OYW1lAElucHV0TmFt
-ZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5QaXBlbGluZQBUeXBlAGdldF9DdWx0dXJlAHNldF9D
-dWx0dXJlAHJlc291cmNlQ3VsdHVyZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBEaXNwb3NlAENy
-ZWF0ZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBEZWJ1
-Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3Nh
-YmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRy
-aWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJp
-YnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRlAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNB
-dHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmli
-dXRlAFNTSVNTY3JpcHRDb21wb25lbnRFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFu
-eUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQB2YWx1ZQBFbmNvZGluZwBT
-eXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAFRvU3RyaW5nAEdldFN0cmluZwBDb21wdXRlSGFzaABz
-ZXRfUm93SGFzaABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU0NfM2E5N2Y3MTJjYzhiNDIwYjgzMjhk
-MmE3ODA4NzM0MWUuZGxsAGdldF9ZZWFyT3BlbmRfSXNOdWxsAGdldF9OYW1lX0lzTnVsbABzZXRf
-Um93SGFzaF9Jc051bGwAZ2V0X0JyYW5kc19Jc051bGwAZ2V0X051bWJlckVtcGxveWVlc19Jc051
-bGwAZ2V0X1NxdWFyZUZlZXRfSXNOdWxsAGdldF9TcGVjaWFsdHlfSXNOdWxsAFNldE51bGwAc2V0
-X0l0ZW0AU3lzdGVtAEhhc2hBbGdvcml0aG0AcmVzb3VyY2VNYW4AU2NyaXB0TWFpbgBTeXN0ZW0u
-Q29uZmlndXJhdGlvbgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBJbnZh
-bGlkT3BlcmF0aW9uRXhjZXB0aW9uAFN0cmluZ0NvbXBhcmlzb24AQ3VsdHVyZUluZm8AT3V0cHV0
-TmFtZU1hcABPdXRwdXRNYXAAU3RyaW5nQnVpbGRlcgBJbnB1dDBCdWZmZXIAUGlwZWxpbmVCdWZm
-ZXIAU2NyaXB0QnVmZmVyAGdldF9SZXNvdXJjZU1hbmFnZXIAQml0Q29udmVydGVyAC5jdG9yAC5j
-Y3RvcgBTeXN0ZW0uRGlhZ25vc3RpY3MAZ2V0X0JyYW5kcwBTeXN0ZW0uUnVudGltZS5Db21waWxl
-clNlcnZpY2VzAFN5c3RlbS5SZXNvdXJjZXMAU0NfM2E5N2Y3MTJjYzhiNDIwYjgzMjhkMmE3ODA4
-NzM0MWUuUHJvcGVydGllcy5SZXNvdXJjZXMucmVzb3VyY2VzAERlYnVnZ2luZ01vZGVzAGdldF9O
-dW1iZXJFbXBsb3llZXMAU0NfM2E5N2Y3MTJjYzhiNDIwYjgzMjhkMmE3ODA4NzM0MWUuUHJvcGVy
-dGllcwBWYXJpYWJsZXMAR2V0Qnl0ZXMAQnVmZmVyQ29sdW1uSW5kZXhlcwBHZXRDb2x1bW5JbmRl
-eGVzAFNldHRpbmdzAEVxdWFscwBDb25uZWN0aW9ucwBPYmplY3QAZ2V0X1NxdWFyZUZlZXQARW5k
-T2ZSb3dzZXQAZ2V0X0RlZmF1bHQAVXNlckNvbXBvbmVudABQYXJlbnRDb21wb25lbnQAU2NyaXB0
-Q29tcG9uZW50AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuVHhTY3JpcHQATWljcm9zb2Z0LlNxbFNlcnZl
-ci5QaXBlbGluZUhvc3QASW5wdXQwX1Byb2Nlc3NJbnB1dABTeXN0ZW0uVGV4dABJbnB1dDBfUHJv
-Y2Vzc0lucHV0Um93AE5leHRSb3cAU3lzdGVtLlNlY3VyaXR5LkNyeXB0b2dyYXBoeQBnZXRfQXNz
-ZW1ibHkAZ2V0X1NwZWNpYWx0eQAAAy0AAQEAgJtJAHMATgB1AGwAbAAgAHAAcgBvAHAAZQByAHQA
-eQAgAGMAYQBuAG4AbwB0ACAAYgBlACAAcwBlAHQAIAB0AG8AIABGAGEAbABzAGUALgAgAEEAcwBz
-AGkAZwBuACAAYQAgAHYAYQBsAHUAZQAgAHQAbwAgAHQAaABlACAAYwBvAGwAdQBtAG4AIABpAG4A
-cwB0AGUAYQBkAC4AAA9JAG4AcAB1AHQAIAAwAABxUwBDAF8AMwBhADkANwBmADcAMQAyAGMAYwA4
-AGIANAAyADAAYgA4ADMAMgA4AGQAMgBhADcAOAAwADgANwAzADQAMQBlAC4AUAByAG8AcABlAHIA
-dABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAAAAAMFeorgUHJVOgVWsCWF6ERAABCABAQgDIAAB
-BSABARERBCABAQ4FIAEBEWEIBwMSORI9HQUFIAESOQ4FIAESOQMFIAESOQgEAAASPQQAABJxAyAA
-DgUgAR0FDgYgAR0FHQUFAAEOHQUFIAIODg4JIAMBEkUdCBJJAwYSRQMGHQgEIAEOCAQgAQIIBCAB
-CAgFIAIBCBwDIAACByACAg4RgIkFIAEdCAgIAAESgI0RgJEFIAASgJUHIAIBDhKAlQi3elxWGTTg
-iQiJhF3NgIDMkQMGEhQDBhIYAwYSTQMGElkDBhJdAwYSIAUgAQESDAMgAAgEIAEBAgkgBAEIDhJF
-EkkFIAEBEk0EAAASWQQAABJdBQABARJdBAAAEiADAAABAygADgMoAAIDKAAIBAgAElkECAASXQQI
-ABIgCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNT
-Q18zYTk3ZjcxMmNjOGI0MjBiODMyOGQyYTc4MDg3MzQxZQAABQEAAAAAFgEAEUNvcHlyaWdodCBA
-ICAyMDI2AABNAQAcLk5FVEZyYW1ld29yayxWZXJzaW9uPXY0LjcuMgEAVA4URnJhbWV3b3JrRGlz
-cGxheU5hbWUULk5FVCBGcmFtZXdvcmsgNC43LjIEAQAAALQAAADOyu++AQAAAJEAAABsU3lzdGVt
-LlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3Vs
-dHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNv
-dXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAAC4NQAAAAAAAAAA
-AADSNQAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxDUAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBt
-c2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADY
+NAAAAAAAAEgAAAACAAUAoCIAAEwRAAABAAAAAAAAAOwzAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABswBACgAAAAAQAAEXMQAAAKCgYDbwoAAAZvEQAACh98bxIA
+AAomBgNvCAAABowTAAABbxMAAAoffG8SAAAKJgYDbwYAAAZvEQAACh98bxIAAAomBgNvBAAABm8R
+AAAKH3xvEgAACiYoFAAACgsHKBUAAAoGbxYAAApvFwAACm8YAAAKDAMIKBkAAApyAQAAcHIFAABw
+bxoAAApvDAAABt4KBywGB28bAAAK3CoBEAAAAgBhADSVAAoAAAAAHgIoEAAABioqAgMEBSgcAAAK
+KlICex0AAAoCex4AAAoWlG8fAAAKKiICFiggAAAKKlICex0AAAoCex4AAAoXlG8fAAAKKiICFygg
+AAAKKlICex0AAAoCex4AAAoYlG8hAAAKKiICGCggAAAKKlICex0AAAoCex4AAAoZlG8fAAAKKiIC
+GSggAAAKKiYCGgMoIgAACipaAywIAhooIwAACipyBwAAcHMkAAAKeh4CKCUAAAoqHgIoJgAACip+
+AignAAAKAgJzFAAABn0BAAAEAgJzFQAABn0CAAAEKpIEcqQAAHAabygAAAosFQIFAgMoKQAACg4E
+cwMAAAZvEgAABipKKwcCA28TAAAGA28OAAAGLfEqBio6AigqAAAKAgN9AwAABCo6AigqAAAKAgN9
+BAAABCoeAigqAAAKKq5+BQAABC0ecrQAAHDQBwAAAigrAAAKbywAAApzLQAACoAFAAAEfgUAAAQq
+Gn4GAAAEKh4CgAYAAAQqGn4HAAAEKh4CKC4AAAoqLnMbAAAGgAcAAAQqAABCU0pCAQABAAAAAAAM
+AAAAdjQuMC4zMDMxOQAAAAAFAGwAAABYBgAAI34AAMQGAABcBwAAI1N0cmluZ3MAAAAAIA4AACgB
+AAAjVVMASA8AABAAAAAjR1VJRAAAAFgPAAD0AQAAI0Jsb2IAAAAAAAAAAgAAAVcVogEJAQAAAPoB
+MwAWAAABAAAAJgAAAAgAAAAHAAAAHAAAAA8AAAAuAAAAEAAAAAEAAAADAAAADQAAAA4AAAABAAAA
+BAAAAAEAAAAAAIsDAQAAAAAABgBvAmIFBgADA2IFBgC7AU8FDwDWBQAABgDoAYkEBgBSAokEBgAz
+AokEBgDqAokEBgCPAokEBgCoAokEBgD/AYkEBgAaAjADCgDDAuQABgDqBAcHBgABADIHCgAUBeQA
+DgAFBeQACgDSBOQABgDbADMECgClBuQABgBoBjMEBgCeAU8FBgAlBYIFBgDGBHQEEgBuAXUDEgDP
+AXUDEgAyAV8EBgCDAWIFBgAnAwcHBgA6BDIHBgA1BTMEBgBWAzMEBgCUADMEBgCbBDMEBgC1BDME
+BgAFATMEBgCgADMEBgBTB4kEAAAAABEAAAAAAAEAAQABABAAVAQAABAAAQABAAEAEAD4BAAAQQAB
+AAMAAQAQAIcGAABRAAEAEAABABAAXAYAAFUAAwAUAAEAEAAUBgAAVQAEABUAAAAQAIkF5QVVAAUA
+FgAAARAATAblBW0ABwAaAAYAXAbAAAYAFAbEAAEAlQbIAAEAlQbIABEASATMABEAIgHQABEAbgDU
+AFAgAAAAAMYAEwfYAAEADCEAAAAAhhhCBQYAAgAUIQAAAACGGEIFXQACAB8hAAAAAIYIxABAAAUA
+NCEAAAAAhgjnA4UABQA9IQAAAACGCH4AQAAFAFIhAAAAAIYIygOFAAUAWyEAAAAAhghSAd4ABQBw
+IQAAAACGCPsDhQAFAHkhAAAAAIYIIgBAAAUAjiEAAAAAhgizA4UABQCXIQAAAACGCGkDEAAFAKEh
+AAAAAIYIDwTjAAYAuCEAAAAAhgAqB4UABwDAIQAAAACGAG8GhQAHAMghAAAAAIYYQgUGAAcA6CEA
+AAAAxgD6BugABwANIgAAAADGAfMG2AALACAiAAAAAMYBEwfYAAwAIiIAAAAAhhhCBfIADQAxIgAA
+AACGGEIF8gAOAEAiAAAAAIMYQgUGAA8ASCIAAAAAkwghBfgADwB0IgAAAACTCAoB/QAPAHsiAAAA
+AJMIFgECAQ8AgyIAAAAAlgh7BggBEACKIgAAAACGGEIFBgAQAJIiAAAAAJEYSAUNARAAAAABAC4H
+AAABABoFAAACACcGAAADAOAEAAABACEDAAABACEDAAABABoAAAACANEAAAADABoFAAAEAOAEAAAB
+ABoFAAABAC4HAAABAKsGAAABAKsGAAABACEDCQBCBQEAEQBCBQYAGQBCBQoAKQBCBRAAMQBCBRAA
+OQBCBRAAQQBCBRAASQBCBRAAUQBCBRAAWQBCBRAAYQBCBRAAaQBCBQYAsQBCBQYA0QBCBRUA4QBC
+BQYAcQBCBQYAcQBfACQAcQBfACoAcQBfADAAeQBnATYA6QAIADsAqQBKA0AA6QAeBkQA8QBdA0oA
++QBKA1EAAQFmAFcACQFKAQYAgQBCBV0AgQAaBWcAgQAnBmsAiQBTA28AgQAbBHQAiQBfAXkAgQAq
+BH8AgQAiBAEAEQFCBRAAgQAqB4UAgQBvBoUAoQBCBQYAAQFVBokAoQA7BpEAqQBCBQYAIQGyAJcA
+IQFPB6AAuQBCBaYA2QBCBQYALgALAC0BLgATADYBLgAbAFUBLgAjAF4BLgArAIcBLgAzAIcBLgA7
+AIcBLgBDAF4BLgBLAI0BLgBTAIcBLgBbAKQBQwBjAO4B4QB7AO4B4wBrAO4BaQFzAFUBiQFzAFUB
+GwADAAEABwALAAgADQAAAMgAEQEAAOsDFQEAAIIAEQEAAM4DFQEAAFYBGQEAAP8DFQEAACYAEQEA
+ALcDFQEAAG0DEQEAABMEFQEAACUFHgEAACoBIwEAAH8GKAECAAQAAwACAAUABQACAAYABwACAAcA
+CQACAAgACwACAAkADQACAAoADwACAAsAEQABAAwAEwABAA0AFQACABcAFwACABgAGQABABkAGQAC
+ABoAGwAEgAAAAQAAAAAAAAAAAAAAAAAyAAAABAAAAAAAAAAAAAAArgBWAAAAAAARAAAAAAAAAAAA
+AAC3ALUGAAAAABEAAAAAAAAAAAAAALcA0gYAAAAABAAAAAAAAAAAAAAArgAzBAAAAAAAAAAAAQAA
+AJMFAAAAAAAAAFNIQTI1NgBnZXRfVVRGOAA8TW9kdWxlPgBJbnB1dElEAGdldF9GdWxsTmFtZUNO
+VgBTQ184NDg5MzdlZGE3MzQ0NzhlYTU2NGUzMjE2NGUzOWIyYQBtc2NvcmxpYgBBcHBlbmQAUmVw
+bGFjZQBkZWZhdWx0SW5zdGFuY2UAZ2V0X0lzQ3VycmVudEVtcGxveWVlAElEaXNwb3NhYmxlAFJ1
+bnRpbWVUeXBlSGFuZGxlAEdldFR5cGVGcm9tSGFuZGxlAGdldF9Kb2JUaXRsZQBJbnB1dE5hbWUA
+RGF0ZVRpbWUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUGlwZWxpbmUAVHlwZQBnZXRfQ3VsdHVy
+ZQBzZXRfQ3VsdHVyZQByZXNvdXJjZUN1bHR1cmUAQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UARGlz
+cG9zZQBnZXRfSGlyZURhdGUAR2V0RGF0ZQBDcmVhdGUARWRpdG9yQnJvd3NhYmxlU3RhdGUAQ29t
+cGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBEZWJ1
+Z2dhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0
+cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0
+ZQBBc3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJp
+YnV0ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJp
+YnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0Q29tcG9uZW50RW50cnlQ
+b2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxp
+dHlBdHRyaWJ1dGUAdmFsdWUARW5jb2RpbmcAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBUb1N0
+cmluZwBHZXRTdHJpbmcAQ29tcHV0ZUhhc2gAc2V0X1Jvd0hhc2gAU3lzdGVtLkNvbXBvbmVudE1v
+ZGVsAFNDXzg0ODkzN2VkYTczNDQ3OGVhNTY0ZTMyMTY0ZTM5YjJhLmRsbABnZXRfRnVsbE5hbWVD
+TlZfSXNOdWxsAGdldF9Jc0N1cnJlbnRFbXBsb3llZV9Jc051bGwAZ2V0X0pvYlRpdGxlX0lzTnVs
+bABnZXRfSGlyZURhdGVfSXNOdWxsAHNldF9Sb3dIYXNoX0lzTnVsbABTZXROdWxsAHNldF9JdGVt
+AFN5c3RlbQBIYXNoQWxnb3JpdGhtAHJlc291cmNlTWFuAFNjcmlwdE1haW4AU3lzdGVtLkNvbmZp
+Z3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lzdGVtLlJlZmxlY3Rpb24ASW52YWxpZE9w
+ZXJhdGlvbkV4Y2VwdGlvbgBTdHJpbmdDb21wYXJpc29uAEN1bHR1cmVJbmZvAE91dHB1dE5hbWVN
+YXAAT3V0cHV0TWFwAFN0cmluZ0J1aWxkZXIASW5wdXQwQnVmZmVyAFBpcGVsaW5lQnVmZmVyAFNj
+cmlwdEJ1ZmZlcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAEJpdENvbnZlcnRlcgAuY3RvcgAuY2N0b3IA
+U3lzdGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVt
+LlJlc291cmNlcwBTQ184NDg5MzdlZGE3MzQ0NzhlYTU2NGUzMjE2NGUzOWIyYS5Qcm9wZXJ0aWVz
+LlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU0NfODQ4OTM3ZWRhNzM0NDc4ZWE1
+NjRlMzIxNjRlMzliMmEuUHJvcGVydGllcwBWYXJpYWJsZXMAR2V0Qnl0ZXMAQnVmZmVyQ29sdW1u
+SW5kZXhlcwBHZXRDb2x1bW5JbmRleGVzAFNldHRpbmdzAEVxdWFscwBDb25uZWN0aW9ucwBPYmpl
+Y3QARW5kT2ZSb3dzZXQAZ2V0X0RlZmF1bHQAVXNlckNvbXBvbmVudABQYXJlbnRDb21wb25lbnQA
+U2NyaXB0Q29tcG9uZW50AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuVHhTY3JpcHQATWljcm9zb2Z0LlNx
+bFNlcnZlci5QaXBlbGluZUhvc3QASW5wdXQwX1Byb2Nlc3NJbnB1dABTeXN0ZW0uVGV4dABJbnB1
+dDBfUHJvY2Vzc0lucHV0Um93AE5leHRSb3cAU3lzdGVtLlNlY3VyaXR5LkNyeXB0b2dyYXBoeQBn
+ZXRfQXNzZW1ibHkAAAMtAAEBAICbSQBzAE4AdQBsAGwAIABwAHIAbwBwAGUAcgB0AHkAIABjAGEA
+bgBuAG8AdAAgAGIAZQAgAHMAZQB0ACAAdABvACAARgBhAGwAcwBlAC4AIABBAHMAcwBpAGcAbgAg
+AGEAIAB2AGEAbAB1AGUAIAB0AG8AIAB0AGgAZQAgAGMAbwBsAHUAbQBuACAAaQBuAHMAdABlAGEA
+ZAAuAAAPSQBuAHAAdQB0ACAAMAAAcVMAQwBfADgANAA4ADkAMwA3AGUAZABhADcAMwA0ADQANwA4
+AGUAYQA1ADYANABlADMAMgAxADYANABlADMAOQBiADIAYQAuAFAAcgBvAHAAZQByAHQAaQBlAHMA
+LgBSAGUAcwBvAHUAcgBjAGUAcwAAAAA/NyulfF5RRrmCfK5WKLN1AAQgAQEIAyAAAQUgAQEREQQg
+AQEOBSABARFlCAcDEjkSPR0FBSABEjkOBSABEjkDBSABEjkcBAAAEj0EAAASdQMgAA4FIAEdBQ4G
+IAEdBR0FBQABDh0FBSACDg4OCSADARJFHQgSSQMGEkUDBh0IBCABDggEIAECCAUgARFNCAUgAgEI
+HAMgAAIHIAICDhGAjQUgAR0ICAgAARKAkRGAlQUgABKAmQcgAgEOEoCZCLd6XFYZNOCJCImEXc2A
+gMyRAwYSFAMGEhgDBhJRAwYSXQMGEmEDBhIgBSABARIMBCAAEU0EIAEBAgkgBAEIDhJFEkkFIAEB
+ElEEAAASXQQAABJhBQABARJhBAAAEiADAAABAygADgMoAAIEKAARTQQIABJdBAgAEmEECAASIAgB
+AAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAjU0NfODQ4
+OTM3ZWRhNzM0NDc4ZWE1NjRlMzIxNjRlMzliMmEAAAUBAAAAABYBABFDb3B5cmlnaHQgQCAgMjAy
+NgAASQEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC43AQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFt
+ZRIuTkVUIEZyYW1ld29yayA0LjcEAQAAAAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJj
+ZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1
+dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1
+bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAAzDQAAAAAAAAAAAAA5jQAAAAg
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAANg0AAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5k
+bGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABI
 AAAAWEAAAOwDAAAAAAAAAAAAAOwDNAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAA
 AAC9BO/+AAABAAAAAQAAAAAAAAABAAAAAAA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAA
@@ -1750,16 +1739,16 @@ AAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4A
 AAAAAAAAsARMAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAAoAwAAAQAwADAAMAAw
 ADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABhAG4A
 eQBOAGEAbQBlAAAAAAAAAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAA
-AFMAQwBfADMAYQA5ADcAZgA3ADEAMgBjAGMAOABiADQAMgAwAGIAOAAzADIAOABkADIAYQA3ADgA
-MAA4ADcAMwA0ADEAZQAAADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAw
-AC4AMAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8AMwBhADkANwBmADcA
-MQAyAGMAYwA4AGIANAAyADAAYgA4ADMAMgA4AGQAMgBhADcAOAAwADgANwAzADQAMQBlAC4AZABs
+AFMAQwBfADgANAA4ADkAMwA3AGUAZABhADcAMwA0ADQANwA4AGUAYQA1ADYANABlADMAMgAxADYA
+NABlADMAOQBiADIAYQAAADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAw
+AC4AMAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8AOAA0ADgAOQAzADcA
+ZQBkAGEANwAzADQANAA3ADgAZQBhADUANgA0AGUAMwAyADEANgA0AGUAMwA5AGIAMgBhAC4AZABs
 AGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgA
 dAAgAEAAIAAgADIAMAAyADYAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAA
-AAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAEMAXwAzAGEA
-OQA3AGYANwAxADIAYwBjADgAYgA0ADIAMABiADgAMwAyADgAZAAyAGEANwA4ADAAOAA3ADMANAAx
-AGUALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBDAF8AMwBhADkA
-NwBmADcAMQAyAGMAYwA4AGIANAAyADAAYgA4ADMAMgA4AGQAMgBhADcAOAAwADgANwAzADQAMQBl
+AAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAEMAXwA4ADQA
+OAA5ADMANwBlAGQAYQA3ADMANAA0ADcAOABlAGEANQA2ADQAZQAzADIAMQA2ADQAZQAzADkAYgAy
+AGEALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBDAF8AOAA0ADgA
+OQAzADcAZQBkAGEANwAzADQANAA3ADgAZQBhADUANgA0AGUAMwAyADEANgA0AGUAMwA5AGIAMgBh
 AAAANAAIAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAADgA
 CAABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1769,7 +1758,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAwAAADkNQAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAwAAAD4NAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1785,7 +1774,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   dataType="System.String"
                   description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
                   name="VSTAProjectName"
-                  typeConverter="NOTBROWSABLE">SC_3a97f712cc8b420b8328d2a78087341e</property>
+                  typeConverter="NOTBROWSABLE">SC_848937eda734478ea564e32164e39b2a</property>
                 <property
                   dataType="System.String"
                   description="Specifies the programming language used by the script."
@@ -1814,66 +1803,56 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   dataType="System.String"
                   description="Checksum to match component metedata against compiled codes."
                   name="MetadataChecksum140"
-                  typeConverter="NOTBROWSABLE">F7</property>
+                  typeConverter="NOTBROWSABLE">BC</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
               </properties>
               <inputs>
                 <input
-                  refId="Package\DFT | Load DimStore\SCP | Culculate Hash Value.Inputs[Input 0]"
+                  refId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Inputs[Input 0]"
                   hasSideEffects="true"
                   name="Input 0">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\SCP | Culculate Hash Value.Inputs[Input 0].Columns[Name]"
+                      refId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Inputs[Input 0].Columns[JobTitle]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="Name"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[Name]" />
+                      cachedName="JobTitle"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[JobTitle]" />
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\SCP | Culculate Hash Value.Inputs[Input 0].Columns[SquareFeet]"
-                      cachedDataType="i4"
-                      cachedName="SquareFeet"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[SquareFeet]" />
+                      refId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Inputs[Input 0].Columns[IsCurrentEmployee]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="IsCurrentEmployee"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[IsCurrentEmployee]" />
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\SCP | Culculate Hash Value.Inputs[Input 0].Columns[YearOpend]"
-                      cachedDataType="i4"
-                      cachedName="YearOpend"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[YearOpend]" />
+                      refId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Inputs[Input 0].Columns[HireDate]"
+                      cachedDataType="dbDate"
+                      cachedName="HireDate"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[HireDate]" />
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\SCP | Culculate Hash Value.Inputs[Input 0].Columns[NumberEmployees]"
-                      cachedDataType="i4"
-                      cachedName="NumberEmployees"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[NumberEmployees]" />
-                    <inputColumn
-                      refId="Package\DFT | Load DimStore\SCP | Culculate Hash Value.Inputs[Input 0].Columns[Specialty]"
+                      refId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Inputs[Input 0].Columns[FullName_CNV]"
                       cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="Specialty"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[Specialty]" />
-                    <inputColumn
-                      refId="Package\DFT | Load DimStore\SCP | Culculate Hash Value.Inputs[Input 0].Columns[Brands]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="Brands"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[Brands]" />
+                      cachedName="FullName_CNV"
+                      lineageId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Output].Columns[FullName_CNV]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT | Load DimStore\SCP | Culculate Hash Value.Outputs[Output 0]"
+                  refId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Outputs[Output 0]"
                   name="Output 0"
-                  synchronousInputId="Package\DFT | Load DimStore\SCP | Culculate Hash Value.Inputs[Input 0]">
+                  synchronousInputId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Inputs[Input 0]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\SCP | Culculate Hash Value.Outputs[Output 0].Columns[RowHash]"
+                      refId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Outputs[Output 0].Columns[RowHash]"
                       codePage="1252"
                       dataType="str"
                       length="64"
-                      lineageId="Package\DFT | Load DimStore\SCP | Culculate Hash Value.Outputs[Output 0].Columns[RowHash]"
+                      lineageId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Outputs[Output 0].Columns[RowHash]"
                       name="RowHash" />
                   </outputColumns>
                   <externalMetadataColumns />
@@ -1881,52 +1860,52 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               </outputs>
             </component>
             <component
-              refId="Package\DFT | Load DimStore\SPL | New vs Existing Store"
+              refId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson"
               componentClassID="Microsoft.ConditionalSplit"
               contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
-              name="SPL | New vs Existing Store"
+              name="SPL | New vs Existing Salesperson"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\DFT | Load DimStore\SPL | New vs Existing Store.Inputs[Conditional Split Input]"
+                  refId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Inputs[Conditional Split Input]"
                   description="Input to the Conditional Split Transformation"
                   name="Conditional Split Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\SPL | New vs Existing Store.Inputs[Conditional Split Input].Columns[RowHash]"
+                      refId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Inputs[Conditional Split Input].Columns[RowHash]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="64"
                       cachedName="RowHash"
-                      lineageId="Package\DFT | Load DimStore\SCP | Culculate Hash Value.Outputs[Output 0].Columns[RowHash]" />
+                      lineageId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Outputs[Output 0].Columns[RowHash]" />
                     <inputColumn
-                      refId="Package\DFT | Load DimStore\SPL | New vs Existing Store.Inputs[Conditional Split Input].Columns[sys_hash_value_Existing]"
+                      refId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Inputs[Conditional Split Input].Columns[sys_hash_value_Existing]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="64"
                       cachedName="sys_hash_value_Existing"
-                      lineageId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[sys_hash_value_Existing]" />
+                      lineageId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[sys_hash_value_Existing]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT | Load DimStore\SPL | New vs Existing Store.Outputs[Changed]"
+                  refId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Outputs[changed]"
                   description="Output 1 of the Conditional Split Transformation"
                   errorOrTruncationOperation="Computation"
                   errorRowDisposition="FailComponent"
                   exclusionGroup="1"
-                  name="Changed"
-                  synchronousInputId="Package\DFT | Load DimStore\SPL | New vs Existing Store.Inputs[Conditional Split Input]"
+                  name="changed"
+                  synchronousInputId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Inputs[Conditional Split Input]"
                   truncationRowDisposition="FailComponent">
                   <properties>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">#{Package\DFT | Load DimStore\SCP | Culculate Hash Value.Outputs[Output 0].Columns[RowHash]} != #{Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[sys_hash_value_Existing]}</property>
+                      name="Expression">#{Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Outputs[Output 0].Columns[RowHash]} != #{Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[sys_hash_value_Existing]}</property>
                     <property
                       containsID="true"
                       dataType="System.String"
@@ -1941,11 +1920,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT | Load DimStore\SPL | New vs Existing Store.Outputs[Conditional Split Default Output]"
+                  refId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Outputs[Conditional Split Default Output]"
                   description="Default Output of the Conditional Split Transformation"
                   exclusionGroup="1"
                   name="Conditional Split Default Output"
-                  synchronousInputId="Package\DFT | Load DimStore\SPL | New vs Existing Store.Inputs[Conditional Split Input]">
+                  synchronousInputId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Inputs[Conditional Split Input]">
                   <properties>
                     <property
                       dataType="System.Boolean"
@@ -1954,23 +1933,23 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT | Load DimStore\SPL | New vs Existing Store.Outputs[Conditional Split Error Output]"
+                  refId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Outputs[Conditional Split Error Output]"
                   description="Error Output of the Conditional Split Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Conditional Split Error Output"
-                  synchronousInputId="Package\DFT | Load DimStore\SPL | New vs Existing Store.Inputs[Conditional Split Input]">
+                  synchronousInputId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Inputs[Conditional Split Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\SPL | New vs Existing Store.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\SPL | New vs Existing Store.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\SPL | New vs Existing Store.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\SPL | New vs Existing Store.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1979,11 +1958,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               </outputs>
             </component>
             <component
-              refId="Package\DFT | Load DimStore\SRC | Table Transform Store"
+              refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="SRC | Table Transform Store"
+              name="SRC | Query Load Salesperson"
               usesDispositions="true"
               version="7">
               <properties>
@@ -1994,7 +1973,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[transform].[Store]</property>
+                  name="OpenRowset"></property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -2003,7 +1982,16 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+   s.BusinessEntityID as SourceID,
+   e.NationalIDNumber as BusinessKey,
+   e.JobTitle as JobTitle,
+   e.HireDate as HireDate,
+   e.CurrentFlag as IsCurrentEmployee,
+   concat(p.FirstName, ' ', p.LastName) As FullName
+FROM  transform.SalesPerson s
+INNER JOIN transform.Employee e on e.BusinessEntityID = s.BusinessEntityID
+INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -2020,7 +2008,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -2028,7 +2016,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Connections[OleDbConnection]"
+                  refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Connections[OleDbConnection]"
                   connectionManagerID="{15EEDC5A-6CA6-4D44-82D2-936E87A79543}:external"
                   connectionManagerRefId="Project.ConnectionManagers[STG]"
                   description="The OLE DB runtime connection used to access the database."
@@ -2036,182 +2024,149 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output]"
+                  refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
-                      name="BusinessEntityID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[Name]"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[BusinessKey]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].ExternalColumns[Name]"
-                      length="50"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[Name]"
-                      name="Name"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[BusinessKey]"
+                      length="15"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[BusinessKey]"
+                      name="BusinessKey"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[SalesPersonID]"
-                      dataType="i4"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[HireDate]"
+                      dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].ExternalColumns[SalesPersonID]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[SalesPersonID]"
-                      name="SalesPersonID"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[HireDate]"
+                      name="HireDate"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[SquareFeet]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].ExternalColumns[SquareFeet]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[SquareFeet]"
-                      name="SquareFeet"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[YearOpend]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].ExternalColumns[YearOpend]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[YearOpend]"
-                      name="YearOpend"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[NumberEmployees]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].ExternalColumns[NumberEmployees]"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[NumberEmployees]"
-                      name="NumberEmployees"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[Specialty]"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[IsCurrentEmployee]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].ExternalColumns[Specialty]"
-                      length="50"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[Specialty]"
-                      name="Specialty"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[IsCurrentEmployee]"
+                      length="20"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[IsCurrentEmployee]"
+                      name="IsCurrentEmployee"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[Brands]"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[JobTitle]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].ExternalColumns[Brands]"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[JobTitle]"
                       length="50"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].Columns[Brands]"
-                      name="Brands"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[JobTitle]"
+                      name="JobTitle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[SourceID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[SourceID]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[SourceID]"
+                      name="SourceID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[FullName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[FullName]"
+                      length="101"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[FullName]"
+                      name="FullName"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
-                      dataType="i4"
-                      name="BusinessEntityID" />
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[BusinessKey]"
+                      dataType="wstr"
+                      length="15"
+                      name="BusinessKey" />
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
+                      dataType="dbDate"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[IsCurrentEmployee]"
+                      dataType="wstr"
+                      length="20"
+                      name="IsCurrentEmployee" />
+                    <externalMetadataColumn
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[JobTitle]"
                       dataType="wstr"
                       length="50"
-                      name="Name" />
+                      name="JobTitle" />
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].ExternalColumns[SalesPersonID]"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[SourceID]"
                       dataType="i4"
-                      name="SalesPersonID" />
+                      name="SourceID" />
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].ExternalColumns[SquareFeet]"
-                      dataType="i4"
-                      name="SquareFeet" />
-                    <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].ExternalColumns[YearOpend]"
-                      dataType="i4"
-                      name="YearOpend" />
-                    <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].ExternalColumns[NumberEmployees]"
-                      dataType="i4"
-                      name="NumberEmployees" />
-                    <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].ExternalColumns[Specialty]"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[FullName]"
                       dataType="wstr"
-                      length="50"
-                      name="Specialty" />
-                    <externalMetadataColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output].ExternalColumns[Brands]"
-                      dataType="wstr"
-                      length="50"
-                      name="Brands" />
+                      length="101"
+                      name="FullName" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output]"
+                  refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[SourceID]"
                       dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
-                      name="BusinessEntityID" />
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[SourceID]"
+                      name="SourceID" />
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[BusinessKey]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[BusinessKey]"
+                      name="BusinessKey" />
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[JobTitle]"
                       dataType="wstr"
                       length="50"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[Name]"
-                      name="Name" />
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[JobTitle]"
+                      name="JobTitle" />
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[SalesPersonID]"
-                      dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[SalesPersonID]"
-                      name="SalesPersonID" />
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[HireDate]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[HireDate]"
+                      name="HireDate" />
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[SquareFeet]"
-                      dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[SquareFeet]"
-                      name="SquareFeet" />
-                    <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[YearOpend]"
-                      dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[YearOpend]"
-                      name="YearOpend" />
-                    <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[NumberEmployees]"
-                      dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[NumberEmployees]"
-                      name="NumberEmployees" />
-                    <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[Specialty]"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[IsCurrentEmployee]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[Specialty]"
-                      name="Specialty" />
+                      length="20"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[IsCurrentEmployee]"
+                      name="IsCurrentEmployee" />
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[Brands]"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[FullName]"
                       dataType="wstr"
-                      length="50"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[Brands]"
-                      name="Brands" />
+                      length="101"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[FullName]"
+                      name="FullName" />
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2222,64 +2177,69 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </components>
           <paths>
             <path
-              refId="Package\DFT | Load DimStore.Paths[Changed]"
-              endId="Package\DFT | Load DimStore\DER | Handle Match Value to Update.Inputs[Derived Column Input]"
-              name="Changed"
-              startId="Package\DFT | Load DimStore\SPL | New vs Existing Store.Outputs[Changed]" />
+              refId="Package\DFT | Load DimSalesperson.Paths[changed]"
+              endId="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Inputs[Derived Column Input]"
+              name="changed"
+              startId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Outputs[changed]" />
             <path
-              refId="Package\DFT | Load DimStore.Paths[Derived Column Output]"
-              endId="Package\DFT | Load DimStore\SCP | Culculate Hash Value.Inputs[Input 0]"
+              refId="Package\DFT | Load DimSalesperson.Paths[Data Conversion Output]"
+              endId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DFT | Load DimSalesperson.Paths[Derived Column Output]"
+              endId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Inputs[Input 0]"
               name="Derived Column Output"
-              startId="Package\DFT | Load DimStore\DER | Metadata Driven.Outputs[Derived Column Output]" />
+              startId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Outputs[Derived Column Output]" />
             <path
-              refId="Package\DFT | Load DimStore.Paths[Derived Column Output1]"
-              endId="Package\DFT | Load DimStore\DES | Load DimStore.Inputs[OLE DB Destination Input]"
+              refId="Package\DFT | Load DimSalesperson.Paths[Derived Column Output1]"
+              endId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
-              startId="Package\DFT | Load DimStore\DER | Metadata Insert Time.Outputs[Derived Column Output]" />
+              startId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Outputs[Derived Column Output]" />
             <path
-              refId="Package\DFT | Load DimStore.Paths[Derived Column Output2]"
-              endId="Package\DFT | Load DimStore\CMD | Update DimStore.Inputs[OLE DB Command Input]"
+              refId="Package\DFT | Load DimSalesperson.Paths[Derived Column Output2]"
+              endId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input]"
               name="Derived Column Output"
-              startId="Package\DFT | Load DimStore\DER | Handle Match Value to Update.Outputs[Derived Column Output]" />
+              startId="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Outputs[Derived Column Output]" />
             <path
-              refId="Package\DFT | Load DimStore.Paths[Lookup Match Output]"
-              endId="Package\DFT | Load DimStore\SPL | New vs Existing Store.Inputs[Conditional Split Input]"
+              refId="Package\DFT | Load DimSalesperson.Paths[Lookup Match Output]"
+              endId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Inputs[Conditional Split Input]"
               name="Lookup Match Output"
-              startId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output]" />
+              startId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\DFT | Load DimStore.Paths[Lookup No Match Output]"
-              endId="Package\DFT | Load DimStore\DER | Metadata Insert Time.Inputs[Derived Column Input]"
+              refId="Package\DFT | Load DimSalesperson.Paths[Lookup No Match Output]"
+              endId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Inputs[Derived Column Input]"
               name="Lookup No Match Output"
-              startId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Outputs[Lookup No Match Output]" />
+              startId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\DFT | Load DimStore.Paths[OLE DB Source Output]"
-              endId="Package\DFT | Load DimStore\DER | Metadata Driven.Inputs[Derived Column Input]"
+              refId="Package\DFT | Load DimSalesperson.Paths[OLE DB Source Output]"
+              endId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Inputs[Data Conversion Input]"
               name="OLE DB Source Output"
-              startId="Package\DFT | Load DimStore\SRC | Table Transform Store.Outputs[OLE DB Source Output]" />
+              startId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT | Load DimStore.Paths[Output 0]"
-              endId="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP.Inputs[Lookup Input]"
+              refId="Package\DFT | Load DimSalesperson.Paths[Output 0]"
+              endId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Inputs[Lookup Input]"
               name="Output 0"
-              startId="Package\DFT | Load DimStore\SCP | Culculate Hash Value.Outputs[Output 0]" />
+              startId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Outputs[Output 0]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\SQL | DimStore Update ETL Metadata"
+      DTS:refId="Package\SQL | DimSalesperson Update ETL Metadata"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{7f6c32e0-c3c5-4e8b-bf2e-306de90a887a}"
+      DTS:DTSID="{537ec123-36c5-414f-be5c-023664a40886}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="SQL | DimStore Update ETL Metadata"
+      DTS:ObjectName="SQL | DimSalesperson Update ETL Metadata"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{1B3A8471-77E7-4C35-8961-F917CE737C38}"
-          SQLTask:SqlStatementSource="UPDATE dimension.dim_store&#xA;SET sys_delete_date = GETDATE()&#xA;WHERE sys_delete_date IS NULL&#xA;  AND [source_id_bk] NOT IN (&#xA;      SELECT BusinessEntityID&#xA;      FROM [STG_AdventureWorks].[transform].[Store] s&#xA;  );" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE dimension.dim_salesperson&#xA;SET sys_delete_date = GETDATE()&#xA;WHERE sys_delete_date IS NULL&#xA;  AND national_number_bk NOT IN (&#xA;      SELECT e.NationalIDNumber&#xA;      FROM [STG_AdventureWorks].[transform].[SalesPerson] s&#xA;      INNER JOIN [STG_AdventureWorks].[transform].[Employee] e ON e.BusinessEntityID = s.BusinessEntityID&#xA;  );" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -2287,11 +2247,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{810FD3C3-BB53-4DB3-8024-1D032EA66062}"
-      DTS:From="Package\DFT | Load DimStore"
+      DTS:DTSID="{A52221E0-62F2-4B8A-9833-BBF1A021F64A}"
+      DTS:From="Package\DFT | Load DimSalesperson"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\SQL | DimStore Update ETL Metadata" />
+      DTS:To="Package\SQL | DimSalesperson Update ETL Metadata" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2306,27 +2266,39 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="253,42"
-          Id="Package\DFT | Load DimStore"
-          TopLeft="75,67.7514430014398" />
+          Size="250,42"
+          Id="Package\DFT | Load DimSalesperson"
+          TopLeft="314,77" />
         <NodeLayout
-          Size="257,42"
-          Id="Package\SQL | DimStore Update ETL Metadata"
-          TopLeft="73.178571428572,170" />
+          Size="288,42"
+          Id="Package\SQL | DimSalesperson Update ETL Metadata"
+          TopLeft="284,232" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="201.589285714286,109.75144300144">
+          TopLeft="439,119">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60.2485569985602"
+              EndConnector="-11,113"
               Start="0,0"
-              End="0,52.7485569985602">
+              End="-11,105.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.7485569985602" />
+                    End="0,52.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,52.5"
+                    Point2="0,56.5"
+                    Point3="-4,56.5" />
+                  <mssgle:LineSegment
+                    End="-7,56.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7,56.5"
+                    Point2="-11,56.5"
+                    Point3="-11,60.5" />
+                  <mssgle:LineSegment
+                    End="-11,105.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2339,72 +2311,256 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\DFT | Load DimStore">
+    design-time-name="Package\DFT | Load DimSalesperson">
     <LayoutInfo>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="230,42"
-          Id="Package\DFT | Load DimStore\DER | Metadata Driven"
-          TopLeft="125,143" />
+          Size="229,42"
+          Id="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types"
+          TopLeft="104,154" />
         <NodeLayout
-          Size="273,42"
-          Id="Package\DFT | Load DimStore\CMD | Update DimStore"
-          TopLeft="938,626" />
+          Size="271,42"
+          Id="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert"
+          TopLeft="193,405" />
         <NodeLayout
-          Size="209,42"
-          Id="Package\DFT | Load DimStore\SPL | New vs Existing Store"
-          TopLeft="940,405" />
+          Size="222,42"
+          Id="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson"
+          TopLeft="73,48" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson"
+          TopLeft="786,427" />
         <NodeLayout
           Size="237,42"
-          Id="Package\DFT | Load DimStore\LKP | Check For Changes in OLTP"
-          TopLeft="686,267" />
+          Id="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP"
+          TopLeft="642,272" />
         <NodeLayout
-          Size="236,42"
-          Id="Package\DFT | Load DimStore\DER | Metadata Insert Time"
-          TopLeft="316,387" />
+          Size="251,42"
+          Id="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information"
+          TopLeft="467,158" />
         <NodeLayout
-          Size="253,42"
-          Id="Package\DFT | Load DimStore\DER | Handle Match Value to Update"
-          TopLeft="945,508" />
+          Size="276,42"
+          Id="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson"
+          TopLeft="188,551" />
         <NodeLayout
-          Size="207,42"
-          Id="Package\DFT | Load DimStore\SCP | Culculate Hash Value"
-          TopLeft="686,144" />
+          Size="260,42"
+          Id="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update"
+          TopLeft="772,553" />
         <NodeLayout
-          Size="250,42"
-          Id="Package\DFT | Load DimStore\DES | Load DimStore"
-          TopLeft="306,493" />
+          Size="234,42"
+          Id="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value"
+          TopLeft="845,161" />
         <NodeLayout
-          Size="214,42"
-          Id="Package\DFT | Load DimStore\SRC | Table Transform Store"
-          TopLeft="115,49" />
+          Size="241,42"
+          Id="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson"
+          TopLeft="786,639" />
         <EdgeLayout
-          Id="Package\DFT | Load DimStore.Paths[Output 0]"
-          TopLeft="789.5,186">
+          Id="Package\DFT | Load DimSalesperson.Paths[Data Conversion Output]"
+          TopLeft="333,177">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="15,81"
+              EndConnector="134,0"
               Start="0,0"
-              End="15,73.5">
+              End="126.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="126.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[changed]"
+          TopLeft="904,469">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,84"
+              Start="0,0"
+              End="0,76.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-19.19259765625,32.41845703125,38.3851953125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[Output 0]"
+          TopLeft="962,203">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-201.5,69"
+              Start="0,0"
+              End="-201.5,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.5"
+                    Point2="0,34.5"
+                    Point3="-4,34.5" />
+                  <mssgle:LineSegment
+                    End="-197.5,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-197.5,34.5"
+                    Point2="-201.5,34.5"
+                    Point3="-201.5,38.5" />
+                  <mssgle:LineSegment
+                    End="-201.5,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[OLE DB Source Output]"
+          TopLeft="184,90">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="34.5,64"
+              Start="0,0"
+              End="34.5,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28"
+                    Point2="0,32"
+                    Point3="4,32" />
+                  <mssgle:LineSegment
+                    End="30.5,32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="30.5,32"
+                    Point2="34.5,32"
+                    Point3="34.5,36" />
+                  <mssgle:LineSegment
+                    End="34.5,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[Lookup No Match Output]"
+          TopLeft="760.5,314">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-432,91"
+              Start="0,0"
+              End="-432,83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.5"
+                    Point2="0,45.5"
+                    Point3="-4,45.5" />
+                  <mssgle:LineSegment
+                    End="-428,45.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-428,45.5"
+                    Point2="-432,45.5"
+                    Point3="-432,49.5" />
+                  <mssgle:LineSegment
+                    End="-432,83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-271.80638671875,50.5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[Lookup Match Output]"
+          TopLeft="798.666666666667,314">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="107.333333333333,113"
+              Start="0,0"
+              End="107.333333333333,105.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.6546521374686" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.6546521374686"
+                    Point2="0,45.6546521374686"
+                    Point3="4,45.6546521374686" />
+                  <mssgle:LineSegment
+                    End="103.333333333333,45.6546521374686" />
+                  <mssgle:CubicBezierSegment
+                    Point1="103.333333333333,45.6546521374686"
+                    Point2="107.333333333333,45.6546521374686"
+                    Point3="107.333333333333,49.6546521374686" />
+                  <mssgle:LineSegment
+                    End="107.333333333333,105.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="5.4752799479165,50.6546521374686,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[Derived Column Output2]"
+          TopLeft="904.25,595">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,36.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36.5"
-                    Point2="0,40.5"
-                    Point3="4,40.5" />
-                  <mssgle:LineSegment
-                    End="11,40.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="11,40.5"
-                    Point2="15,40.5"
-                    Point3="15,44.5" />
-                  <mssgle:LineSegment
-                    End="15,73.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2416,31 +2572,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT | Load DimStore.Paths[OLE DB Source Output]"
-          TopLeft="222,91">
+          Id="Package\DFT | Load DimSalesperson.Paths[Derived Column Output1]"
+          TopLeft="327.25,447">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="18,52"
+              EndConnector="0,104"
               Start="0,0"
-              End="18,44.5">
+              End="0,96.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22"
-                    Point2="0,26"
-                    Point3="4,26" />
-                  <mssgle:LineSegment
-                    End="14,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="14,26"
-                    Point2="18,26"
-                    Point3="18,30" />
-                  <mssgle:LineSegment
-                    End="18,44.5" />
+                    End="0,96.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2452,91 +2596,19 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT | Load DimStore.Paths[Lookup No Match Output]"
-          TopLeft="766.333333333333,309">
+          Id="Package\DFT | Load DimSalesperson.Paths[Derived Column Output]"
+          TopLeft="718,180.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-332.333333333333,78"
+              EndConnector="127,0"
               Start="0,0"
-              End="-332.333333333333,70.5">
+              End="119.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.5138306789606" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27.5138306789606"
-                    Point2="0,31.5138306789606"
-                    Point3="-4,31.5138306789606" />
-                  <mssgle:LineSegment
-                    End="-328.333333333333,31.5138306789606" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-328.333333333333,31.5138306789606"
-                    Point2="-332.333333333333,31.5138306789606"
-                    Point3="-332.333333333333,35.5138306789606" />
-                  <mssgle:LineSegment
-                    End="-332.333333333333,70.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-221.973053385417,36.5138306789606,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT | Load DimStore.Paths[Lookup Match Output]"
-          TopLeft="842.666666666667,309">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="201.833333333333,96"
-              Start="0,0"
-              End="201.833333333333,88.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.7862531433361" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,34.7862531433361"
-                    Point2="0,38.7862531433361"
-                    Point3="4,38.7862531433361" />
-                  <mssgle:LineSegment
-                    End="197.833333333333,38.7862531433361" />
-                  <mssgle:CubicBezierSegment
-                    Point1="197.833333333333,38.7862531433361"
-                    Point2="201.833333333333,38.7862531433361"
-                    Point3="201.833333333333,42.7862531433361" />
-                  <mssgle:LineSegment
-                    End="201.833333333333,88.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="52.7252799479167,43.7862531433361,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT | Load DimStore.Paths[Derived Column Output2]"
-          TopLeft="1073,550">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,76"
-              Start="0,0"
-              End="0,68.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,68.5" />
+                    End="119.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2544,90 +2616,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT | Load DimStore.Paths[Derived Column Output1]"
-          TopLeft="432.5,429">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,64"
-              Start="0,0"
-              End="0,56.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,56.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT | Load DimStore.Paths[Derived Column Output]"
-          TopLeft="355,164.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="331,0"
-              Start="0,0"
-              End="323.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="323.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT | Load DimStore.Paths[Changed]"
-          TopLeft="1044.5,447">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="27,61"
-              Start="0,0"
-              End="27,53.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.5"
-                    Point2="0,30.5"
-                    Point3="4,30.5" />
-                  <mssgle:LineSegment
-                    End="23,30.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="23,30.5"
-                    Point2="27,30.5"
-                    Point3="27,34.5" />
-                  <mssgle:LineSegment
-                    End="27,53.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-6.3755078125,35.5,39.751015625,11.6630859375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

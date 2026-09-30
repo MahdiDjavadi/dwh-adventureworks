@@ -36,7 +36,7 @@ GO
 CREATE SCHEMA fact;
 GO
 
-create SCHEMA audit;
+CREATE SCHEMA etl;
 GO
 
 create SCHEMA dimension;

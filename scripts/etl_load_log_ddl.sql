@@ -8,9 +8,8 @@
  ========================================================================
  */
 
-USE [STG_AdventureWorks];
+USE [DWH_AdventureWorks];
 GO
-
 
 --	=====================================================================
 -- This script drops then creates the LoadLog table in the etl schema.
@@ -25,11 +24,11 @@ CREATE TABLE etl.LoadLog
     [package_name]   NVARCHAR (255)       NOT NULL,
     [start_time]     DATETIME2 (3)        NOT NULL,
     [end_time]       DATETIME2 (3)            NULL,
-    [status]         NVARCHAR (20)        NOT NULL,   -- 'Running' / 'Success' / 'Failed'
+    [status]         NVARCHAR (20)        NOT NULL,
     [rows_inserted]  INT                      NULL,
     [rows_updated]   INT                      NULL,
     [rows_deleted]   INT                      NULL,
-    [error_source]   NVARCHAR (255)           NULL,    -- کدوم Task تو پکیج fail شد
+    [error_source]   NVARCHAR (255)           NULL,
     [error_message]  NVARCHAR (4000)          NULL,
 
     CONSTRAINT PK_LoadLog PRIMARY KEY CLUSTERED (log_id ASC)

@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">KPI</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA1HajnxorXkunTuJdwj5X+QAAAAACAAAAAAAQZgAAAAEAACAAAACQkHAH5Do3IiVkVWpLJwPNL0k0A6tByPSE5CbsiSszKQAAAAAOgAAAAAIAACAAAAAtfLORa9Xpl2Wze2Geyo9YCx1D+paD4JOtcfltxOdPF5AAAACfpkUwusby1zYWE9UH4sfRd6xA2+VOeyTwlWNPualfhyFk//p3cbaqenCmeFUuuhF0rWH1uZxPYlCDVjkoUo/6FIBxe6WhGkNOLQOhRb9EL3nxHAQV9Bfv+CqxuS/9maplXJHlLa0/HIUhV/3svpn2O6hYSEl164hUsJQTZ6T8SlAktwGnPVwU4UQj3tx1X99AAAAAiqG7IaNbCz5WLjjDGYhl6/t0HYa3SBvWMA5VTnrHNKurNbLUBw5YOpvSiuWvEQY6WbrQOSTtfMYARlSnSc9Npg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA1HajnxorXkunTuJdwj5X+QAAAAACAAAAAAAQZgAAAAEAACAAAAAv4aTbiZP4bwxzfvsOQ7EGkv8Zp1cxP8+fxRH7Q79DDwAAAAAOgAAAAAIAACAAAACtItXch273lHsbzjLx5tiH12120/FuhYiku3k7Qk/3ZJAAAAA4lFoG8A6bk25c5ihy8EIQjGsoH1e03Tb3/x01DCXX47p5d9sVqz4BVW5+Y53epWEL2LYQET09gkAwUaM/G2PUpazN6Ee7U1nGgHIL82bzBVlGXYoea3esAwxgMxl3m6XcLON3npC4gtqTYW/xA3s4FXfhQdqDVGuCcTeHtf8L/rgE98GRtz/uCfcpLosNUC5AAAAAhsEP7dU0L+8cEOKX3jHnj1vaiCvfQbl5xqjudef2O7G/Dc6Pk3evv1owALwTZNFadl/T1IfLccce99+ZUNicRw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -35,6 +35,10 @@
           <SSIS:Package SSIS:Name="dim_territory.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="dim_store.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Sales_Business_Process.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="extract_layer.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="transform_layer.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="dim_salesperson.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Master.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="DWH.conmgr" />
@@ -498,43 +502,16 @@
                 <SSIS:Property SSIS:Name="Name">dim_product</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">294</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">300</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{33C83777-9C8D-4713-B845-F90F0D783476}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D2FBB344-D898-4C6C-B159-BB982D7A3285}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="NulInteger">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{F431847B-9483-47D3-A06A-1F607E7817DB}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">Replace null integers with -1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">-1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="NullString">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{F3D708D2-2201-4D70-8388-30D620C622F5}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">Replace any null strings with specific value</SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">unknown</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
+              <SSIS:Parameters />
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="dim_customer.dtsx">
               <SSIS:Properties>
@@ -542,43 +519,16 @@
                 <SSIS:Property SSIS:Name="Name">dim_customer</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">403</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">440</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{4E25D190-73EB-4251-8F9E-9BCD46310054}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{A16168F5-FB96-487E-9FC2-57487FCDADE6}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="NulInteger">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{712AD37D-8292-4DB4-8964-5FEF70B00F86}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">Replace null integers with -1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">-1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="NullString">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{FDCDE970-1890-4460-825B-ED41C8FCEAA6}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">Replace any null strings with specific value</SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">unknown</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
+              <SSIS:Parameters />
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="dim_territory.dtsx">
               <SSIS:Properties>
@@ -586,43 +536,16 @@
                 <SSIS:Property SSIS:Name="Name">dim_territory</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">423</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">431</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{505775A3-00DC-46C9-B160-AD96B84CD48D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{B3950525-E7CA-4E1F-9EA5-83E8F4FFFBE2}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="NulInteger">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{88BF64F9-A783-446C-9AB9-E10587F27B68}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">Replace null integers with -1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">-1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="NullString">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{984F409F-8C77-4043-A2FD-786E168A383D}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">Replace any null strings with specific value</SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">unknown</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
+              <SSIS:Parameters />
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="dim_store.dtsx">
               <SSIS:Properties>
@@ -630,43 +553,16 @@
                 <SSIS:Property SSIS:Name="Name">dim_store</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">425</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">429</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2126C16E-B0D2-43D9-93AE-D023EE1F2F98}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9D7D6CCC-628F-40C6-A332-1D954872437C}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="NulInteger">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{067BDF3F-047A-42FD-AB31-9CEAA49BCA49}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">Replace null integers with -1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">-1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-                <SSIS:Parameter SSIS:Name="NullString">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{70277397-3C27-4C5F-97FD-81F18FE70B6D}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">Replace any null strings with specific value</SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">1</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">unknown</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
+              <SSIS:Parameters />
             </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="Sales_Business_Process.dtsx">
               <SSIS:Properties>
@@ -674,10 +570,78 @@
                 <SSIS:Property SSIS:Name="Name">Sales_Business_Process</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">29</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">213</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{7ACB562B-993A-45CB-A12C-C430101FF87D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2E23BD8B-ACB8-4AAA-ACC9-8F6782C9DD71}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="extract_layer.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{F9AFFDF5-F755-4E8D-B21B-87329BA300BB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">extract_layer</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{1E688EF6-2D41-4FC2-9D10-BF193234DE4E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="transform_layer.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{A11FF009-0831-4939-8E7F-FA6FEEE849F7}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">transform_layer</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{E85DC462-29F9-4AE5-A66E-0BD590B137B4}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="dim_salesperson.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{8A3171E9-5CFB-4BE9-A9C7-E3CDCA2BD5C3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{CFDBFE2A-0AD5-409E-B941-D9EFAABDEA78}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Master.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{866049BA-DD5C-455D-A4CC-8199F1374AFB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Master</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{1FA2F1C2-FEF5-44B9-9222-207E0718E4DE}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
