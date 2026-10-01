@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="dim_salesperson"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{5135A41F-6119-4EC1-B985-5240C89F61A8}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{417D9C81-EFC3-450F-B6E2-F574C3A4BF06}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -22,6 +22,33 @@
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="LogID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C5B643F8-C6E4-4F98-BB5C-441B4576A23E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsDeleted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FBE0DA74-ED44-434D-9DA7-22302B3C07AC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsInserted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D018D36D-ECC7-4E6D-89A6-82FEB23A43BC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowsUpdated">
       <DTS:VariableValue
         DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
@@ -985,6 +1012,102 @@ where [refTable].[national_number_bk] = ?</property>
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT | Load DimSalesperson\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\DFT | Load DimSalesperson\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT | Load DimSalesperson\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\DFT | Load DimSalesperson\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT | Load DimSalesperson\Multicast.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\DFT | Load DimSalesperson\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT | Load DimSalesperson\Multicast.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\DFT | Load DimSalesperson\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT | Load DimSalesperson\RC | Count Inserted"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="RC | Count Inserted">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RowsInserted</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT | Load DimSalesperson\RC | Count Inserted.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT | Load DimSalesperson\RC | Count Inserted.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT | Load DimSalesperson\RC | Count Inserted.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT | Load DimSalesperson\RC | Count Updated"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="RC | Count Updated">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RowsUpdated</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT | Load DimSalesperson\RC | Count Updated.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT | Load DimSalesperson\RC | Count Updated.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT | Load DimSalesperson\RC | Count Updated.Inputs[Row Count Input 1]">
                   <externalMetadataColumns />
                 </output>
               </outputs>
@@ -2203,14 +2326,14 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
               startId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Outputs[Derived Column Output]" />
             <path
               refId="Package\DFT | Load DimSalesperson.Paths[Derived Column Output1]"
-              endId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\DFT | Load DimSalesperson.Paths[Derived Column Output2]"
               endId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input]"
               name="Derived Column Output"
               startId="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT | Load DimSalesperson.Paths[Derived Column Output2]"
+              endId="Package\DFT | Load DimSalesperson\Multicast.Inputs[Multicast Input 1]"
+              name="Derived Column Output"
+              startId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Outputs[Derived Column Output]" />
             <path
               refId="Package\DFT | Load DimSalesperson.Paths[Lookup Match Output]"
               endId="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson.Inputs[Conditional Split Input]"
@@ -2221,6 +2344,21 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
               endId="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert.Inputs[Derived Column Input]"
               name="Lookup No Match Output"
               startId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT | Load DimSalesperson.Paths[Multicast Output 1]"
+              endId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input]"
+              name="Multicast Output 1"
+              startId="Package\DFT | Load DimSalesperson\Multicast.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\DFT | Load DimSalesperson.Paths[Multicast Output 2]"
+              endId="Package\DFT | Load DimSalesperson\RC | Count Inserted.Inputs[Row Count Input 1]"
+              name="Multicast Output 2"
+              startId="Package\DFT | Load DimSalesperson\Multicast.Outputs[Multicast Output 2]" />
+            <path
+              refId="Package\DFT | Load DimSalesperson.Paths[OLE DB Command Output]"
+              endId="Package\DFT | Load DimSalesperson\RC | Count Updated.Inputs[Row Count Input 1]"
+              name="OLE DB Command Output"
+              startId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Outputs[OLE DB Command Output]" />
             <path
               refId="Package\DFT | Load DimSalesperson.Paths[OLE DB Source Output]"
               endId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Inputs[Data Conversion Input]"
@@ -2249,7 +2387,12 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{1B3A8471-77E7-4C35-8961-F917CE737C38}"
-          SQLTask:SqlStatementSource="UPDATE dimension.dim_salesperson&#xA;SET sys_delete_date = GETDATE()&#xA;WHERE sys_delete_date IS NULL&#xA;  AND national_number_bk NOT IN (&#xA;      SELECT e.NationalIDNumber&#xA;      FROM [STG_AdventureWorks].[transform].[SalesPerson] s&#xA;      INNER JOIN [STG_AdventureWorks].[transform].[Employee] e ON e.BusinessEntityID = s.BusinessEntityID&#xA;  );" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE dimension.dim_salesperson&#xA;SET sys_delete_date = GETDATE()&#xA;WHERE sys_delete_date IS NULL&#xA;  AND national_number_bk NOT IN (&#xA;      SELECT e.NationalIDNumber&#xA;      FROM [STG_AdventureWorks].[transform].[SalesPerson] s&#xA;      INNER JOIN [STG_AdventureWorks].[transform].[Employee] e ON e.BusinessEntityID = s.BusinessEntityID&#xA;  );&#xA;&#xA;SELECT @@ROWCOUNT AS RowsDeleted;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="RowsDeleted"
+            SQLTask:DtsVariableName="User::RowsDeleted" />
+        </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -2284,7 +2427,7 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
       DTS:refId="Package\SQL | Log Success"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{bed4c0a2-3615-469e-82f3-c88e880446c3}"
+      DTS:DTSID="{a10d09a3-92f8-4a5d-a59f-3434cac61d39}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL | Log Success"
@@ -2294,9 +2437,27 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{1B3A8471-77E7-4C35-8961-F917CE737C38}"
-          SQLTask:SqlStatementSource="UPDATE etl.LoadLog&#xA;SET end_time = GETDATE(),&#xA;    status = 'Success'&#xA;WHERE log_id = ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="UPDATE etl.LoadLog&#xA;SET end_time = GETDATE(),&#xA;    status = 'Success',&#xA;    rows_inserted = ?,&#xA;    rows_updated = ?,&#xA;    rows_deleted = ?&#xA;WHERE log_id = ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::RowsInserted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::RowsUpdated"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::RowsDeleted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
             SQLTask:DtsVariableName="User::LogID"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="3"
@@ -2325,7 +2486,7 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{9D0E21EC-0152-44DC-B4E1-518EF55066EF}"
+      DTS:DTSID="{7AEC2804-D15A-4C5D-B41E-2DED1C5E67D2}"
       DTS:From="Package\SQL | DimSalesperson Update ETL Metadata"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
@@ -2405,67 +2566,29 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
         <NodeLayout
           Size="250,42"
           Id="Package\DFT | Load DimSalesperson"
-          TopLeft="678,180" />
+          TopLeft="689,290" />
         <NodeLayout
           Size="288,42"
           Id="Package\SQL | DimSalesperson Update ETL Metadata"
           TopLeft="670,432" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="803,222">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="11,210"
-              Start="0,0"
-              End="11,202.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,101" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,101"
-                    Point2="0,105"
-                    Point3="4,105" />
-                  <mssgle:LineSegment
-                    End="7,105" />
-                  <mssgle:CubicBezierSegment
-                    Point1="7,105"
-                    Point2="11,105"
-                    Point3="11,109" />
-                  <mssgle:LineSegment
-                    End="11,202.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="262,42"
           Id="Package\SQL | Log Start"
-          TopLeft="678,29" />
-        <NodeLayout
-          Size="261,42"
-          Id="Package\SQL | Log Success"
-          TopLeft="682,619" />
+          TopLeft="681,147" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="806,71">
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="814,332">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,109"
+              EndConnector="0,100"
               Start="0,0"
-              End="0,101.5">
+              End="0,92.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,101.5" />
+                    End="0,92.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2475,19 +2598,45 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="813.25,474">
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="813,189">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,145"
+              EndConnector="0,101"
               Start="0,0"
-              End="0,137.5">
+              End="0,93.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,137.5" />
+                    End="0,93.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="251,42"
+          Id="Package\SQL | Log Success"
+          TopLeft="686,569" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="812.75,474">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,95"
+              Start="0,0"
+              End="0,87.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,87.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2499,318 +2648,6 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
       </GraphLayout>
     </LayoutInfo>
   </Package>
-  <TaskHost
-    design-time-name="Package\DFT | Load DimSalesperson">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="229,42"
-          Id="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types"
-          TopLeft="104,154" />
-        <NodeLayout
-          Size="271,42"
-          Id="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert"
-          TopLeft="193,405" />
-        <NodeLayout
-          Size="222,42"
-          Id="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson"
-          TopLeft="73,48" />
-        <NodeLayout
-          Size="240,42"
-          Id="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson"
-          TopLeft="786,427" />
-        <NodeLayout
-          Size="237,42"
-          Id="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP"
-          TopLeft="642,272" />
-        <NodeLayout
-          Size="251,42"
-          Id="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information"
-          TopLeft="467,158" />
-        <NodeLayout
-          Size="276,42"
-          Id="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson"
-          TopLeft="188,551" />
-        <NodeLayout
-          Size="260,42"
-          Id="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update"
-          TopLeft="772,553" />
-        <NodeLayout
-          Size="234,42"
-          Id="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value"
-          TopLeft="845,161" />
-        <NodeLayout
-          Size="241,42"
-          Id="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson"
-          TopLeft="786,639" />
-        <EdgeLayout
-          Id="Package\DFT | Load DimSalesperson.Paths[Data Conversion Output]"
-          TopLeft="333,177">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="134,0"
-              Start="0,0"
-              End="126.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="126.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT | Load DimSalesperson.Paths[changed]"
-          TopLeft="904,469">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,84"
-              Start="0,0"
-              End="0,76.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,76.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-19.19259765625,32.41845703125,38.3851953125,11.6630859375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT | Load DimSalesperson.Paths[Output 0]"
-          TopLeft="962,203">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-201.5,69"
-              Start="0,0"
-              End="-201.5,61.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,30.5"
-                    Point2="0,34.5"
-                    Point3="-4,34.5" />
-                  <mssgle:LineSegment
-                    End="-197.5,34.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-197.5,34.5"
-                    Point2="-201.5,34.5"
-                    Point3="-201.5,38.5" />
-                  <mssgle:LineSegment
-                    End="-201.5,61.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT | Load DimSalesperson.Paths[OLE DB Source Output]"
-          TopLeft="184,90">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="34.5,64"
-              Start="0,0"
-              End="34.5,56.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,28"
-                    Point2="0,32"
-                    Point3="4,32" />
-                  <mssgle:LineSegment
-                    End="30.5,32" />
-                  <mssgle:CubicBezierSegment
-                    Point1="30.5,32"
-                    Point2="34.5,32"
-                    Point3="34.5,36" />
-                  <mssgle:LineSegment
-                    End="34.5,56.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT | Load DimSalesperson.Paths[Lookup No Match Output]"
-          TopLeft="760.5,314">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-432,91"
-              Start="0,0"
-              End="-432,83.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,41.5"
-                    Point2="0,45.5"
-                    Point3="-4,45.5" />
-                  <mssgle:LineSegment
-                    End="-428,45.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-428,45.5"
-                    Point2="-432,45.5"
-                    Point3="-432,49.5" />
-                  <mssgle:LineSegment
-                    End="-432,83.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-271.80638671875,50.5,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT | Load DimSalesperson.Paths[Lookup Match Output]"
-          TopLeft="798.666666666667,314">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="107.333333333333,113"
-              Start="0,0"
-              End="107.333333333333,105.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.6546521374686" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,41.6546521374686"
-                    Point2="0,45.6546521374686"
-                    Point3="4,45.6546521374686" />
-                  <mssgle:LineSegment
-                    End="103.333333333333,45.6546521374686" />
-                  <mssgle:CubicBezierSegment
-                    Point1="103.333333333333,45.6546521374686"
-                    Point2="107.333333333333,45.6546521374686"
-                    Point3="107.333333333333,49.6546521374686" />
-                  <mssgle:LineSegment
-                    End="107.333333333333,105.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="5.4752799479165,50.6546521374686,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT | Load DimSalesperson.Paths[Derived Column Output2]"
-          TopLeft="904.25,595">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44"
-              Start="0,0"
-              End="0,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT | Load DimSalesperson.Paths[Derived Column Output1]"
-          TopLeft="327.25,447">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,104"
-              Start="0,0"
-              End="0,96.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,96.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT | Load DimSalesperson.Paths[Derived Column Output]"
-          TopLeft="718,180.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="127,0"
-              Start="0,0"
-              End="119.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="119.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <DtsEventHandler
     design-time-name="Package.EventHandlers[OnError]">
     <LayoutInfo>
@@ -2823,5 +2660,395 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
       </GraphLayout>
     </LayoutInfo>
   </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\DFT | Load DimSalesperson">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="229,42"
+          Id="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types"
+          TopLeft="359,54" />
+        <NodeLayout
+          Size="271,42"
+          Id="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert"
+          TopLeft="190,400" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson"
+          TopLeft="73,48" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\DFT | Load DimSalesperson\SPL | New vs Existing Salesperson"
+          TopLeft="793,365" />
+        <NodeLayout
+          Size="266,42"
+          Id="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP"
+          TopLeft="681,216" />
+        <NodeLayout
+          Size="251,42"
+          Id="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information"
+          TopLeft="681,56" />
+        <NodeLayout
+          Size="276,42"
+          Id="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson"
+          TopLeft="352,645" />
+        <NodeLayout
+          Size="247,42"
+          Id="Package\DFT | Load DimSalesperson\DER | Handle Match Values To Update"
+          TopLeft="794,455" />
+        <NodeLayout
+          Size="254,42"
+          Id="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value"
+          TopLeft="689,133" />
+        <NodeLayout
+          Size="241,42"
+          Id="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson"
+          TopLeft="790,537" />
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[Data Conversion Output]"
+          TopLeft="588,76">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="93,0"
+              Start="0,0"
+              End="85.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="85.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[changed]"
+          TopLeft="915.25,407">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-19.19259765625,14.41845703125,38.3851953125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[Output 0]"
+          TopLeft="815,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[OLE DB Source Output]"
+          TopLeft="295,72">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64,0"
+              Start="0,0"
+              End="56.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="56.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[Lookup No Match Output]"
+          TopLeft="771,258">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-445.5,142"
+              Start="0,0"
+              End="-445.5,134.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.3094170403587" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,53.3094170403587"
+                    Point2="0,57.3094170403587"
+                    Point3="-4,57.3094170403587" />
+                  <mssgle:LineSegment
+                    End="-441.5,57.3094170403587" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-441.5,57.3094170403587"
+                    Point2="-445.5,57.3094170403587"
+                    Point3="-445.5,61.3094170403587" />
+                  <mssgle:LineSegment
+                    End="-445.5,134.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-278.55638671875,62.3094170403587,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[Lookup Match Output]"
+          TopLeft="857,258">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="56,107"
+              Start="0,0"
+              End="56,99.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.1838565022422" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.1838565022422"
+                    Point2="0,43.1838565022422"
+                    Point3="4,43.1838565022422" />
+                  <mssgle:LineSegment
+                    End="52,43.1838565022422" />
+                  <mssgle:CubicBezierSegment
+                    Point1="52,43.1838565022422"
+                    Point2="56,43.1838565022422"
+                    Point3="56,47.1838565022422" />
+                  <mssgle:LineSegment
+                    End="56,99.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-20.19138671875,48.1838565022422,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[Derived Column Output1]"
+          TopLeft="914,497">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[Derived Column Output]"
+          TopLeft="806.5,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.5,35"
+              Start="0,0"
+              End="9.5,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="4,17.5" />
+                  <mssgle:LineSegment
+                    End="5.5,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.5,17.5"
+                    Point2="9.5,17.5"
+                    Point3="9.5,21.5" />
+                  <mssgle:LineSegment
+                    End="9.5,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,42"
+          Id="Package\DFT | Load DimSalesperson\Multicast"
+          TopLeft="261,490" />
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[Derived Column Output2]"
+          TopLeft="323.25,442">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[Multicast Output 1]"
+          TopLeft="339.666666666667,532">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="150.333333333333,113"
+              Start="0,0"
+              End="150.333333333333,105.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.0921052631579" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.0921052631579"
+                    Point2="0,46.0921052631579"
+                    Point3="4,46.0921052631579" />
+                  <mssgle:LineSegment
+                    End="146.333333333333,46.0921052631579" />
+                  <mssgle:CubicBezierSegment
+                    Point1="146.333333333333,46.0921052631579"
+                    Point2="150.333333333333,46.0921052631579"
+                    Point3="150.333333333333,50.0921052631579" />
+                  <mssgle:LineSegment
+                    End="150.333333333333,105.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="205,42"
+          Id="Package\DFT | Load DimSalesperson\RC | Count Inserted"
+          TopLeft="86,647" />
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[Multicast Output 2]"
+          TopLeft="302.333333333333,532">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-113.833333333333,115"
+              Start="0,0"
+              End="-113.833333333333,107.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.9078947368421" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.9078947368421"
+                    Point2="0,46.9078947368421"
+                    Point3="-4,46.9078947368421" />
+                  <mssgle:LineSegment
+                    End="-109.833333333333,46.9078947368421" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-109.833333333333,46.9078947368421"
+                    Point2="-113.833333333333,46.9078947368421"
+                    Point3="-113.833333333333,50.9078947368421" />
+                  <mssgle:LineSegment
+                    End="-113.833333333333,107.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="249,42"
+          Id="Package\DFT | Load DimSalesperson\RC | Count Updated"
+          TopLeft="786,649" />
+        <EdgeLayout
+          Id="Package\DFT | Load DimSalesperson.Paths[OLE DB Command Output]"
+          TopLeft="910.5,579">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70"
+              Start="0,0"
+              End="0,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
