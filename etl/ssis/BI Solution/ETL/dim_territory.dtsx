@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="dim_territory"
   DTS:PackageType="5"
-  DTS:VersionBuild="459"
-  DTS:VersionGUID="{6B6B3CB5-F2A6-4BA2-885B-F846E3ECE37E}">
+  DTS:VersionBuild="460"
+  DTS:VersionGUID="{EFA74988-18C3-4407-A569-518D11D9A8BE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2428,7 +2428,7 @@ FROM     transform.SalesTerritory     AS st
         <NodeLayout
           Size="207,42"
           Id="Package.EventHandlers[OnError]\SQL | Log Failure"
-          TopLeft="388,130" />
+          TopLeft="390,130" />
       </GraphLayout>
     </LayoutInfo>
   </DtsEventHandler>

@@ -5,6 +5,7 @@
     Purpose:
         This table is used to log the execution of ETL packages. It records the start and end times, 
         status, number of rows affected, and any error messages encountered during the execution of the ETL process.
+        Also includes a RunHistory table to track the overall execution of ETL runs.
  ========================================================================
  */
 
@@ -32,4 +33,21 @@ CREATE TABLE etl.LoadLog
     [error_message]  NVARCHAR (4000)          NULL,
 
     CONSTRAINT PK_LoadLog PRIMARY KEY CLUSTERED (log_id ASC)
+);
+
+--	=====================================================================
+-- This script drops then creates the RunHistory table in the etl schema.
+-- ======================================================================
+IF OBJECT_ID('[etl].[RunHistory]', 'U') IS NOT NULL
+    DROP TABLE [etl].[RunHistory];
+GO
+
+CREATE TABLE etl.RunHistory
+(
+    [run_id]          INT IDENTITY (1,1)   NOT NULL,
+    [start_time]      DATETIME2 (3)        NOT NULL,
+    [end_time]        DATETIME2 (3)            NULL,
+    [overall_status]  NVARCHAR (20)        NOT NULL,   -- 'Running' / 'Success' / 'Failed'
+
+    CONSTRAINT PK_RunHistory PRIMARY KEY CLUSTERED (run_id ASC)
 );
