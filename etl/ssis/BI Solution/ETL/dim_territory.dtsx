@@ -11,10 +11,24 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="dim_territory"
   DTS:PackageType="5"
-  DTS:VersionBuild="433"
-  DTS:VersionGUID="{7DE2C3AE-6A4F-4627-945F-BFB996E322C8}">
+  DTS:VersionBuild="459"
+  DTS:VersionGUID="{6B6B3CB5-F2A6-4BA2-885B-F846E3ECE37E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{333BADA5-BE7C-46DA-9F68-6B75891ACE38}"
+      DTS:ObjectName="LocalHost">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Provider=MSOLEDBSQL19.1;Integrated Security=SSPI;Application Name=SSIS-dim_territory-{333BADA5-BE7C-46DA-9F68-6B75891ACE38}LocalHost;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -68,7 +82,8 @@ SET
       ,[sys_update_date]     = ?   -- Param_4
       ,[sys_hash_value]      = ?   -- Param_5
 WHERE
-       [territory_key]       = ?;  -- Param_6</property>
+ territory_key = ?;
+</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -2150,7 +2165,7 @@ FROM     transform.SalesTerritory     AS st
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL | DimTerritory Update ETL Metadata"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2172,7 +2187,42 @@ FROM     transform.SalesTerritory     AS st
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{1B3A8471-77E7-4C35-8961-F917CE737C38}"
-          SQLTask:SqlStatementSource="INSERT INTO etl.LoadLog (package_name, start_time, status)&#xA;VALUES (?, GETDATE(), 'Running');&#xA;SELECT SCOPE_IDENTITY() AS NewLogID;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="INSERT INTO etl.LoadLog (package_name, start_time, status)&#xA;VALUES (?, GETDATE(), 'Running');&#xA;SELECT SCOPE_IDENTITY() AS NewLogID;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="NewLogID"
+            SQLTask:DtsVariableName="User::LogID" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL | Log Success"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{844FE251-1932-4840-A1B7-7475DF66716A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL | Log Success"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1B3A8471-77E7-4C35-8961-F917CE737C38}"
+          SQLTask:SqlStatementSource="UPDATE etl.LoadLog&#xA;SET end_time = GETDATE(),&#xA;    status = 'Success'&#xA;WHERE log_id = ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::LogID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -2185,7 +2235,82 @@ FROM     transform.SalesTerritory     AS st
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\SQL | DimTerritory Update ETL Metadata" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{A4A10159-E42E-4470-920B-DC34C86DB9A7}"
+      DTS:From="Package\SQL | Log Start"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT | Load DimTerritory" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{425B0457-5D8E-4524-9DBE-118192C4E876}"
+      DTS:From="Package\SQL | DimTerritory Update ETL Metadata"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL | Log Success" />
   </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{CD213DF2-5687-4E48-945F-8C4AAB10EAE1}"
+      DTS:EventID="808862843"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{2B786D32-7B61-49E1-A837-F073E5E09A74}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\SQL | Log Failure"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B23EDB2D-FA7C-4CA9-8A51-291775437F35}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL | Log Failure"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{1B3A8471-77E7-4C35-8961-F917CE737C38}"
+              SQLTask:SqlStatementSource="UPDATE etl.LoadLog&#xA;SET end_time = GETDATE(),&#xA;    status = 'Failed',&#xA;    error_source = ?,&#xA;    error_message = ?&#xA;WHERE log_id = ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::SourceName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::ErrorDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::LogID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -2197,41 +2322,37 @@ FROM     transform.SalesTerritory     AS st
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="253,42"
+          Size="260,42"
           Id="Package\DFT | Load DimTerritory"
-          TopLeft="274,323" />
+          TopLeft="160,174" />
         <NodeLayout
           Size="272,42"
           Id="Package\SQL | DimTerritory Update ETL Metadata"
-          TopLeft="738.803030303032,335" />
+          TopLeft="153.803030303032,256" />
+        <NodeLayout
+          Size="262,42"
+          Id="Package\SQL | Log Start"
+          TopLeft="170,95" />
+        <NodeLayout
+          Size="261,42"
+          Id="Package\SQL | Log Success"
+          TopLeft="153,343" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="527,344">
+          TopLeft="289.901515151516,216">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="211.803030303032,12"
+              EndConnector="0,40"
               Start="0,0"
-              End="204.303030303032,12">
+              End="0,32.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="101.901515151516,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="101.901515151516,0"
-                    Point2="105.901515151516,0"
-                    Point3="105.901515151516,4" />
-                  <mssgle:LineSegment
-                    End="105.901515151516,8" />
-                  <mssgle:CubicBezierSegment
-                    Point1="105.901515151516,8"
-                    Point2="105.901515151516,12"
-                    Point3="109.901515151516,12" />
-                  <mssgle:LineSegment
-                    End="204.303030303032,12" />
+                    End="0,32.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2240,13 +2361,77 @@ FROM     transform.SalesTerritory     AS st
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="151,42"
-          Id="Package\SQL | Log Start"
-          TopLeft="166,160" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="301,137">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11,37"
+              Start="0,0"
+              End="-11,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.5"
+                    Point2="0,18.5"
+                    Point3="-4,18.5" />
+                  <mssgle:LineSegment
+                    End="-7,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7,18.5"
+                    Point2="-11,18.5"
+                    Point3="-11,22.5" />
+                  <mssgle:LineSegment
+                    End="-11,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="286.651515151516,298">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="207,42"
+          Id="Package.EventHandlers[OnError]\SQL | Log Failure"
+          TopLeft="388,130" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
   <TaskHost
     design-time-name="Package\DFT | Load DimTerritory">
     <LayoutInfo>
@@ -2319,9 +2504,7 @@ FROM     transform.SalesTerritory     AS st
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2355,9 +2538,7 @@ FROM     transform.SalesTerritory     AS st
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2428,7 +2609,7 @@ FROM     transform.SalesTerritory     AS st
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="69.2252799479167,32.0695725062867,96.3827734375,11.609375"
+              BoundingBox="69.2252799479165,32.0695725062867,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2451,9 +2632,7 @@ FROM     transform.SalesTerritory     AS st
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2475,9 +2654,7 @@ FROM     transform.SalesTerritory     AS st
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2499,9 +2676,7 @@ FROM     transform.SalesTerritory     AS st
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2543,5 +2718,36 @@ FROM     transform.SalesTerritory     AS st
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT | Load DimTerritory\SRC | Read Query Territory">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT | Load DimTerritory\LKP | Check For Changes in OLTP">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
