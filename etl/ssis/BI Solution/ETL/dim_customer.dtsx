@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="dim_customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="449"
-  DTS:VersionGUID="{90B595E8-CED7-4FC7-AD25-3B160991340F}">
+  DTS:VersionBuild="450"
+  DTS:VersionGUID="{21FB6CEC-272E-4999-9931-DC207254CEFB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -2481,13 +2481,13 @@ FROM   transform.Customer AS c
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[REPLACENULL](#{Package\DFT | Insert New and Changed Customers\SRC | Read Query Customer.Outputs[OLE DB Source Output].Columns[Store]},@[$Project::NullString])</property>
+                          name="Expression">[REPLACENULL]([TRIM](#{Package\DFT | Insert New and Changed Customers\SRC | Read Query Customer.Outputs[OLE DB Source Output].Columns[Store]}),@[$Project::NullString])</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">REPLACENULL(StoreClean,@[$Project::NullString])</property>
+                          name="FriendlyExpression">REPLACENULL(TRIM(StoreClean),@[$Project::NullString])</property>
                       </properties>
                     </inputColumn>
                   </inputColumns>
@@ -5475,6 +5475,10 @@ FROM   transform.Customer AS c
           Size="238,42"
           Id="Package\SQL | Log Start"
           TopLeft="172,41" />
+        <NodeLayout
+          Size="251,42"
+          Id="Package\SQL | Log Success"
+          TopLeft="485.056277056277,459.587662337662" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="433,188.392857142857">
@@ -5532,44 +5536,6 @@ FROM   transform.Customer AS c
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="291,83">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="18.5,83.785714285714"
-              Start="0,0"
-              End="18.5,76.285714285714">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.892857142857" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37.892857142857"
-                    Point2="0,41.892857142857"
-                    Point3="4,41.892857142857" />
-                  <mssgle:LineSegment
-                    End="14.5,41.892857142857" />
-                  <mssgle:CubicBezierSegment
-                    Point1="14.5,41.892857142857"
-                    Point2="18.5,41.892857142857"
-                    Point3="18.5,45.892857142857" />
-                  <mssgle:LineSegment
-                    End="18.5,76.285714285714" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="251,42"
-          Id="Package\SQL | Log Success"
-          TopLeft="485.056277056277,459.587662337662" />
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="601.556277056277,385.587662337662">
           <EdgeLayout.Curve>
@@ -5603,6 +5569,40 @@ FROM   transform.Customer AS c
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="291,83">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.5,83.785714285714"
+              Start="0,0"
+              End="18.5,76.285714285714">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.892857142857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.892857142857"
+                    Point2="0,41.892857142857"
+                    Point3="4,41.892857142857" />
+                  <mssgle:LineSegment
+                    End="14.5,41.892857142857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.5,41.892857142857"
+                    Point2="18.5,41.892857142857"
+                    Point3="18.5,45.892857142857" />
+                  <mssgle:LineSegment
+                    End="18.5,76.285714285714" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -5624,25 +5624,25 @@ FROM   transform.Customer AS c
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="212,42"
-          Id="Package\DFT | Expire Changed Customers\SRC | Read Query Customer"
-          TopLeft="30,44.5555555555556" />
-        <NodeLayout
-          Size="234,42"
-          Id="Package\DFT | Expire Changed Customers\SCP | Culculate Hash Value"
-          TopLeft="587.666666666666,45.2222222222222" />
+          Size="228,42"
+          Id="Package\DFT | Expire Changed Customers\RC | Count Updated"
+          TopLeft="600,562" />
         <NodeLayout
           Size="212,42"
           Id="Package\DFT | Expire Changed Customers\DER | Handle Null Attributes"
           TopLeft="287.777777777777,47.5555555555556" />
         <NodeLayout
+          Size="236,42"
+          Id="Package\DFT | Expire Changed Customers\SPL | Conditional Split (Changed)"
+          TopLeft="589.722222222222,213.111111111111" />
+        <NodeLayout
           Size="228,42"
           Id="Package\DFT | Expire Changed Customers\LKP | Match Existing Customer"
           TopLeft="593.444444444444,124" />
         <NodeLayout
-          Size="236,42"
-          Id="Package\DFT | Expire Changed Customers\SPL | Conditional Split (Changed)"
-          TopLeft="589.722222222222,213.111111111111" />
+          Size="212,42"
+          Id="Package\DFT | Expire Changed Customers\SRC | Read Query Customer"
+          TopLeft="30,44.5555555555556" />
         <NodeLayout
           Size="232,42"
           Id="Package\DFT | Expire Changed Customers\CMD | Update Scripts"
@@ -5651,6 +5651,10 @@ FROM   transform.Customer AS c
           Size="229,42"
           Id="Package\DFT | Expire Changed Customers\DER | Handeling Null &amp; Driven Metadata"
           TopLeft="593.5,316.777777777777" />
+        <NodeLayout
+          Size="234,42"
+          Id="Package\DFT | Expire Changed Customers\SCP | Culculate Hash Value"
+          TopLeft="587.666666666666,45.2222222222222" />
         <EdgeLayout
           Id="Package\DFT | Expire Changed Customers.Paths[Output 0]"
           TopLeft="706.055555555555,87.2222222222222">
@@ -5687,6 +5691,28 @@ FROM   transform.Customer AS c
                   Capacity="5">
                   <mssgle:LineSegment
                     End="38.277777777777,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Expire Changed Customers.Paths[OLE DB Command Output]"
+          TopLeft="712.833333333333,482.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,79.333333333333"
+              Start="0,0"
+              End="0,71.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.833333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5787,32 +5813,6 @@ FROM   transform.Customer AS c
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="228,42"
-          Id="Package\DFT | Expire Changed Customers\RC | Count Updated"
-          TopLeft="600,562" />
-        <EdgeLayout
-          Id="Package\DFT | Expire Changed Customers.Paths[OLE DB Command Output]"
-          TopLeft="712.833333333333,482.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,79.333333333333"
-              Start="0,0"
-              End="0,71.833333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,71.833333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -5822,7 +5822,7 @@ FROM   transform.Customer AS c
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5832,7 +5832,7 @@ FROM   transform.Customer AS c
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5845,17 +5845,21 @@ FROM   transform.Customer AS c
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="121,42"
-          Id="Package\DFT | Insert New and Changed Customers\Union All"
-          TopLeft="905,288" />
-        <NodeLayout
-          Size="212,42"
-          Id="Package\DFT | Insert New and Changed Customers\SRC | Read Query Customer"
-          TopLeft="51,42.5555555555556" />
-        <NodeLayout
           Size="207,42"
           Id="Package\DFT | Insert New and Changed Customers\SCP | Culculate Hash Value"
           TopLeft="606.666666666666,37.2222222222222" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\DFT | Insert New and Changed Customers\Multicast"
+          TopLeft="920,391" />
+        <NodeLayout
+          Size="234,42"
+          Id="Package\DFT | Insert New and Changed Customers\SPL | New vs Existing Customers"
+          TopLeft="1178.72222222222,189.111111111111" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\DFT | Insert New and Changed Customers\Union All"
+          TopLeft="905,288" />
         <NodeLayout
           Size="223,42"
           Id="Package\DFT | Insert New and Changed Customers\LKP | Match Existing Customer"
@@ -5864,6 +5868,10 @@ FROM   transform.Customer AS c
           Size="212,42"
           Id="Package\DFT | Insert New and Changed Customers\DER | Handle Null Attributes"
           TopLeft="335.777777777777,45.5555555555556" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\DFT | Insert New and Changed Customers\SRC | Read Query Customer"
+          TopLeft="51,42.5555555555556" />
         <NodeLayout
           Size="230,42"
           Id="Package\DFT | Insert New and Changed Customers\DER | Handle Fresh Data"
@@ -5877,9 +5885,43 @@ FROM   transform.Customer AS c
           Id="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers"
           TopLeft="1051,583" />
         <NodeLayout
-          Size="234,42"
-          Id="Package\DFT | Insert New and Changed Customers\SPL | New vs Existing Customers"
-          TopLeft="1178.72222222222,189.111111111111" />
+          Size="173,42"
+          Id="Package\DFT | Insert New and Changed Customers\RC | Count Inserted"
+          TopLeft="603,584" />
+        <EdgeLayout
+          Id="Package\DFT | Insert New and Changed Customers.Paths[Union All Output 1]"
+          TopLeft="965.5,330">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.5,61"
+              Start="0,0"
+              End="14.5,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="4,30.5" />
+                  <mssgle:LineSegment
+                    End="10.5,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.5,30.5"
+                    Point2="14.5,30.5"
+                    Point3="14.5,34.5" />
+                  <mssgle:LineSegment
+                    End="14.5,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT | Insert New and Changed Customers.Paths[Output 0]"
           TopLeft="813.666666666666,62.1111111111111">
@@ -5916,6 +5958,74 @@ FROM   transform.Customer AS c
                   Capacity="5">
                   <mssgle:LineSegment
                     End="65.277777777777,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Insert New and Changed Customers.Paths[Multicast Output 2]"
+          TopLeft="961.333333333333,433">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-271.833333333333,151"
+              Start="0,0"
+              End="-271.833333333333,143.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5921052631579" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,57.5921052631579"
+                    Point2="0,61.5921052631579"
+                    Point3="-4,61.5921052631579" />
+                  <mssgle:LineSegment
+                    End="-267.833333333333,61.5921052631579" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-267.833333333333,61.5921052631579"
+                    Point2="-271.833333333333,61.5921052631579"
+                    Point3="-271.833333333333,65.5921052631579" />
+                  <mssgle:LineSegment
+                    End="-271.833333333333,143.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT | Insert New and Changed Customers.Paths[Multicast Output 1]"
+          TopLeft="998.666666666667,433">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="180.833333333333,150"
+              Start="0,0"
+              End="180.833333333333,142.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.1842105263158" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,57.1842105263158"
+                    Point2="0,61.1842105263158"
+                    Point3="4,61.1842105263158" />
+                  <mssgle:LineSegment
+                    End="176.833333333333,61.1842105263158" />
+                  <mssgle:CubicBezierSegment
+                    Point1="176.833333333333,61.1842105263158"
+                    Point2="180.833333333333,61.1842105263158"
+                    Point3="180.833333333333,65.1842105263158" />
+                  <mssgle:LineSegment
+                    End="180.833333333333,142.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5992,7 +6102,7 @@ FROM   transform.Customer AS c
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="60.7808355034724,46.2808944296032,96.3827734375,11.609375"
+              BoundingBox="60.7808355034725,46.2808944296032,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -6120,116 +6230,6 @@ FROM   transform.Customer AS c
             <mssgm:EdgeLabel
               BoundingBox="-14.986618923611,41.0555555555555,39.751015625,11.6630859375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="120,42"
-          Id="Package\DFT | Insert New and Changed Customers\Multicast"
-          TopLeft="920,391" />
-        <EdgeLayout
-          Id="Package\DFT | Insert New and Changed Customers.Paths[Union All Output 1]"
-          TopLeft="965.5,330">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="14.5,61"
-              Start="0,0"
-              End="14.5,53.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.5"
-                    Point2="0,30.5"
-                    Point3="4,30.5" />
-                  <mssgle:LineSegment
-                    End="10.5,30.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="10.5,30.5"
-                    Point2="14.5,30.5"
-                    Point3="14.5,34.5" />
-                  <mssgle:LineSegment
-                    End="14.5,53.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT | Insert New and Changed Customers.Paths[Multicast Output 1]"
-          TopLeft="998.666666666667,433">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="180.833333333333,150"
-              Start="0,0"
-              End="180.833333333333,142.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,57.1842105263158" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,57.1842105263158"
-                    Point2="0,61.1842105263158"
-                    Point3="4,61.1842105263158" />
-                  <mssgle:LineSegment
-                    End="176.833333333333,61.1842105263158" />
-                  <mssgle:CubicBezierSegment
-                    Point1="176.833333333333,61.1842105263158"
-                    Point2="180.833333333333,61.1842105263158"
-                    Point3="180.833333333333,65.1842105263158" />
-                  <mssgle:LineSegment
-                    End="180.833333333333,142.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="173,42"
-          Id="Package\DFT | Insert New and Changed Customers\RC | Count Inserted"
-          TopLeft="603,584" />
-        <EdgeLayout
-          Id="Package\DFT | Insert New and Changed Customers.Paths[Multicast Output 2]"
-          TopLeft="961.333333333333,433">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-271.833333333333,151"
-              Start="0,0"
-              End="-271.833333333333,143.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,57.5921052631579" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,57.5921052631579"
-                    Point2="0,61.5921052631579"
-                    Point3="-4,61.5921052631579" />
-                  <mssgle:LineSegment
-                    End="-267.833333333333,61.5921052631579" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-267.833333333333,61.5921052631579"
-                    Point2="-271.833333333333,61.5921052631579"
-                    Point3="-271.833333333333,65.5921052631579" />
-                  <mssgle:LineSegment
-                    End="-271.833333333333,143.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
