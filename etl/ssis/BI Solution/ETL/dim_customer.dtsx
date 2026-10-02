@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="dim_customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="450"
-  DTS:VersionGUID="{21FB6CEC-272E-4999-9931-DC207254CEFB}">
+  DTS:VersionBuild="453"
+  DTS:VersionGUID="{281A6B82-3310-42E1-9D24-42027716734A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -129,7 +129,7 @@ WHERE customer_key = ? AND is_current = 1</property>
                       refId="Package\DFT | Expire Changed Customers\CMD | Update Scripts.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                       dataType="dbTimeStamp2"
                       name="Param_0"
-                      scale="7">
+                      scale="3">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2668,13 +2668,6 @@ FROM   transform.Customer AS c
                       externalMetadataColumnId="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
                       lineageId="Package\DFT | Insert New and Changed Customers\Union All.Outputs[Union All Output 1].Columns[FirstName]" />
                     <inputColumn
-                      refId="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers.Inputs[OLE DB Destination Input].Columns[LastName]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="LastName"
-                      externalMetadataColumnId="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers.Inputs[OLE DB Destination Input].ExternalColumns[Last_name]"
-                      lineageId="Package\DFT | Insert New and Changed Customers\Union All.Outputs[Union All Output 1].Columns[LastName]" />
-                    <inputColumn
                       refId="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers.Inputs[OLE DB Destination Input].Columns[EmailPromotion]"
                       cachedDataType="wstr"
                       cachedLength="50"
@@ -2716,6 +2709,13 @@ FROM   transform.Customer AS c
                       cachedName="RowHash"
                       externalMetadataColumnId="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers.Inputs[OLE DB Destination Input].ExternalColumns[sys_hash_value]"
                       lineageId="Package\DFT | Insert New and Changed Customers\Union All.Outputs[Union All Output 1].Columns[RowHash]" />
+                    <inputColumn
+                      refId="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers.Inputs[OLE DB Destination Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      lineageId="Package\DFT | Insert New and Changed Customers\Union All.Outputs[Union All Output 1].Columns[LastName]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2752,11 +2752,6 @@ FROM   transform.Customer AS c
                       length="50"
                       name="first_name" />
                     <externalMetadataColumn
-                      refId="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers.Inputs[OLE DB Destination Input].ExternalColumns[Last_name]"
-                      dataType="wstr"
-                      length="50"
-                      name="Last_name" />
-                    <externalMetadataColumn
                       refId="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers.Inputs[OLE DB Destination Input].ExternalColumns[email_promotion]"
                       dataType="wstr"
                       length="50"
@@ -2785,17 +2780,17 @@ FROM   transform.Customer AS c
                       refId="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers.Inputs[OLE DB Destination Input].ExternalColumns[sys_insert_date]"
                       dataType="dbTimeStamp2"
                       name="sys_insert_date"
-                      scale="7" />
+                      scale="3" />
                     <externalMetadataColumn
                       refId="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers.Inputs[OLE DB Destination Input].ExternalColumns[sys_update_date]"
                       dataType="dbTimeStamp2"
                       name="sys_update_date"
-                      scale="7" />
+                      scale="3" />
                     <externalMetadataColumn
                       refId="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers.Inputs[OLE DB Destination Input].ExternalColumns[sys_delete_date]"
                       dataType="dbTimeStamp2"
                       name="sys_delete_date"
-                      scale="7" />
+                      scale="3" />
                     <externalMetadataColumn
                       refId="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers.Inputs[OLE DB Destination Input].ExternalColumns[sys_hash_value]"
                       codePage="1252"
@@ -2816,6 +2811,11 @@ FROM   transform.Customer AS c
                       refId="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers.Inputs[OLE DB Destination Input].ExternalColumns[is_current]"
                       dataType="bool"
                       name="is_current" />
+                    <externalMetadataColumn
+                      refId="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      dataType="wstr"
+                      length="50"
+                      name="last_name" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -5275,7 +5275,7 @@ FROM   transform.Customer AS c
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{1B3A8471-77E7-4C35-8961-F917CE737C38}"
-          SQLTask:SqlStatementSource="UPDATE dimension.dim_customer&#xA;SET sys_delete_date = GETDATE()&#xA;WHERE sys_delete_date IS NULL&#xA;  AND is_current = 1&#xA;  AND [account_number_bk] NOT IN (&#xA;      SELECT [AccountNumber]&#xA;      FROM [STG_AdventureWorks].[transform].[Customer]&#xA;  );&#xA;&#xA;SELECT @@ROWCOUNT AS RowsDeleted;"
+          SQLTask:SqlStatementSource="UPDATE dimension.dim_customer&#xA;SET sys_delete_date = GETDATE()&#xA;WHERE sys_delete_date IS NULL&#xA;  AND [customer_key] &lt;&gt; -1&#xA;  AND is_current = 1&#xA;  AND [account_number_bk] NOT IN (&#xA;      SELECT [AccountNumber]&#xA;      FROM [STG_AdventureWorks].[transform].[Customer]&#xA;  );&#xA;&#xA;SELECT @@ROWCOUNT AS RowsDeleted;"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="RowsDeleted"
@@ -5644,7 +5644,7 @@ FROM   transform.Customer AS c
           Id="Package\DFT | Expire Changed Customers\SRC | Read Query Customer"
           TopLeft="30,44.5555555555556" />
         <NodeLayout
-          Size="232,42"
+          Size="229,42"
           Id="Package\DFT | Expire Changed Customers\CMD | Update Scripts"
           TopLeft="595.666666666667,440.666666666667" />
         <NodeLayout
@@ -5701,7 +5701,7 @@ FROM   transform.Customer AS c
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT | Expire Changed Customers.Paths[OLE DB Command Output]"
-          TopLeft="712.833333333333,482.666666666667">
+          TopLeft="712.083333333333,482.666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -5747,7 +5747,7 @@ FROM   transform.Customer AS c
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT | Expire Changed Customers.Paths[Derived Column Output1]"
-          TopLeft="709.833333333333,358.777777777777">
+          TopLeft="709.083333333333,358.777777777777">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -6235,5 +6235,18 @@ FROM   transform.Customer AS c
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT | Insert New and Changed Customers\DES | DWH DimCustomer New and Changed Customers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

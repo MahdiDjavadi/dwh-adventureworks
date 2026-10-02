@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="dim_territory"
   DTS:PackageType="5"
-  DTS:VersionBuild="467"
-  DTS:VersionGUID="{899AAA5B-02D2-4E99-856B-C0291182C38D}">
+  DTS:VersionBuild="468"
+  DTS:VersionGUID="{C5473E03-2721-49E0-B8B0-4559CE089819}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -2294,7 +2294,7 @@ FROM     transform.SalesTerritory     AS st
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{1B3A8471-77E7-4C35-8961-F917CE737C38}"
-          SQLTask:SqlStatementSource="UPDATE dimension.dim_territory&#xA;SET sys_delete_date = GETDATE()&#xA;WHERE sys_delete_date IS NULL&#xA;  AND [source_id_bk] NOT IN (&#xA;      SELECT [TerritoryID]&#xA;      FROM [STG_AdventureWorks].[transform].[SalesTerritory] t&#xA;  );&#xA;&#xA;SELECT @@ROWCOUNT AS RowsDeleted;"
+          SQLTask:SqlStatementSource="UPDATE dimension.dim_territory&#xA;SET sys_delete_date = GETDATE()&#xA;WHERE sys_delete_date IS NULL&#xA;  AND [territory_key] &lt;&gt; -1&#xA;  AND [source_id_bk] NOT IN (&#xA;      SELECT [TerritoryID]&#xA;      FROM [STG_AdventureWorks].[transform].[SalesTerritory] t&#xA;  );&#xA;&#xA;SELECT @@ROWCOUNT AS RowsDeleted;"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="RowsDeleted"

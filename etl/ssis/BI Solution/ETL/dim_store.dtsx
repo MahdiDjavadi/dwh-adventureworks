@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="dim_store"
   DTS:PackageType="5"
-  DTS:VersionBuild="440"
-  DTS:VersionGUID="{AF77511F-E329-4119-97DB-92700003FBA7}">
+  DTS:VersionBuild="441"
+  DTS:VersionGUID="{9B07C4DE-D760-41CE-A5F9-03377D84399E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -2427,7 +2427,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{1B3A8471-77E7-4C35-8961-F917CE737C38}"
-          SQLTask:SqlStatementSource="UPDATE dimension.dim_store&#xA;SET sys_delete_date = GETDATE()&#xA;WHERE sys_delete_date IS NULL&#xA;  AND [source_id_bk] NOT IN (&#xA;      SELECT BusinessEntityID&#xA;      FROM [STG_AdventureWorks].[transform].[Store] s&#xA;  );&#xA;&#xA;SELECT @@ROWCOUNT AS RowsDeleted;"
+          SQLTask:SqlStatementSource="UPDATE dimension.dim_store&#xA;SET sys_delete_date = GETDATE()&#xA;WHERE sys_delete_date IS NULL&#xA;  AND [store_key] &lt;&gt; -1&#xA;  AND [source_id_bk] NOT IN (&#xA;      SELECT BusinessEntityID&#xA;      FROM [STG_AdventureWorks].[transform].[Store] s&#xA;  );&#xA;&#xA;SELECT @@ROWCOUNT AS RowsDeleted;"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="RowsDeleted"
