@@ -384,3 +384,176 @@ CREATE TABLE dimension.dim_salesperson
 -- to enforce uniqueness and improve query performance
 CREATE UNIQUE NONCLUSTERED INDEX UX_dim_salesperson_national_number_bk
         ON dimension.dim_salesperson (national_number_bk);
+
+
+
+-- =====================================================================
+-- Insert Unknown Record for Salesperson Dimension
+-- =====================================================================
+SET IDENTITY_INSERT dimension.dim_salesperson ON;
+
+INSERT INTO dimension.dim_salesperson
+    (salesperson_key, national_number_bk, full_name, job_tiltle, hire_date,
+     is_current_employee, sys_insert_date, sys_hash_value, sys_data_source, sys_source_record_id)
+VALUES
+    (-1, 'Unknown', 'Unknown', 'Unknown', '1900-01-01',
+     'Unknown', GETDATE(), REPLICATE('0', 64), 'System', 'N/A');
+
+SET IDENTITY_INSERT dimension.dim_salesperson OFF;
+
+-- =====================================================================
+-- Insert Unknown Record for Customer Dimension
+-- =====================================================================
+SET IDENTITY_INSERT dimension.dim_customer ON;
+
+INSERT INTO dimension.dim_customer
+    (customer_key ,account_number_bk, person_id, store_id, territory_id, person_type, first_name,
+     last_name, email_promotion, store, territory, country_region_code, territory_group, sys_insert_date,
+     sys_hash_value, sys_data_source, sys_source_record_id, is_current)
+VALUES (-1, 'Unknown', -1, -1, -1, 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'N/A',
+         'Unknown', GETDATE(), REPLICATE('0', 64), 'System', 'N/A', -1);
+
+SET IDENTITY_INSERT dimension.dim_customer OFF;
+
+-- =====================================================================
+-- Insert Unknown Record for Territory Dimension
+-- =====================================================================
+SET IDENTITY_INSERT dimension.dim_territory ON;
+
+INSERT INTO dimension.dim_territory
+    (territory_key, source_id_bk, territory_name, territory_group, country_region_code,
+     country_name, sys_insert_date, sys_hash_value, sys_data_source, sys_source_record_id)
+VALUES (-1, -1, 'Unknown', 'Unknown', 'N/A', 'Unknown', GETDATE(), REPLICATE('0', 64), 'System', 'N/A');
+
+SET IDENTITY_INSERT dimension.dim_territory OFF;
+
+-- =====================================================================
+-- Insert Unknown Record for Store Dimension
+-- =====================================================================
+SET IDENTITY_INSERT dimension.dim_store ON;
+
+INSERT INTO dimension.dim_store
+    (store_key, source_id_bk, store_name, square_feet, year_opend, number_employee,
+     specialty, brands, sys_insert_date, sys_hash_value, sys_data_source, sys_source_record_id)
+VALUES (-1, -1, 'Unknown', -1, -1, -1, 'Unknown', 'Unknown', GETDATE(), REPLICATE('0', 64), 'System', 'N/A');
+
+SET IDENTITY_INSERT dimension.dim_store OFF;
+
+-- =====================================================================
+-- Insert Unknown Record for Product Dimension
+-- =====================================================================
+SET IDENTITY_INSERT dimension.dim_product ON;
+
+INSERT INTO dimension.dim_product
+    (product_key, product_code_bk, product, category_key, category, subcategory_key,
+     subcategory, model_key, model, class, color, style, size, size_measure_unit,
+     weight, weight_measure_unit, product_line, sell_start_date, sell_end_date,
+     discontinued_date, sys_insert_date, sys_hash_value, sys_data_source,
+     sys_source_record_id)
+VALUES (-1, 'Unknown', 'Unknown', -1, 'Unknown', -1, 'Unknown', -1, 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown', 'Unknown',
+        'Unknown', 'Unknown', '1900-01-01', NULL, NULL, GETDATE(), REPLICATE('0', 64), 'System', 'N/A');
+
+SET IDENTITY_INSERT dimension.dim_product OFF;
+
+-- =====================================================================
+-- Insert Unknown Record for Date Dimension
+-- =====================================================================
+
+INSERT INTO dimension.dim_date (
+    date_key,
+    gregorian_date,
+    jalali_date_key,
+    sequential_day_number,
+    gregorian_year,
+    gregorian_month_number,
+    gregorian_month_name,
+    gregorian_quarter_number,
+    gregorian_quarter_name,
+    gregorian_year_month,
+    gregorian_year_month_number,
+    gregorian_year_quarter,
+    gregorian_year_quarter_number,
+    jalali_date,
+    jalali_year,
+    jalali_year_name,
+    jalali_month_number,
+    jalali_month_name,
+    jalali_year_month,
+    jalali_year_month_number,
+    jalali_quarter_number,
+    jalali_quarter_name,
+    jalali_year_quarter,
+    jalali_year_quarter_number,
+    jalali_half_year_number,
+    jalali_half_year_name,
+    month_of_quarter_number,
+    day_of_week_number,
+    day_of_week_name,
+    day_of_month_number,
+    day_of_quarter_number,
+    day_of_year_number,
+    week_of_year_number,
+    week_of_month_number,
+    week_of_quarter_number,
+    jalali_year_week,
+    jalali_year_week_number,
+    week_start_date,
+    week_end_date,
+    month_start_date,
+    month_end_date,
+    quarter_start_date,
+    quarter_end_date,
+    year_start_date,
+    year_end_date,
+    is_working_day,
+    is_date_with_data
+) VALUES (
+    -1,
+    '1900-01-01',
+    -1,
+    -1,
+    -1,
+    0,
+    N'Unknown',
+    0,
+    N'Unknown',
+    N'Unknown',
+    -1,
+    N'Unknown',
+    -1,
+    N'Unknown',
+    -1,
+    N'Unknown',
+    0,
+    N'Unknown',
+    N'Unknown',
+    -1,
+    0,
+    N'Unknown',
+    N'Unknown',
+    -1,
+    0,
+    N'Unknown',
+    0,
+    0,
+    N'Unknown',
+    0,
+    -1,
+    -1,
+    0,
+    0,
+    0,
+    N'Unknown',
+    -1,
+    '1900-01-01',
+    '1900-01-01',
+    '1900-01-01',
+    '1900-01-01',
+    '1900-01-01',
+    '1900-01-01',
+    '1900-01-01',
+    '1900-01-01',
+    0,
+    0
+);
+
