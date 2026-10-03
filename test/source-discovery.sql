@@ -4,6 +4,13 @@
 SELECT *
 FROM   INFORMATION_SCHEMA.SCHEMATA;
 
+-- Check Sales Order Detail PK's
+SELECT -- Check PK/Uniqueness to check grain
+    COUNT(*) AS row_count,
+    COUNT(DISTINCT SalesOrderID) AS distinct_sales_order_header_id,
+    COUNT(DISTINCT SalesOrderDetailID) AS distinct_sales_order_detial_id
+FROM Sales.SalesOrderDetail;
+
    -- Check the structure of the Sales.Store table
 EXEC sp_help 'Sales.Store';
 
@@ -123,3 +130,9 @@ HAVING COUNT(*) > 1; -- Name is unique => Business Key candidate
 SELECT name FROM sys.indexes
 WHERE object_id = OBJECT_ID('Sales.Product') OR object_id = OBJECT_ID('Production.Product')
   AND is_unique = 1;
+
+
+-- Check for uniqueness of the primary key in the Sales.SalesOrderDetail table
+SELECT name, is_unique, is_primary_key
+FROM sys.indexes
+WHERE object_id = OBJECT_ID('Sales.SalesOrderDetail') AND is_primary_key = 1;

@@ -386,6 +386,56 @@ CREATE UNIQUE NONCLUSTERED INDEX UX_dim_salesperson_national_number_bk
         ON dimension.dim_salesperson (national_number_bk);
 
 
+/*
+    ------------------------------------------------------------------
+    Fact: Sales Order
+
+    Purpose:
+        Represents the sales order fact table used to analyze
+         sales by date, customer, salesperson, territory, and product.
+
+    Grain:
+        One row per sales order line item.
+
+    Source:
+        Query from the transform schema's Header & Detail Order tables.
+    -----------------------------------------------------------------
+*/
+
+-- Check if the table exists and drop it if it does
+IF OBJECT_ID('fact.fact_sales', 'U') IS NOT NULL
+    DROP TABLE fact.fact_sales;
+GO
+
+CREATE TABLE fact.fact_sales (
+-- Main fact attributes.
+    [sales_order_key]           INT                  NOT NULL,   -- Surrogate key identifier sales order detail from the source system.
+    [sales_order_id]            INT                  NOT NULL,   -- Sales order identifier sales order header from the source system.
+    [date_key]                  INT                  NOT NULL,   -- Date identifier for the sales order.
+    [online_order_flag]         BIT                  NOT NULL,   -- Flag indicating if the order was placed online.
+    [customer_key]              INT                  NOT NULL,   -- Customer identifier from the dimension table.
+    [salesperson_key]           INT                  NOT NULL,   -- Salesperson identifier from the dimension table.
+    [territory_key]             INT                  NOT NULL,   -- Territory identifier from the dimension table.
+    [product_key]               INT                  NOT NULL,   -- Product identifier from the dimension table.
+    [order_quantity]            INT                  NOT NULL,   -- Quantity of the product ordered.
+    [unit_price]                DECIMAL (18, 2)      NOT NULL,   -- Unit price of the product.
+    [unit_price_discount]       DECIMAL (18, 2)      NOT NULL,   -- Discount applied to the unit price.
+    [line_total]                DECIMAL (18, 2)      NOT NULL,   -- Total amount for the line item.
+
+-- System metadata attributes.
+    [sys_insert_date]           DATETIME2 (3)        NOT NULL,   -- System metadata: date and time when the record was inserted.
+    [sys_update_date]           DATETIME2 (3)            NULL,   -- System metadata: date and time when the record was last updated.
+    [sys_delete_date]           DATETIME2 (3)            NULL,   -- System metadata: date and time when the record was deleted or marked for deletion.
+    [sys_hash_value]            CHAR (64)            NOT NULL,   -- System metadata: hash value used to detect changes in source attributes.
+    [sys_data_source]           NVARCHAR (25)        NOT NULL,   -- System metadata: name of the source system.
+    [sys_source_record_id]      NVARCHAR (255)       NOT NULL,   -- System metadata: identifier of the source system or source record.
+
+-- Define constraints.
+    CONSTRAINT PK_fact_sales_sales_order_key
+        PRIMARY KEY CLUSTERED (sales_order_key ASC)
+
+)
+
 
 -- =====================================================================
 -- Insert Unknown Record for Salesperson Dimension
