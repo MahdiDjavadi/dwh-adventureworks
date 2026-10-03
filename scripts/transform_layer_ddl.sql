@@ -20,6 +20,8 @@
         extract.CountryRegion
         extract.SalesPerson
         extract.Employee
+        extract.SalesOrderHeader
+        extract.SalesOrderDetail
  ========================================================================
  */
 
@@ -211,3 +213,37 @@ CREATE TABLE [transform].[Employee] (
     [CurrentFlag]               NVARCHAR (20)  NULL
 );
 
+
+-- =====================================================================
+-- This script drops then creates the Sales Order  Header table in the extract layer.
+-- =====================================================================
+IF OBJECT_ID('[transform].[SalesOrderHeader]', 'U') IS NOT NULL
+    DROP TABLE [transform].[SalesOrderHeader];
+GO
+
+CREATE TABLE [transform].[SalesOrderHeader] (
+    [SalesOrderID]              INT            NULL,
+    [OrderDate]                 DATETIME       NULL,
+    [OnlineOrderFlag]           BIT            NULL,
+    [CustomerID]                INT            NULL,
+    [SalesPersonID]             INT            NULL,
+    [TerritoryID]               INT            NULL,
+
+);
+
+-- =====================================================================
+-- This script drops then creates the Sales Order Detail table in the extract layer.
+-- =====================================================================
+IF OBJECT_ID('[transform].[SalesOrderDetail]', 'U') IS NOT NULL
+    DROP TABLE [transform].[SalesOrderDetail];
+GO
+
+CREATE TABLE [transform].[SalesOrderDetail] (
+    [SalesOrderID]              INT            NULL,
+    [SalesOrderDetailID]        INT            NULL,
+    [OrderQty]                  SMALLINT       NULL,
+    [ProductID]                 INT            NULL,
+    [UnitPrice]                 MONEY          NULL,
+    [UnitPriceDiscount]         MONEY          NULL,
+    [LineTotal]                 NUMERIC        NULL
+);

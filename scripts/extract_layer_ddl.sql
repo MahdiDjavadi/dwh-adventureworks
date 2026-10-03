@@ -20,6 +20,8 @@
         Person.Person
         Person.CountryRegion
         HumanResources.Employee
+        Sales.SalesOrderHeader
+        Sales.SalesOrderDetail
  ========================================================================
  */
 
