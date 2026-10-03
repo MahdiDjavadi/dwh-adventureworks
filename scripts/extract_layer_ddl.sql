@@ -207,3 +207,38 @@ CREATE TABLE [extract].[Employee] (
     [HireDate]                  DATE           NULL,
     [CurrentFlag]               BIT            NULL
 );
+
+
+-- =====================================================================
+-- This script drops then creates the Sales Order  Header table in the extract layer.
+-- =====================================================================
+IF OBJECT_ID('[extract].[SalesOrderHeader]', 'U') IS NOT NULL
+    DROP TABLE [extract].[SalesOrderHeader];
+GO
+
+CREATE TABLE [extract].[SalesOrderHeader] (
+    [SalesOrderID]              INT            NULL,
+    [OrderDate]                 DATETIME       NULL,
+    [OnlineOrderFlag]           BIT            NULL,
+    [CustomerID]                INT            NULL,
+    [SalesPersonID]             INT            NULL,
+    [TerritoryID]               INT            NULL,
+
+);
+
+-- =====================================================================
+-- This script drops then creates the Sales Order Detail table in the extract layer.
+-- =====================================================================
+IF OBJECT_ID('[extract].[SalesOrderDetail]', 'U') IS NOT NULL
+    DROP TABLE [extract].[SalesOrderDetail];
+GO
+
+CREATE TABLE [extract].[SalesOrderDetail] (
+    [SalesOrderID]              INT            NULL,
+    [SalesOrderDetailID]        INT            NULL,
+    [OrderQty]                  SMALLINT       NULL,
+    [ProductID]                 INT            NULL,
+    [UnitPrice]                 MONEY          NULL,
+    [UnitPriceDiscount]         MONEY          NULL,
+    [LineTotal]                 NUMERIC        NULL
+);

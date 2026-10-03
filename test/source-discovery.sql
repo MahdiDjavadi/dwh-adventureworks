@@ -70,6 +70,28 @@ SELECT
     SUM(CASE WHEN CurrentFlag IS NULL THEN 1 ELSE 0 END) AS null_current_flag
 FROM HumanResources.Employee;
 
+   -- Check for Nullls in the Sales.SalesOrderHeader table for key columns
+SELECT
+    COUNT(*) AS total_rows,
+    SUM(CASE WHEN SalesOrderID IS NULL THEN 1 ELSE 0 END) AS null_sales_order_id,
+    SUM(CASE WHEN OrderDate IS NULL THEN 1 ELSE 0 END) AS null_order_date,
+    SUM(CASE WHEN OnlineOrderFlag IS NULL THEN 1 ELSE 0 END) AS null_online_order_flag,
+    SUM(CASE WHEN CustomerID IS NULL THEN 1 ELSE 0 END) AS null_customer_id,
+    SUM(CASE WHEN SalesPersonID IS NULL THEN 1 ELSE 0 END) AS null_sales_person_id, -- Have a Null Value for Online Sales
+    SUM(CASE WHEN TerritoryID IS NULL THEN 1 ELSE 0 END) AS null_territory_id
+FROM Sales.SalesOrderHeader;
+
+   -- Check for Nullls in the Sales.SalesOrderDetail table for key columns
+SELECT
+    COUNT(*) AS total_rows,
+    SUM(CASE WHEN SalesOrderDetailID IS NULL THEN 1 ELSE 0 END) AS null_sales_order_detail_id,
+    SUM(CASE WHEN SalesOrderID IS NULL THEN 1 ELSE 0 END) AS null_sales_order_id,
+    SUM(CASE WHEN OrderQty IS NULL THEN 1 ELSE 0 END) AS null_order_qty,
+    SUM(CASE WHEN UnitPrice IS NULL THEN 1 ELSE 0 END) AS null_unit_price,
+    SUM(CASE WHEN ProductID IS NULL THEN 1 ELSE 0 END) AS null_product_id,
+    SUM(CASE WHEN UnitPriceDiscount IS NULL THEN 1 ELSE 0 END) AS null_unit_price_discount
+FROM Sales.SalesOrderDetail;
+
 
 /* ----------------------------------------------------------------------------
    03 — UNIQUENESS
@@ -136,3 +158,13 @@ WHERE object_id = OBJECT_ID('Sales.Product') OR object_id = OBJECT_ID('Productio
 SELECT name, is_unique, is_primary_key
 FROM sys.indexes
 WHERE object_id = OBJECT_ID('Sales.SalesOrderDetail') AND is_primary_key = 1;
+
+SELECT
+    COUNT(*) AS total_rows,
+    COUNT(DISTINCT SalesOrderID) AS distinct_sales_order_id
+FROM Sales.SalesOrderHeader;
+
+SELECT
+    COUNT(*) AS total_rows,
+    COUNT(DISTINCT SalesOrderDetailID) AS distinct_sales_order_detail_id
+FROM Sales.SalesOrderDetail;
