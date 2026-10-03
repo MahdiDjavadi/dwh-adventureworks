@@ -224,7 +224,7 @@ CREATE TABLE [extract].[SalesOrderHeader] (
     [OnlineOrderFlag]           BIT            NULL,
     [CustomerID]                INT            NULL,
     [SalesPersonID]             INT            NULL,
-    [TerritoryID]               INT            NULL,
+    [TerritoryID]               INT            NULL
 
 );
 
@@ -236,11 +236,11 @@ IF OBJECT_ID('[extract].[SalesOrderDetail]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [extract].[SalesOrderDetail] (
-    [SalesOrderID]              INT            NULL,
-    [SalesOrderDetailID]        INT            NULL,
-    [OrderQty]                  SMALLINT       NULL,
-    [ProductID]                 INT            NULL,
-    [UnitPrice]                 MONEY          NULL,
-    [UnitPriceDiscount]         MONEY          NULL,
-    [LineTotal]                 NUMERIC        NULL
+    [SalesOrderID]              INT             NULL,
+    [SalesOrderDetailID]        INT             NULL,
+    [OrderQty]                  SMALLINT        NULL,
+    [ProductID]                 INT             NULL,
+    [UnitPrice]                 MONEY           NULL,
+    [UnitPriceDiscount]         MONEY           NULL,
+    [LineTotal]                 NUMERIC (38, 6) NULL
 );

@@ -215,7 +215,7 @@ CREATE TABLE [transform].[Employee] (
 
 
 -- =====================================================================
--- This script drops then creates the Sales Order  Header table in the extract layer.
+-- This script drops then creates the Sales Order  Header table in the transform layer.
 -- =====================================================================
 IF OBJECT_ID('[transform].[SalesOrderHeader]', 'U') IS NOT NULL
     DROP TABLE [transform].[SalesOrderHeader];
@@ -224,26 +224,27 @@ GO
 CREATE TABLE [transform].[SalesOrderHeader] (
     [SalesOrderID]              INT            NULL,
     [OrderDate]                 DATETIME       NULL,
+    [DateKey]                   INT            NULL,
     [OnlineOrderFlag]           BIT            NULL,
     [CustomerID]                INT            NULL,
     [SalesPersonID]             INT            NULL,
-    [TerritoryID]               INT            NULL,
+    [TerritoryID]               INT            NULL
 
 );
 
 -- =====================================================================
--- This script drops then creates the Sales Order Detail table in the extract layer.
+-- This script drops then creates the Sales Order Detail table in the Transform layer.
 -- =====================================================================
 IF OBJECT_ID('[transform].[SalesOrderDetail]', 'U') IS NOT NULL
     DROP TABLE [transform].[SalesOrderDetail];
 GO
 
 CREATE TABLE [transform].[SalesOrderDetail] (
-    [SalesOrderID]              INT            NULL,
-    [SalesOrderDetailID]        INT            NULL,
-    [OrderQty]                  SMALLINT       NULL,
-    [ProductID]                 INT            NULL,
-    [UnitPrice]                 MONEY          NULL,
-    [UnitPriceDiscount]         MONEY          NULL,
-    [LineTotal]                 NUMERIC        NULL
+    [SalesOrderID]              INT             NULL,
+    [SalesOrderDetailID]        INT             NULL,
+    [OrderQty]                  SMALLINT        NULL,
+    [ProductID]                 INT             NULL,
+    [UnitPrice]                 DECIMAL (18, 4) NULL,
+    [UnitPriceDiscount]         DECIMAL (18, 4) NULL,
+    [LineTotal]                 NUMERIC (18, 4) NULL
 );

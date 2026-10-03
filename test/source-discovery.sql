@@ -168,3 +168,9 @@ SELECT
     COUNT(*) AS total_rows,
     COUNT(DISTINCT SalesOrderDetailID) AS distinct_sales_order_detail_id
 FROM Sales.SalesOrderDetail;
+
+
+SELECT COLUMN_NAME, DATA_TYPE, NUMERIC_PRECISION, NUMERIC_SCALE
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_SCHEMA = 'Sales' AND TABLE_NAME = 'SalesOrderDetail'
+  AND DATA_TYPE IN ('numeric', 'money');
