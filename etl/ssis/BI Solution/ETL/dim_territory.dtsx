@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="dim_territory"
   DTS:PackageType="5"
-  DTS:VersionBuild="468"
-  DTS:VersionGUID="{C5473E03-2721-49E0-B8B0-4559CE089819}">
+  DTS:VersionBuild="469"
+  DTS:VersionGUID="{EFFBA10E-5B45-4654-911C-0DCCAE2948E7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -2281,13 +2281,13 @@ FROM     transform.SalesTerritory     AS st
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\SQL | DimTerritory Update ETL Metadata"
+      DTS:refId="Package\SQL | DimTerritory Update ETL Metadata for Soft Delete"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{d448bf57-d68a-498b-a51a-c886260a82e2}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="SQL | DimTerritory Update ETL Metadata"
+      DTS:ObjectName="SQL | DimTerritory Update ETL Metadata for Soft Delete"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -2381,7 +2381,7 @@ FROM     transform.SalesTerritory     AS st
       DTS:From="Package\DFT | Load DimTerritory"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\SQL | DimTerritory Update ETL Metadata" />
+      DTS:To="Package\SQL | DimTerritory Update ETL Metadata for Soft Delete" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
@@ -2394,7 +2394,7 @@ FROM     transform.SalesTerritory     AS st
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
       DTS:DTSID="{425B0457-5D8E-4524-9DBE-118192C4E876}"
-      DTS:From="Package\SQL | DimTerritory Update ETL Metadata"
+      DTS:From="Package\SQL | DimTerritory Update ETL Metadata for Soft Delete"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\SQL | Log Success" />
@@ -2475,8 +2475,8 @@ FROM     transform.SalesTerritory     AS st
           Id="Package\DFT | Load DimTerritory"
           TopLeft="160,174" />
         <NodeLayout
-          Size="272,42"
-          Id="Package\SQL | DimTerritory Update ETL Metadata"
+          Size="278,42"
+          Id="Package\SQL | DimTerritory Update ETL Metadata for Soft Delete"
           TopLeft="153.803030303032,256" />
         <NodeLayout
           Size="262,42"
@@ -2488,7 +2488,7 @@ FROM     transform.SalesTerritory     AS st
           TopLeft="153,343" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="289.901515151516,216">
+          TopLeft="291.401515151516,216">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2544,18 +2544,30 @@ FROM     transform.SalesTerritory     AS st
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="286.651515151516,298">
+          TopLeft="292.803030303032,298">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,45"
+              EndConnector="-9.30303030303196,45"
               Start="0,0"
-              End="0,37.5">
+              End="-9.30303030303196,37.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37.5" />
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="-4,22.5" />
+                  <mssgle:LineSegment
+                    End="-5.30303030303196,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.30303030303196,22.5"
+                    Point2="-9.30303030303196,22.5"
+                    Point3="-9.30303030303196,26.5" />
+                  <mssgle:LineSegment
+                    End="-9.30303030303196,37.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

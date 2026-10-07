@@ -191,7 +191,8 @@ IF OBJECT_ID('[extract].[SalesPerson]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [extract].[SalesPerson] (
-    [BusinessEntityID]          INT            NULL
+    [BusinessEntityID]          INT            NULL,
+    [TerritoryID]               INT            NULL
 );
 
 
@@ -225,7 +226,6 @@ CREATE TABLE [extract].[SalesOrderHeader] (
     [CustomerID]                INT            NULL,
     [SalesPersonID]             INT            NULL,
     [TerritoryID]               INT            NULL
-
 );
 
 -- =====================================================================

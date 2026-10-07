@@ -361,10 +361,12 @@ CREATE TABLE dimension.dim_salesperson
 (
 -- Main dimension attributes.
     [salesperson_key]           INT IDENTITY (1, 1)  NOT NULL,   --  
-    [national_number_bk]        NVARCHAR (20)        NOT NULL,   --
+    [national_number_bk]        NVARCHAR (20)        NOT NULL,   -- 
     [full_name]                 NVARCHAR (50)        NOT NULL,   -- 
-    [job_tiltle]                NVARCHAR (50)        NOT NULL,   --
-    [hire_date]                 DATE                 NOT NULL,   --
+    [job_tiltle]                NVARCHAR (50)        NOT NULL,   -- 
+    [hire_date]                 DATE                 NOT NULL,   -- 
+    [country_name]              NVARCHAR (50)        NOT NULL,   -- 
+    [territory_group]           NVARCHAR (50)        NOT NULL,   -- 
     [is_current_employee]       NVARCHAR (20)        NOT NULL,   -- 'Active' / 'Terminated'
 
 -- System metadata attributes.
@@ -412,15 +414,16 @@ CREATE TABLE fact.fact_sales (
     [sales_order_key]           INT                  NOT NULL,   -- Surrogate key identifier sales order detail from the source system.
     [sales_order_id]            INT                  NOT NULL,   -- Sales order identifier sales order header from the source system.
     [date_key]                  INT                  NOT NULL,   -- Date identifier for the sales order.
-    [online_order_flag]         BIT                  NOT NULL,   -- Flag indicating if the order was placed online.
+    [online_order_flag]         NVARCHAR (8)         NOT NULL,   -- Flag indicating if the order was placed online.
     [customer_key]              INT                  NOT NULL,   -- Customer identifier from the dimension table.
+    [store_key]                 INT                  NOT NULL,   -- Store identifier from the dimension table.
     [salesperson_key]           INT                  NOT NULL,   -- Salesperson identifier from the dimension table.
     [territory_key]             INT                  NOT NULL,   -- Territory identifier from the dimension table.
     [product_key]               INT                  NOT NULL,   -- Product identifier from the dimension table.
     [order_quantity]            INT                  NOT NULL,   -- Quantity of the product ordered.
-    [unit_price]                DECIMAL (18, 2)      NOT NULL,   -- Unit price of the product.
-    [unit_price_discount]       DECIMAL (18, 2)      NOT NULL,   -- Discount applied to the unit price.
-    [line_total]                DECIMAL (18, 2)      NOT NULL,   -- Total amount for the line item.
+    [unit_price]                DECIMAL (18, 4)      NOT NULL,   -- Unit price of the product.
+    [unit_price_discount]       DECIMAL (18, 4)      NOT NULL,   -- Discount applied to the unit price.
+    [line_total]                DECIMAL (18, 4)      NOT NULL,   -- Total amount for the line item.
 
 -- System metadata attributes.
     [sys_insert_date]           DATETIME2 (3)        NOT NULL,   -- System metadata: date and time when the record was inserted.
@@ -443,11 +446,11 @@ CREATE TABLE fact.fact_sales (
 SET IDENTITY_INSERT dimension.dim_salesperson ON;
 
 INSERT INTO dimension.dim_salesperson
-    (salesperson_key, national_number_bk, full_name, job_tiltle, hire_date,
+    (salesperson_key, national_number_bk, full_name, job_tiltle, hire_date, country_name, territory_group,
      is_current_employee, sys_insert_date, sys_hash_value, sys_data_source, sys_source_record_id)
 VALUES
     (-1, 'Unknown', 'Unknown', 'Unknown', '1900-01-01',
-     'Unknown', GETDATE(), REPLICATE('0', 64), 'System', 'N/A');
+     'Unknown', 'Unknown','Unknown', GETDATE(), REPLICATE('0', 64), 'System', 'N/A');
 
 SET IDENTITY_INSERT dimension.dim_salesperson OFF;
 

@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="dim_product"
   DTS:PackageType="5"
-  DTS:VersionBuild="309"
-  DTS:VersionGUID="{04A09E9B-43C1-48BB-A6A3-A86E701327B3}">
+  DTS:VersionBuild="311"
+  DTS:VersionGUID="{F69D418C-9507-450D-A563-20437149F620}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -3298,13 +3298,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\SQL | DimProduct Update ETL Metadata"
+      DTS:refId="Package\SQL | DimProduct Update ETL Metadata for Soft Delete"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{bef4ce65-6d27-4212-b1ab-c8b087608794}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="SQL | DimProduct Update ETL Metadata"
+      DTS:ObjectName="SQL | DimProduct Update ETL Metadata for Soft Delete"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -3398,7 +3398,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       DTS:From="Package\DFT | Load DimProduct"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\SQL | DimProduct Update ETL Metadata" />
+      DTS:To="Package\SQL | DimProduct Update ETL Metadata for Soft Delete" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
@@ -3411,7 +3411,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
       DTS:DTSID="{4F50C77B-1B6E-4EDF-9B46-0D516A5130A8}"
-      DTS:From="Package\SQL | DimProduct Update ETL Metadata"
+      DTS:From="Package\SQL | DimProduct Update ETL Metadata for Soft Delete"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\SQL | Log Success" />
@@ -3490,11 +3490,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
         <NodeLayout
           Size="189,42"
           Id="Package\DFT | Load DimProduct"
-          TopLeft="572,137" />
+          TopLeft="135,274" />
         <NodeLayout
-          Size="268,42"
-          Id="Package\SQL | DimProduct Update ETL Metadata"
-          TopLeft="964.916500166504,146.140997891001" />
+          Size="274,42"
+          Id="Package\SQL | DimProduct Update ETL Metadata for Soft Delete"
+          TopLeft="141.916500166504,445.140997891001" />
         <NodeLayout
           Size="262,42"
           Id="Package\SQL | Log Start"
@@ -3502,33 +3502,33 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
         <NodeLayout
           Size="251,42"
           Id="Package\SQL | Log Success"
-          TopLeft="953,411.140997891001" />
+          TopLeft="141,605.140997891001" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="761,158">
+          TopLeft="229.5,316">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="203.916500166504,9.14099789100101"
+              EndConnector="49.416500166504,129.140997891001"
               Start="0,0"
-              End="196.416500166504,9.14099789100101">
+              End="49.416500166504,121.640997891001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="97.958250083252,0" />
+                    End="0,60.5704989455005" />
                   <mssgle:CubicBezierSegment
-                    Point1="97.958250083252,0"
-                    Point2="101.958250083252,0"
-                    Point3="101.958250083252,4" />
+                    Point1="0,60.5704989455005"
+                    Point2="0,64.5704989455005"
+                    Point3="4,64.5704989455005" />
                   <mssgle:LineSegment
-                    End="101.958250083252,5.14099789100101" />
+                    End="45.416500166504,64.5704989455005" />
                   <mssgle:CubicBezierSegment
-                    Point1="101.958250083252,5.14099789100101"
-                    Point2="101.958250083252,9.14099789100101"
-                    Point3="105.958250083252,9.14099789100101" />
+                    Point1="45.416500166504,64.5704989455005"
+                    Point2="49.416500166504,64.5704989455005"
+                    Point3="49.416500166504,68.5704989455005" />
                   <mssgle:LineSegment
-                    End="196.416500166504,9.14099789100101" />
+                    End="49.416500166504,121.640997891001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3539,18 +3539,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="362,155">
+          TopLeft="230.25,173">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="210,0"
+              EndConnector="0,101"
               Start="0,0"
-              End="202.5,0">
+              End="0,93.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="202.5,0" />
+                    End="0,93.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3561,30 +3561,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="1098.9165001665,188.140997891001">
+          TopLeft="278.916500166504,487.140997891001">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-20.416500166504,223"
+              EndConnector="-12.416500166504,118"
               Start="0,0"
-              End="-20.416500166504,215.5">
+              End="-12.416500166504,110.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,107.5" />
+                    End="0,55" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,107.5"
-                    Point2="0,111.5"
-                    Point3="-4,111.5" />
+                    Point1="0,55"
+                    Point2="0,59"
+                    Point3="-4,59" />
                   <mssgle:LineSegment
-                    End="-16.416500166504,111.5" />
+                    End="-8.41650016650397,59" />
                   <mssgle:CubicBezierSegment
-                    Point1="-16.416500166504,111.5"
-                    Point2="-20.416500166504,111.5"
-                    Point3="-20.416500166504,115.5" />
+                    Point1="-8.41650016650397,59"
+                    Point2="-12.416500166504,59"
+                    Point3="-12.416500166504,63" />
                   <mssgle:LineSegment
-                    End="-20.416500166504,215.5" />
+                    End="-12.416500166504,110.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

@@ -195,7 +195,8 @@ IF OBJECT_ID('[transform].[SalesPerson]', 'U') IS NOT NULL
 GO
 
 CREATE TABLE [transform].[SalesPerson] (
-    [BusinessEntityID]          INT            NULL
+    [BusinessEntityID]          INT            NULL,
+    [TerritoryID]                INT            NULL
 );
 
 -- =====================================================================
@@ -225,7 +226,7 @@ CREATE TABLE [transform].[SalesOrderHeader] (
     [SalesOrderID]              INT            NULL,
     [OrderDate]                 DATETIME       NULL,
     [DateKey]                   INT            NULL,
-    [OnlineOrderFlag]           BIT            NULL,
+    [OnlineOrderFlag]           NVARCHAR (8)  NULL,
     [CustomerID]                INT            NULL,
     [SalesPersonID]             INT            NULL,
     [TerritoryID]               INT            NULL
@@ -246,5 +247,5 @@ CREATE TABLE [transform].[SalesOrderDetail] (
     [ProductID]                 INT             NULL,
     [UnitPrice]                 DECIMAL (18, 4) NULL,
     [UnitPriceDiscount]         DECIMAL (18, 4) NULL,
-    [LineTotal]                 NUMERIC (18, 4) NULL
+    [LineTotal]                 DECIMAL (18, 4) NULL
 );

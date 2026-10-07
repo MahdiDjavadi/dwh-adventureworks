@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="dim_salesperson"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{E76ED976-E689-4FAE-A43B-053225478723}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{C72EE03C-28E0-43BB-BD1E-45E2F00734AF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -131,13 +131,6 @@ WHERE
                       externalMetadataColumnId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
                       lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[HireDate]" />
                     <inputColumn
-                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[IsCurrentEmployee]"
-                      cachedDataType="wstr"
-                      cachedLength="20"
-                      cachedName="IsCurrentEmployee"
-                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[IsCurrentEmployee]" />
-                    <inputColumn
                       refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[FullName_CNV]"
                       cachedDataType="wstr"
                       cachedLength="50"
@@ -164,6 +157,13 @@ WHERE
                       cachedName="salesperson_key"
                       externalMetadataColumnId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
                       lineageId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Outputs[Lookup Match Output].Columns[salesperson_key]" />
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].Columns[IsCurrentEmployee]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="IsCurrentEmployee"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[IsCurrentEmployee]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -376,10 +376,85 @@ WHERE
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Inputs[Derived Column Input].Columns[SourceID]"
+                      refId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Inputs[Derived Column Input].Columns[CountryNameCLN]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CountryName"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[CountryName]"
+                      name="CountryNameCLN"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACENULL](#{Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[CountryName]},@[$Project::NullString])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(CountryNameCLN,@[$Project::NullString])</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Inputs[Derived Column Input].Columns[TerritoryGroupCLN]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TerritoryGroup"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[TerritoryGroup]"
+                      name="TerritoryGroupCLN"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACENULL](#{Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[TerritoryGroup]},@[$Project::NullString])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(TerritoryGroupCLN,@[$Project::NullString])</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Inputs[Derived Column Input].Columns[FullNameCLN]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FullName_CNV"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Output].Columns[FullName_CNV]"
+                      name="FullNameCLN"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACENULL](#{Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Output].Columns[FullName_CNV]},@[$Project::NullString])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(FullNameCLN,@[$Project::NullString])</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Inputs[Derived Column Input].Columns[BusinessEntityID]"
                       cachedDataType="i4"
-                      cachedName="SourceID"
-                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[SourceID]" />
+                      cachedName="BusinessEntityID"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[BusinessEntityID]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -397,7 +472,7 @@ WHERE
                       dataType="wstr"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      length="18"
+                      length="25"
                       lineageId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Outputs[Derived Column Output].Columns[sys_data_source]"
                       name="sys_data_source"
                       truncationRowDisposition="FailComponent">
@@ -406,13 +481,13 @@ WHERE
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">"AdventureWorks2025"</property>
+                          name="Expression">(DT_WSTR,25)"AdventureWorks2025"</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">"AdventureWorks2025"</property>
+                          name="FriendlyExpression">(DT_WSTR,25)"AdventureWorks2025"</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -429,13 +504,13 @@ WHERE
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">(DT_WSTR,255)(DT_I4)#{Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[SourceID]}</property>
+                          name="Expression">(DT_WSTR,255)(DT_I4)#{Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[BusinessEntityID]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">(DT_WSTR,255)(DT_I4)SourceID</property>
+                          name="FriendlyExpression">(DT_WSTR,255)(DT_I4)BusinessEntityID</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -687,7 +762,7 @@ WHERE
                     <inputColumn
                       refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[sys_data_source]"
                       cachedDataType="wstr"
-                      cachedLength="18"
+                      cachedLength="25"
                       cachedName="sys_data_source"
                       externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[sys_data_source]"
                       lineageId="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information.Outputs[Derived Column Output].Columns[sys_data_source]" />
@@ -713,13 +788,6 @@ WHERE
                       externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[sys_hash_value]"
                       lineageId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Outputs[Output 0].Columns[RowHash]" />
                     <inputColumn
-                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[IsCurrentEmployee]"
-                      cachedDataType="wstr"
-                      cachedLength="20"
-                      cachedName="IsCurrentEmployee"
-                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[is_current_employee]"
-                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[IsCurrentEmployee]" />
-                    <inputColumn
                       refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[HireDate]"
                       cachedDataType="dbDate"
                       cachedName="HireDate"
@@ -733,19 +801,40 @@ WHERE
                       externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[job_tiltle]"
                       lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[JobTitle]" />
                     <inputColumn
-                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[BusinessKey]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="BusinessKey"
-                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[national_number_bk]"
-                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[BusinessKey]" />
-                    <inputColumn
                       refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[FullName_CNV]"
                       cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="FullName_CNV"
                       externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[full_name]"
                       lineageId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Output].Columns[FullName_CNV]" />
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[TerritoryGroup]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TerritoryGroup"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[territory_group]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[TerritoryGroup]" />
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[CountryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CountryName"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[country_name]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[CountryName]" />
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[NationalIDNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="NationalIDNumber"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[national_number_bk]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[NationalIDNumber]" />
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].Columns[IsCurrentEmployee]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="IsCurrentEmployee"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[is_current_employee]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[IsCurrentEmployee]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -808,6 +897,16 @@ WHERE
                       dataType="wstr"
                       length="255"
                       name="sys_source_record_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[country_name]"
+                      dataType="wstr"
+                      length="50"
+                      name="country_name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson.Inputs[OLE DB Destination Input].ExternalColumns[territory_group]"
+                      dataType="wstr"
+                      length="50"
+                      name="territory_group" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -850,19 +949,35 @@ WHERE
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select 
-salesperson_key, national_number_bk, sys_hash_value 
-from dimension.dim_salesperson 
-where sys_delete_date IS NULL;</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+   
+ salesperson_key, 
+  
+ national_number_bk, 
+ 
+  sys_hash_value
+ 
+FROM 
+   dimension.dim_salesperson 
+WHERE 
+   sys_delete_date IS NULL;</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select 
-salesperson_key, national_number_bk, sys_hash_value 
-from dimension.dim_salesperson 
-where sys_delete_date IS NULL;) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT 
+   
+ salesperson_key, 
+  
+ national_number_bk, 
+ 
+  sys_hash_value
+ 
+FROM 
+   dimension.dim_salesperson 
+WHERE 
+   sys_delete_date IS NULL;) [refTable]
 where [refTable].[national_number_bk] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -899,7 +1014,7 @@ where [refTable].[national_number_bk] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[BusinessKey]};</property>
+                  name="ParameterMap">#{Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[NationalIDNumber]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -923,11 +1038,11 @@ where [refTable].[national_number_bk] = ?</property>
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Inputs[Lookup Input].Columns[BusinessKey]"
+                      refId="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP.Inputs[Lookup Input].Columns[NationalIDNumber]"
                       cachedDataType="wstr"
                       cachedLength="15"
-                      cachedName="BusinessKey"
-                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[BusinessKey]">
+                      cachedName="NationalIDNumber"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[NationalIDNumber]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -1344,10 +1459,12 @@ public class ScriptMain : UserComponent
         var sb = new StringBuilder();
 
         // ==== EDIT PER PROJECT: list only business attributes, exclude keys/dates ====
-        sb.Append(Row.FullNameCNV).Append('|');
-        sb.Append(Row.HireDate).Append('|');
+        sb.Append(Row.CountryNameCLN).Append('|');
         sb.Append(Row.IsCurrentEmployee).Append('|');
+        sb.Append(Row.FullNameCLN).Append('|');
         sb.Append(Row.JobTitle).Append('|');
+        sb.Append(Row.TerritoryGroupCLN).Append('|');
+        sb.Append(Row.HireDate).Append('|');
         // ==== END EDIT ====
 
         using (var sha256 = SHA256.Create())
@@ -1397,14 +1514,14 @@ public class Input0Buffer: ScriptBuffer
         }
     }
 
-    public String IsCurrentEmployee
+    public String FullNameCLN
     {
         get
         {
             return Buffer.GetString(BufferColumnIndexes[1]);
         }
     }
-    public bool IsCurrentEmployee_IsNull
+    public bool FullNameCLN_IsNull
     {
         get
         {
@@ -1412,14 +1529,14 @@ public class Input0Buffer: ScriptBuffer
         }
     }
 
-    public DateTime HireDate
+    public String CountryNameCLN
     {
         get
         {
-            return Buffer.GetDate(BufferColumnIndexes[2]);
+            return Buffer.GetString(BufferColumnIndexes[2]);
         }
     }
-    public bool HireDate_IsNull
+    public bool CountryNameCLN_IsNull
     {
         get
         {
@@ -1427,14 +1544,14 @@ public class Input0Buffer: ScriptBuffer
         }
     }
 
-    public String FullNameCNV
+    public String TerritoryGroupCLN
     {
         get
         {
             return Buffer.GetString(BufferColumnIndexes[3]);
         }
     }
-    public bool FullNameCNV_IsNull
+    public bool TerritoryGroupCLN_IsNull
     {
         get
         {
@@ -1442,11 +1559,41 @@ public class Input0Buffer: ScriptBuffer
         }
     }
 
+    public String IsCurrentEmployee
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[4]);
+        }
+    }
+    public bool IsCurrentEmployee_IsNull
+    {
+        get
+        {
+            return IsNull(4);
+        }
+    }
+
+    public DateTime HireDate
+    {
+        get
+        {
+            return Buffer.GetDate(BufferColumnIndexes[5]);
+        }
+    }
+    public bool HireDate_IsNull
+    {
+        get
+        {
+            return IsNull(5);
+        }
+    }
+
     public String RowHash
     {
         set
         {
-            this[4] = value;
+            this[6] = value;
         }
     }
     public bool RowHash_IsNull
@@ -1455,7 +1602,7 @@ public class Input0Buffer: ScriptBuffer
         {
             if (value)
             {
-                SetNull(4);
+                SetNull(6);
             }
             else
             {
@@ -1612,7 +1759,7 @@ namespace SC_848937eda734478ea564e32164e39b2a.Properties {
     <msb:CodeName>SC_848937eda734478ea564e32164e39b2a</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>SC_848937eda734478ea564e32164e39b2a</msb:DisplayName>
-    <msb:ProjectId>{050189E0-FB44-44CA-BCD0-582DDE0246E5}</msb:ProjectId>
+    <msb:ProjectId>{24E96FD6-81D0-4A24-8099-D54AFF47BB15}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="SC_848937eda734478ea564e32164e39b2a.csproj" />
@@ -1759,139 +1906,113 @@ namespace SC_848937eda734478ea564e32164e39b2a.Properties {
                     <arrayElement
                       dataType="System.String"><![CDATA[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
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAMn+tGoAAAAAAAAAAOAAIiALATAAABYAAAAIAAAAAAAA9jQA
+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
-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
+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
-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
-FgAAARAATAblBW0ABwAaAAYAXAbAAAYAFAbEAAEAlQbIAAEAlQbIABEASATMABEAIgHQABEAbgDU
-AFAgAAAAAMYAEwfYAAEADCEAAAAAhhhCBQYAAgAUIQAAAACGGEIFXQACAB8hAAAAAIYIxABAAAUA
-NCEAAAAAhgjnA4UABQA9IQAAAACGCH4AQAAFAFIhAAAAAIYIygOFAAUAWyEAAAAAhghSAd4ABQBw
-IQAAAACGCPsDhQAFAHkhAAAAAIYIIgBAAAUAjiEAAAAAhgizA4UABQCXIQAAAACGCGkDEAAFAKEh
-AAAAAIYIDwTjAAYAuCEAAAAAhgAqB4UABwDAIQAAAACGAG8GhQAHAMghAAAAAIYYQgUGAAcA6CEA
-AAAAxgD6BugABwANIgAAAADGAfMG2AALACAiAAAAAMYBEwfYAAwAIiIAAAAAhhhCBfIADQAxIgAA
-AACGGEIF8gAOAEAiAAAAAIMYQgUGAA8ASCIAAAAAkwghBfgADwB0IgAAAACTCAoB/QAPAHsiAAAA
-AJMIFgECAQ8AgyIAAAAAlgh7BggBEACKIgAAAACGGEIFBgAQAJIiAAAAAJEYSAUNARAAAAABAC4H
-AAABABoFAAACACcGAAADAOAEAAABACEDAAABACEDAAABABoAAAACANEAAAADABoFAAAEAOAEAAAB
-ABoFAAABAC4HAAABAKsGAAABAKsGAAABACEDCQBCBQEAEQBCBQYAGQBCBQoAKQBCBRAAMQBCBRAA
-OQBCBRAAQQBCBRAASQBCBRAAUQBCBRAAWQBCBRAAYQBCBRAAaQBCBQYAsQBCBQYA0QBCBRUA4QBC
-BQYAcQBCBQYAcQBfACQAcQBfACoAcQBfADAAeQBnATYA6QAIADsAqQBKA0AA6QAeBkQA8QBdA0oA
-+QBKA1EAAQFmAFcACQFKAQYAgQBCBV0AgQAaBWcAgQAnBmsAiQBTA28AgQAbBHQAiQBfAXkAgQAq
-BH8AgQAiBAEAEQFCBRAAgQAqB4UAgQBvBoUAoQBCBQYAAQFVBokAoQA7BpEAqQBCBQYAIQGyAJcA
-IQFPB6AAuQBCBaYA2QBCBQYALgALAC0BLgATADYBLgAbAFUBLgAjAF4BLgArAIcBLgAzAIcBLgA7
-AIcBLgBDAF4BLgBLAI0BLgBTAIcBLgBbAKQBQwBjAO4B4QB7AO4B4wBrAO4BaQFzAFUBiQFzAFUB
-GwADAAEABwALAAgADQAAAMgAEQEAAOsDFQEAAIIAEQEAAM4DFQEAAFYBGQEAAP8DFQEAACYAEQEA
-ALcDFQEAAG0DEQEAABMEFQEAACUFHgEAACoBIwEAAH8GKAECAAQAAwACAAUABQACAAYABwACAAcA
-CQACAAgACwACAAkADQACAAoADwACAAsAEQABAAwAEwABAA0AFQACABcAFwACABgAGQABABkAGQAC
-ABoAGwAEgAAAAQAAAAAAAAAAAAAAAAAyAAAABAAAAAAAAAAAAAAArgBWAAAAAAARAAAAAAAAAAAA
-AAC3ALUGAAAAABEAAAAAAAAAAAAAALcA0gYAAAAABAAAAAAAAAAAAAAArgAzBAAAAAAAAAAAAQAA
-AJMFAAAAAAAAAFNIQTI1NgBnZXRfVVRGOAA8TW9kdWxlPgBJbnB1dElEAGdldF9GdWxsTmFtZUNO
-VgBTQ184NDg5MzdlZGE3MzQ0NzhlYTU2NGUzMjE2NGUzOWIyYQBtc2NvcmxpYgBBcHBlbmQAUmVw
-bGFjZQBkZWZhdWx0SW5zdGFuY2UAZ2V0X0lzQ3VycmVudEVtcGxveWVlAElEaXNwb3NhYmxlAFJ1
-bnRpbWVUeXBlSGFuZGxlAEdldFR5cGVGcm9tSGFuZGxlAGdldF9Kb2JUaXRsZQBJbnB1dE5hbWUA
-RGF0ZVRpbWUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUGlwZWxpbmUAVHlwZQBnZXRfQ3VsdHVy
-ZQBzZXRfQ3VsdHVyZQByZXNvdXJjZUN1bHR1cmUAQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UARGlz
-cG9zZQBnZXRfSGlyZURhdGUAR2V0RGF0ZQBDcmVhdGUARWRpdG9yQnJvd3NhYmxlU3RhdGUAQ29t
-cGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBEZWJ1
-Z2dhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0
-cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0
-ZQBBc3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJp
-YnV0ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJp
-YnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0Q29tcG9uZW50RW50cnlQ
-b2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxp
-dHlBdHRyaWJ1dGUAdmFsdWUARW5jb2RpbmcAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBUb1N0
-cmluZwBHZXRTdHJpbmcAQ29tcHV0ZUhhc2gAc2V0X1Jvd0hhc2gAU3lzdGVtLkNvbXBvbmVudE1v
-ZGVsAFNDXzg0ODkzN2VkYTczNDQ3OGVhNTY0ZTMyMTY0ZTM5YjJhLmRsbABnZXRfRnVsbE5hbWVD
-TlZfSXNOdWxsAGdldF9Jc0N1cnJlbnRFbXBsb3llZV9Jc051bGwAZ2V0X0pvYlRpdGxlX0lzTnVs
-bABnZXRfSGlyZURhdGVfSXNOdWxsAHNldF9Sb3dIYXNoX0lzTnVsbABTZXROdWxsAHNldF9JdGVt
-AFN5c3RlbQBIYXNoQWxnb3JpdGhtAHJlc291cmNlTWFuAFNjcmlwdE1haW4AU3lzdGVtLkNvbmZp
-Z3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lzdGVtLlJlZmxlY3Rpb24ASW52YWxpZE9w
-ZXJhdGlvbkV4Y2VwdGlvbgBTdHJpbmdDb21wYXJpc29uAEN1bHR1cmVJbmZvAE91dHB1dE5hbWVN
-YXAAT3V0cHV0TWFwAFN0cmluZ0J1aWxkZXIASW5wdXQwQnVmZmVyAFBpcGVsaW5lQnVmZmVyAFNj
-cmlwdEJ1ZmZlcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAEJpdENvbnZlcnRlcgAuY3RvcgAuY2N0b3IA
-U3lzdGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVt
-LlJlc291cmNlcwBTQ184NDg5MzdlZGE3MzQ0NzhlYTU2NGUzMjE2NGUzOWIyYS5Qcm9wZXJ0aWVz
-LlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU0NfODQ4OTM3ZWRhNzM0NDc4ZWE1
-NjRlMzIxNjRlMzliMmEuUHJvcGVydGllcwBWYXJpYWJsZXMAR2V0Qnl0ZXMAQnVmZmVyQ29sdW1u
-SW5kZXhlcwBHZXRDb2x1bW5JbmRleGVzAFNldHRpbmdzAEVxdWFscwBDb25uZWN0aW9ucwBPYmpl
-Y3QARW5kT2ZSb3dzZXQAZ2V0X0RlZmF1bHQAVXNlckNvbXBvbmVudABQYXJlbnRDb21wb25lbnQA
-U2NyaXB0Q29tcG9uZW50AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuVHhTY3JpcHQATWljcm9zb2Z0LlNx
-bFNlcnZlci5QaXBlbGluZUhvc3QASW5wdXQwX1Byb2Nlc3NJbnB1dABTeXN0ZW0uVGV4dABJbnB1
-dDBfUHJvY2Vzc0lucHV0Um93AE5leHRSb3cAU3lzdGVtLlNlY3VyaXR5LkNyeXB0b2dyYXBoeQBn
-ZXRfQXNzZW1ibHkAAAMtAAEBAICbSQBzAE4AdQBsAGwAIABwAHIAbwBwAGUAcgB0AHkAIABjAGEA
-bgBuAG8AdAAgAGIAZQAgAHMAZQB0ACAAdABvACAARgBhAGwAcwBlAC4AIABBAHMAcwBpAGcAbgAg
-AGEAIAB2AGEAbAB1AGUAIAB0AG8AIAB0AGgAZQAgAGMAbwBsAHUAbQBuACAAaQBuAHMAdABlAGEA
-ZAAuAAAPSQBuAHAAdQB0ACAAMAAAcVMAQwBfADgANAA4ADkAMwA3AGUAZABhADcAMwA0ADQANwA4
-AGUAYQA1ADYANABlADMAMgAxADYANABlADMAOQBiADIAYQAuAFAAcgBvAHAAZQByAHQAaQBlAHMA
-LgBSAGUAcwBvAHUAcgBjAGUAcwAAAAA/NyulfF5RRrmCfK5WKLN1AAQgAQEIAyAAAQUgAQEREQQg
-AQEOBSABARFlCAcDEjkSPR0FBSABEjkOBSABEjkDBSABEjkcBAAAEj0EAAASdQMgAA4FIAEdBQ4G
-IAEdBR0FBQABDh0FBSACDg4OCSADARJFHQgSSQMGEkUDBh0IBCABDggEIAECCAUgARFNCAUgAgEI
-HAMgAAIHIAICDhGAjQUgAR0ICAgAARKAkRGAlQUgABKAmQcgAgEOEoCZCLd6XFYZNOCJCImEXc2A
-gMyRAwYSFAMGEhgDBhJRAwYSXQMGEmEDBhIgBSABARIMBCAAEU0EIAEBAgkgBAEIDhJFEkkFIAEB
-ElEEAAASXQQAABJhBQABARJhBAAAEiADAAABAygADgMoAAIEKAARTQQIABJdBAgAEmEECAASIAgB
-AAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAjU0NfODQ4
-OTM3ZWRhNzM0NDc4ZWE1NjRlMzIxNjRlMzliMmEAAAUBAAAAABYBABFDb3B5cmlnaHQgQCAgMjAy
-NgAASQEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC43AQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFt
-ZRIuTkVUIEZyYW1ld29yayA0LjcEAQAAAAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJj
-ZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1
-dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1
-bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAAzDQAAAAAAAAAAAAA5jQAAAAg
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAANg0AAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5k
-bGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABI
-AAAAWEAAAOwDAAAAAAAAAAAAAOwDNAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAA
-AAC9BO/+AAABAAAAAQAAAAAAAAABAAAAAAA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAA
-AAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4A
-AAAAAAAAsARMAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAAoAwAAAQAwADAAMAAw
-ADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABhAG4A
-eQBOAGEAbQBlAAAAAAAAAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAA
-AFMAQwBfADgANAA4ADkAMwA3AGUAZABhADcAMwA0ADQANwA4AGUAYQA1ADYANABlADMAMgAxADYA
-NABlADMAOQBiADIAYQAAADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAw
-AC4AMAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8AOAA0ADgAOQAzADcA
-ZQBkAGEANwAzADQANAA3ADgAZQBhADUANgA0AGUAMwAyADEANgA0AGUAMwA5AGIAMgBhAC4AZABs
-AGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgA
-dAAgAEAAIAAgADIAMAAyADYAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAA
-AAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAEMAXwA4ADQA
-OAA5ADMANwBlAGQAYQA3ADMANAA0ADcAOABlAGEANQA2ADQAZQAzADIAMQA2ADQAZQAzADkAYgAy
-AGEALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBDAF8AOAA0ADgA
-OQAzADcAZQBkAGEANwAzADQANAA3ADgAZQBhADUANgA0AGUAMwAyADEANgA0AGUAMwA5AGIAMgBh
-AAAANAAIAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAADgA
-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
+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
+BQYAUANnBwYAmgSSBwYAlQWTBAYAfwOTBAYAvQCTBAYA+wSTBAYAFQWTBAYALgGTBAYAyQCTBAYA
+swfpBAAAAAARAAAAAAABAAEAAQAQALQEAAAQAAEAAQABABAAWAUAAEEAAQADAAEAEADnBgAAUQAB
+ABQAAQAQALwGAABVAAMAGAABABAAdAYAAFUABAAZAAAAEADpBUUGVQAFABoAAAEQAKwGRQZtAAcA
+HgAGALwGwAAGAHQGxAABAPUGyAABAPUGyAARAKgEzAARAEsB0AARAJcA1ABQIAAAAADGAHMH2AAB
+ADQhAAAAAIYYogUGAAIAPCEAAAAAhhiiBV0AAgBHIQAAAACGCO0AQAAFAFwhAAAAAIYIRwSFAAUA
+ZSEAAAAAhggiAEAABQB6IQAAAACGCNwDhQAFAIMhAAAAAIYIMgBAAAUAmCEAAAAAhgjzA4UABQCh
+IQAAAACGCEUAQAAFALYhAAAAAIYIDQSFAAUAvyEAAAAAhginAEAABQDUIQAAAACGCCoEhQAFAN0h
+AAAAAIYIewHeAAUA8iEAAAAAhghbBIUABQD7IQAAAACGCJIDEAAFAAUiAAAAAIYIbwTjAAYAHCIA
+AAAAhgCKB4UABwAkIgAAAACGAM8GhQAHACwiAAAAAIYYogUGAAcATCIAAAAAxgBaB+gABwBxIgAA
+AADGAVMH2AALAIQiAAAAAMYBcwfYAAwAhiIAAAAAhhiiBfIADQCVIgAAAACGGKIF8gAOAKQiAAAA
+AIMYogUGAA8ArCIAAAAAkwiBBfgADwDYIgAAAACTCDMB/QAPAN8iAAAAAJMIPwECAQ8A5yIAAAAA
+lgjbBggBEADuIgAAAACGGKIFBgAQAPYiAAAAAJEYqAUNARAAAAABAI4HAAABAHoFAAACAIcGAAAD
+AEAFAAABAEoDAAABAEoDAAABABoAAAACAPoAAAADAHoFAAAEAEAFAAABAHoFAAABAI4HAAABAAsH
+AAABAAsHAAABAEoDCQCiBQEAEQCiBQYAGQCiBQoAKQCiBRAAMQCiBRAAOQCiBRAAQQCiBRAASQCi
+BRAAUQCiBRAAWQCiBRAAYQCiBRAAaQCiBQYAsQCiBQYA0QCiBRUA4QCiBQYAcQCiBQYAcQCIACQA
+cQCIACoAcQCIADAAeQCQATYA6QAIADsAqQBzA0AA6QB+BkQA8QCGA0oA+QBzA1EAAQGPAFcACQFz
+AQYAgQCiBV0AgQB6BWcAgQCHBmsAiQB8A28AgQB7BHQAiQCIAXkAgQCKBH8AgQCCBAEAEQGiBRAA
+gQCKB4UAgQDPBoUAoQCiBQYAAQG1BokAoQCbBpEAqQCiBQYAIQHbAJcAIQGvB6AAuQCiBaYA2QCi
+BQYALgALAC0BLgATADYBLgAbAFUBLgAjAF4BLgArAIcBLgAzAIcBLgA7AIcBLgBDAF4BLgBLAI0B
+LgBTAIcBLgBbAKQBQwBjAO4B4QB7AO4B4wBrAO4B6QFzAFUBCQJzAFUBGwADAAEABwAPAAgAEQAA
+APEAEQEAAEsEFQEAACYAEQEAAOADFQEAADYAEQEAAPcDFQEAAEkAEQEAABEEFQEAAKsAEQEAAC4E
+FQEAAH8BGQEAAF8EFQEAAJYDEQEAAHMEFQEAAIUFHgEAAFMBIwEAAN8GKAECAAQAAwACAAUABQAC
+AAYABwACAAcACQACAAgACwACAAkADQACAAoADwACAAsAEQACAAwAEwACAA0AFQACAA4AFwACAA8A
+GQABABAAGwABABEAHQACABsAHwACABwAIQABAB0AIQACAB4AIwAEgAAAAQAAAAAAAAAAAAAAAABb
+AAAABAAAAAAAAAAAAAAArgB/AAAAAAARAAAAAAAAAAAAAAC3ABUHAAAAABEAAAAAAAAAAAAAALcA
+MgcAAAAABAAAAAAAAAAAAAAArgCTBAAAAAAAAAAAAQAAAPMFAAAAAAAAAFNIQTI1NgBnZXRfVVRG
+OAA8TW9kdWxlPgBJbnB1dElEAGdldF9GdWxsTmFtZUNMTgBnZXRfQ291bnRyeU5hbWVDTE4AZ2V0
+X1RlcnJpdG9yeUdyb3VwQ0xOAFNDXzg0ODkzN2VkYTczNDQ3OGVhNTY0ZTMyMTY0ZTM5YjJhAG1z
+Y29ybGliAEFwcGVuZABSZXBsYWNlAGRlZmF1bHRJbnN0YW5jZQBnZXRfSXNDdXJyZW50RW1wbG95
+ZWUASURpc3Bvc2FibGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUAZ2V0X0pv
+YlRpdGxlAElucHV0TmFtZQBEYXRlVGltZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5QaXBlbGlu
+ZQBUeXBlAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAHJlc291cmNlQ3VsdHVyZQBBcHBsaWNhdGlv
+blNldHRpbmdzQmFzZQBEaXNwb3NlAGdldF9IaXJlRGF0ZQBHZXREYXRlAENyZWF0ZQBFZGl0b3JC
+cm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBEZWJ1Z2dlck5vblVzZXJD
+b2RlQXR0cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3NhYmxlQXR0cmlidXRl
+AEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRyaWJ1dGUAVGFyZ2V0
+RnJhbWV3b3JrQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJpYnV0ZQBBc3NlbWJs
+eURlc2NyaXB0aW9uQXR0cmlidXRlAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNBdHRyaWJ1dGUAQXNz
+ZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmlidXRlAFNTSVNTY3Jp
+cHRDb21wb25lbnRFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBS
+dW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQB2YWx1ZQBFbmNvZGluZwBTeXN0ZW0uUnVudGlt
+ZS5WZXJzaW9uaW5nAFRvU3RyaW5nAEdldFN0cmluZwBDb21wdXRlSGFzaABzZXRfUm93SGFzaABT
+eXN0ZW0uQ29tcG9uZW50TW9kZWwAU0NfODQ4OTM3ZWRhNzM0NDc4ZWE1NjRlMzIxNjRlMzliMmEu
+ZGxsAGdldF9GdWxsTmFtZUNMTl9Jc051bGwAZ2V0X0NvdW50cnlOYW1lQ0xOX0lzTnVsbABnZXRf
+VGVycml0b3J5R3JvdXBDTE5fSXNOdWxsAGdldF9Jc0N1cnJlbnRFbXBsb3llZV9Jc051bGwAZ2V0
+X0pvYlRpdGxlX0lzTnVsbABnZXRfSGlyZURhdGVfSXNOdWxsAHNldF9Sb3dIYXNoX0lzTnVsbABT
+ZXROdWxsAHNldF9JdGVtAFN5c3RlbQBIYXNoQWxnb3JpdGhtAHJlc291cmNlTWFuAFNjcmlwdE1h
+aW4AU3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lzdGVtLlJlZmxl
+Y3Rpb24ASW52YWxpZE9wZXJhdGlvbkV4Y2VwdGlvbgBTdHJpbmdDb21wYXJpc29uAEN1bHR1cmVJ
+bmZvAE91dHB1dE5hbWVNYXAAT3V0cHV0TWFwAFN0cmluZ0J1aWxkZXIASW5wdXQwQnVmZmVyAFBp
+cGVsaW5lQnVmZmVyAFNjcmlwdEJ1ZmZlcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAEJpdENvbnZlcnRl
+cgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVy
+U2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTQ184NDg5MzdlZGE3MzQ0NzhlYTU2NGUzMjE2NGUz
+OWIyYS5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU0NfODQ4
+OTM3ZWRhNzM0NDc4ZWE1NjRlMzIxNjRlMzliMmEuUHJvcGVydGllcwBWYXJpYWJsZXMAR2V0Qnl0
+ZXMAQnVmZmVyQ29sdW1uSW5kZXhlcwBHZXRDb2x1bW5JbmRleGVzAFNldHRpbmdzAEVxdWFscwBD
+b25uZWN0aW9ucwBPYmplY3QARW5kT2ZSb3dzZXQAZ2V0X0RlZmF1bHQAVXNlckNvbXBvbmVudABQ
+YXJlbnRDb21wb25lbnQAU2NyaXB0Q29tcG9uZW50AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuVHhTY3Jp
+cHQATWljcm9zb2Z0LlNxbFNlcnZlci5QaXBlbGluZUhvc3QASW5wdXQwX1Byb2Nlc3NJbnB1dABT
+eXN0ZW0uVGV4dABJbnB1dDBfUHJvY2Vzc0lucHV0Um93AE5leHRSb3cAU3lzdGVtLlNlY3VyaXR5
+LkNyeXB0b2dyYXBoeQBnZXRfQXNzZW1ibHkAAAMtAAEBAICbSQBzAE4AdQBsAGwAIABwAHIAbwBw
+AGUAcgB0AHkAIABjAGEAbgBuAG8AdAAgAGIAZQAgAHMAZQB0ACAAdABvACAARgBhAGwAcwBlAC4A
+IABBAHMAcwBpAGcAbgAgAGEAIAB2AGEAbAB1AGUAIAB0AG8AIAB0AGgAZQAgAGMAbwBsAHUAbQBu
+ACAAaQBuAHMAdABlAGEAZAAuAAAPSQBuAHAAdQB0ACAAMAAAcVMAQwBfADgANAA4ADkAMwA3AGUA
+ZABhADcAMwA0ADQANwA4AGUAYQA1ADYANABlADMAMgAxADYANABlADMAOQBiADIAYQAuAFAAcgBv
+AHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAAAC94gjdgHL1QLzQ5sHrNuQuAAQg
+AQEIAyAAAQUgAQEREQQgAQEOBSABARFlCAcDEjkSPR0FBSABEjkOBSABEjkDBSABEjkcBAAAEj0E
+AAASdQMgAA4FIAEdBQ4GIAEdBR0FBQABDh0FBSACDg4OCSADARJFHQgSSQMGEkUDBh0IBCABDggE
+IAECCAUgARFNCAUgAgEIHAMgAAIHIAICDhGAjQUgAR0ICAgAARKAkRGAlQUgABKAmQcgAgEOEoCZ
+CLd6XFYZNOCJCImEXc2AgMyRAwYSFAMGEhgDBhJRAwYSXQMGEmEDBhIgBSABARIMBCAAEU0EIAEB
+AgkgBAEIDhJFEkkFIAEBElEEAAASXQQAABJhBQABARJhBAAAEiADAAABAygADgMoAAIEKAARTQQI
+ABJdBAgAEmEECAASIAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQAC
+AAAAAAAoAQAjU0NfODQ4OTM3ZWRhNzM0NDc4ZWE1NjRlMzIxNjRlMzliMmEAAAUBAAAAABYBABFD
+b3B5cmlnaHQgQCAgMjAyNgAASQEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC43AQBUDhRGcmFt
+ZXdvcmtEaXNwbGF5TmFtZRIuTkVUIEZyYW1ld29yayA0LjcEAQAAAAC0AAAAzsrvvgEAAACRAAAA
+bFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4w
+LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0
+ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAA+DUA
+AAAAAAAAAAAAEjYAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ2AAAAAAAAAAAAAAAAX0NvckRs
+bE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1900,7 +2021,42 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
+AAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAEgA
+AABYQAAA7AMAAAAAAAAAAAAA7AM0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8AAAAA
+AL0E7/4AAAEAAAABAAAAAAAAAAEAAAAAAD8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAA
+AQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8AbgAA
+AAAAAACwBEwDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAACgDAAABADAAMAAwADAA
+MAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEAbgB5
+AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAAAAAA
+UwBDAF8AOAA0ADgAOQAzADcAZQBkAGEANwAzADQANAA3ADgAZQBhADUANgA0AGUAMwAyADEANgA0
+AGUAMwA5AGIAMgBhAAAAMAAIAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAuADAA
+LgAwAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABTAEMAXwA4ADQAOAA5ADMANwBl
+AGQAYQA3ADMANAA0ADcAOABlAGEANQA2ADQAZQAzADIAMQA2ADQAZQAzADkAYgAyAGEALgBkAGwA
+bAAAAEgAEgABAEwAZQBnAGEAbABDAG8AcAB5AHIAaQBnAGgAdAAAAEMAbwBwAHkAcgBpAGcAaAB0
+ACAAQAAgACAAMgAwADIANgAAACoAAQABAEwAZQBnAGEAbABUAHIAYQBkAGUAbQBhAHIAawBzAAAA
+AAAAAAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBhAG0AZQAAAFMAQwBfADgANAA4
+ADkAMwA3AGUAZABhADcAMwA0ADQANwA4AGUAYQA1ADYANABlADMAMgAxADYANABlADMAOQBiADIA
+YQAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEAbQBlAAAAAABTAEMAXwA4ADQAOAA5
+ADMANwBlAGQAYQA3ADMANAA0ADcAOABlAGEANQA2ADQAZQAzADIAMQA2ADQAZQAzADkAYgAyAGEA
+AAA0AAgAAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAOAAI
+AAEAQQBzAHMAZQBtAGIAbAB5ACAAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAACQ2AAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
                   </arrayElements>
                 </property>
                 <property
@@ -1936,7 +2092,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   dataType="System.String"
                   description="Checksum to match component metedata against compiled codes."
                   name="MetadataChecksum140"
-                  typeConverter="NOTBROWSABLE">BC</property>
+                  typeConverter="NOTBROWSABLE">D9</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
@@ -1954,6 +2110,24 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       cachedName="JobTitle"
                       lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[JobTitle]" />
                     <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Inputs[Input 0].Columns[FullName_CNV]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FullName_CNV"
+                      lineageId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Output].Columns[FullName_CNV]" />
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Inputs[Input 0].Columns[CountryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CountryName"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[CountryName]" />
+                    <inputColumn
+                      refId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Inputs[Input 0].Columns[TerritoryGroup]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TerritoryGroup"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[TerritoryGroup]" />
+                    <inputColumn
                       refId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Inputs[Input 0].Columns[IsCurrentEmployee]"
                       cachedDataType="wstr"
                       cachedLength="20"
@@ -1964,12 +2138,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       cachedDataType="dbDate"
                       cachedName="HireDate"
                       lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[HireDate]" />
-                    <inputColumn
-                      refId="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value.Inputs[Input 0].Columns[FullName_CNV]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="FullName_CNV"
-                      lineageId="Package\DFT | Load DimSalesperson\CNV | FullName Attribute Types.Outputs[Data Conversion Output].Columns[FullName_CNV]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -2116,15 +2284,24 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
-   s.BusinessEntityID as SourceID,
-   e.NationalIDNumber as BusinessKey,
-   e.JobTitle as JobTitle,
-   e.HireDate as HireDate,
-   e.CurrentFlag as IsCurrentEmployee,
-   concat(p.FirstName, ' ', p.LastName) As FullName
-FROM  transform.SalesPerson s
-INNER JOIN transform.Employee e on e.BusinessEntityID = s.BusinessEntityID
-INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</property>
+   sp.BusinessEntityID,
+   e.NationalIDNumber,
+   e.JobTitle,
+   concat ( p.FirstName, ' ', p.LastName) AS FullName,
+   cr.[Name] AS CountryName,
+   st.[Group] AS TerritoryGroup,
+   e.HireDate,
+   e.CurrentFlag AS IsCurrentEmployee
+FROM
+   transform.SalesPerson AS sp
+   LEFT OUTER JOIN transform.Employee AS e 
+      ON e.BusinessEntityID = sp.BusinessEntityID
+   LEFT OUTER JOIN transform.SalesTerritory AS st 
+      ON st.TerritoryID = sp.TerritoryID
+   LEFT OUTER JOIN transform.Person AS p 
+      ON p.BusinessEntityID = e.BusinessEntityID
+   LEFT OUTER JOIN transform.CountryRegion AS cr 
+      ON cr.CountryRegionCode = st.CountryRegionCode;</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -2161,16 +2338,6 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[BusinessKey]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[BusinessKey]"
-                      length="15"
-                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[BusinessKey]"
-                      name="BusinessKey"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[HireDate]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
@@ -2178,16 +2345,6 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
                       externalMetadataColumnId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
                       lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[HireDate]"
                       name="HireDate"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[IsCurrentEmployee]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[IsCurrentEmployee]"
-                      length="20"
-                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[IsCurrentEmployee]"
-                      name="IsCurrentEmployee"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[JobTitle]"
@@ -2200,13 +2357,43 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
                       name="JobTitle"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[SourceID]"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[SourceID]"
-                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[SourceID]"
-                      name="SourceID"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[NationalIDNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[NationalIDNumber]"
+                      length="15"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[NationalIDNumber]"
+                      name="NationalIDNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[CountryName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[CountryName]"
+                      length="50"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[CountryName]"
+                      name="CountryName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[TerritoryGroup]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[TerritoryGroup]"
+                      length="50"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[TerritoryGroup]"
+                      name="TerritoryGroup"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[FullName]"
@@ -2218,37 +2405,57 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
                       lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[FullName]"
                       name="FullName"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[IsCurrentEmployee]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[IsCurrentEmployee]"
+                      length="20"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].Columns[IsCurrentEmployee]"
+                      name="IsCurrentEmployee"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[BusinessKey]"
-                      dataType="wstr"
-                      length="15"
-                      name="BusinessKey" />
-                    <externalMetadataColumn
                       refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[HireDate]"
                       dataType="dbDate"
                       name="HireDate" />
-                    <externalMetadataColumn
-                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[IsCurrentEmployee]"
-                      dataType="wstr"
-                      length="20"
-                      name="IsCurrentEmployee" />
                     <externalMetadataColumn
                       refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[JobTitle]"
                       dataType="wstr"
                       length="50"
                       name="JobTitle" />
                     <externalMetadataColumn
-                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[SourceID]"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
                       dataType="i4"
-                      name="SourceID" />
+                      name="BusinessEntityID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[NationalIDNumber]"
+                      dataType="wstr"
+                      length="15"
+                      name="NationalIDNumber" />
+                    <externalMetadataColumn
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[CountryName]"
+                      dataType="wstr"
+                      length="50"
+                      name="CountryName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[TerritoryGroup]"
+                      dataType="wstr"
+                      length="50"
+                      name="TerritoryGroup" />
                     <externalMetadataColumn
                       refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[FullName]"
                       dataType="wstr"
                       length="101"
                       name="FullName" />
+                    <externalMetadataColumn
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Output].ExternalColumns[IsCurrentEmployee]"
+                      dataType="wstr"
+                      length="20"
+                      name="IsCurrentEmployee" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2257,22 +2464,40 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[SourceID]"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
                       dataType="i4"
-                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[SourceID]"
-                      name="SourceID" />
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID" />
                     <outputColumn
-                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[BusinessKey]"
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[NationalIDNumber]"
                       dataType="wstr"
                       length="15"
-                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[BusinessKey]"
-                      name="BusinessKey" />
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[NationalIDNumber]"
+                      name="NationalIDNumber" />
                     <outputColumn
                       refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[JobTitle]"
                       dataType="wstr"
                       length="50"
                       lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[JobTitle]"
                       name="JobTitle" />
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[FullName]"
+                      dataType="wstr"
+                      length="101"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[FullName]"
+                      name="FullName" />
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[CountryName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[CountryName]"
+                      name="CountryName" />
+                    <outputColumn
+                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[TerritoryGroup]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[TerritoryGroup]"
+                      name="TerritoryGroup" />
                     <outputColumn
                       refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[HireDate]"
                       dataType="dbDate"
@@ -2284,12 +2509,6 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
                       length="20"
                       lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[IsCurrentEmployee]"
                       name="IsCurrentEmployee" />
-                    <outputColumn
-                      refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[FullName]"
-                      dataType="wstr"
-                      length="101"
-                      lineageId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[FullName]"
-                      name="FullName" />
                     <outputColumn
                       refId="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -2374,13 +2593,13 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\SQL | DimSalesperson Update ETL Metadata"
+      DTS:refId="Package\SQL | DimSalesperson Update ETL Metadata for Soft Delete"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{537ec123-36c5-414f-be5c-023664a40886}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="SQL | DimSalesperson Update ETL Metadata"
+      DTS:ObjectName="SQL | DimSalesperson Update ETL Metadata for Soft Delete"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -2474,7 +2693,7 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
       DTS:From="Package\DFT | Load DimSalesperson"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\SQL | DimSalesperson Update ETL Metadata" />
+      DTS:To="Package\SQL | DimSalesperson Update ETL Metadata for Soft Delete" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
@@ -2487,7 +2706,7 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
       DTS:DTSID="{7AEC2804-D15A-4C5D-B41E-2DED1C5E67D2}"
-      DTS:From="Package\SQL | DimSalesperson Update ETL Metadata"
+      DTS:From="Package\SQL | DimSalesperson Update ETL Metadata for Soft Delete"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\SQL | Log Success" />
@@ -2568,8 +2787,8 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
           Id="Package\DFT | Load DimSalesperson"
           TopLeft="689,290" />
         <NodeLayout
-          Size="288,42"
-          Id="Package\SQL | DimSalesperson Update ETL Metadata"
+          Size="271,42"
+          Id="Package\SQL | DimSalesperson Update ETL Metadata for Soft Delete"
           TopLeft="670,432" />
         <NodeLayout
           Size="262,42"
@@ -2585,14 +2804,26 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,100"
+              EndConnector="-8.5,100"
               Start="0,0"
-              End="0,92.5">
+              End="-8.5,92.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,92.5" />
+                    End="0,46" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46"
+                    Point2="0,50"
+                    Point3="-4,50" />
+                  <mssgle:LineSegment
+                    End="-4.5,50" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.5,50"
+                    Point2="-8.5,50"
+                    Point3="-8.5,54" />
+                  <mssgle:LineSegment
+                    End="-8.5,92.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2625,7 +2856,7 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="812.75,474">
+          TopLeft="808.5,474">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2696,13 +2927,13 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
         <NodeLayout
           Size="251,42"
           Id="Package\DFT | Load DimSalesperson\DER | Derived Metadata Information"
-          TopLeft="681,56" />
+          TopLeft="682,56" />
         <NodeLayout
           Size="271,42"
           Id="Package\DFT | Load DimSalesperson\DER | Handle No Match Values To Insert"
           TopLeft="190,400" />
         <NodeLayout
-          Size="254,42"
+          Size="240,42"
           Id="Package\DFT | Load DimSalesperson\SCP | Calculate Hash Value"
           TopLeft="689,133" />
         <NodeLayout
@@ -2710,7 +2941,7 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
           Id="Package\DFT | Load DimSalesperson\CMD | Update DimSalesperson"
           TopLeft="790,537" />
         <NodeLayout
-          Size="266,42"
+          Size="251,42"
           Id="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP"
           TopLeft="681,216" />
         <NodeLayout
@@ -2719,73 +2950,73 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
           TopLeft="352,645" />
         <EdgeLayout
           Id="Package\DFT | Load DimSalesperson.Paths[Lookup No Match Output]"
-          TopLeft="771,258">
+          TopLeft="766,258">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-445.5,142"
+              EndConnector="-440.5,142"
               Start="0,0"
-              End="-445.5,134.5">
+              End="-440.5,134.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53.3094170403587" />
+                    End="0,53.3396674584323" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,53.3094170403587"
-                    Point2="0,57.3094170403587"
-                    Point3="-4,57.3094170403587" />
+                    Point1="0,53.3396674584323"
+                    Point2="0,57.3396674584323"
+                    Point3="-4,57.3396674584323" />
                   <mssgle:LineSegment
-                    End="-441.5,57.3094170403587" />
+                    End="-436.5,57.3396674584323" />
                   <mssgle:CubicBezierSegment
-                    Point1="-441.5,57.3094170403587"
-                    Point2="-445.5,57.3094170403587"
-                    Point3="-445.5,61.3094170403587" />
+                    Point1="-436.5,57.3396674584323"
+                    Point2="-440.5,57.3396674584323"
+                    Point3="-440.5,61.3396674584323" />
                   <mssgle:LineSegment
-                    End="-445.5,134.5" />
+                    End="-440.5,134.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-278.55638671875,62.3094170403587,111.6127734375,11.609375"
+              BoundingBox="-276.05638671875,62.3396674584323,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT | Load DimSalesperson.Paths[Lookup Match Output]"
-          TopLeft="857,258">
+          TopLeft="847,258">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="56,107"
+              EndConnector="66,107"
               Start="0,0"
-              End="56,99.5">
+              End="66,99.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,39.1838565022422" />
+                    End="0,39.2066508313539" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,39.1838565022422"
-                    Point2="0,43.1838565022422"
-                    Point3="4,43.1838565022422" />
+                    Point1="0,39.2066508313539"
+                    Point2="0,43.2066508313539"
+                    Point3="4,43.2066508313539" />
                   <mssgle:LineSegment
-                    End="52,43.1838565022422" />
+                    End="62,43.2066508313539" />
                   <mssgle:CubicBezierSegment
-                    Point1="52,43.1838565022422"
-                    Point2="56,43.1838565022422"
-                    Point3="56,47.1838565022422" />
+                    Point1="62,43.2066508313539"
+                    Point2="66,43.2066508313539"
+                    Point3="66,47.2066508313539" />
                   <mssgle:LineSegment
-                    End="56,99.5" />
+                    End="66,99.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-20.19138671875,48.1838565022422,96.3827734375,11.609375"
+              BoundingBox="-15.19138671875,48.2066508313539,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2835,30 +3066,18 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT | Load DimSalesperson.Paths[Derived Column Output]"
-          TopLeft="806.5,98">
+          TopLeft="808.25,98">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="9.5,35"
+              EndConnector="0,35"
               Start="0,0"
-              End="9.5,27.5">
+              End="0,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.5"
-                    Point2="0,17.5"
-                    Point3="4,17.5" />
-                  <mssgle:LineSegment
-                    End="5.5,17.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="5.5,17.5"
-                    Point2="9.5,17.5"
-                    Point3="9.5,21.5" />
-                  <mssgle:LineSegment
-                    End="9.5,27.5" />
+                    End="0,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2873,14 +3092,14 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="93,0"
+              EndConnector="94,0"
               Start="0,0"
-              End="85.5,0">
+              End="86.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="85.5,0" />
+                    End="86.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2915,7 +3134,7 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT | Load DimSalesperson.Paths[Output 0]"
-          TopLeft="815,175">
+          TopLeft="807.75,175">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3050,5 +3269,49 @@ INNER JOIN transform.Person p   ON p.BusinessEntityID = s.BusinessEntityID;</pro
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT | Load DimSalesperson\DST | Load DimSlaesperson">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT | Load DimSalesperson\LKP | Check For Changes in OLTP">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT | Load DimSalesperson\SRC | Query Load Salesperson">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
