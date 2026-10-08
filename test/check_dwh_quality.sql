@@ -1,3 +1,7 @@
+-- =========================================================
+-- Test: Check DWH Quality, StoreID in SalesOrderHeader and Customer
+-- =========================================================
+
 SELECT h.OnlineOrderFlag,
        SUM(CASE WHEN c.StoreID IS NULL     THEN 1 ELSE 0 END) AS no_store,
        SUM(CASE WHEN c.StoreID IS NOT NULL THEN 1 ELSE 0 END) AS has_store
@@ -15,6 +19,12 @@ OnlineOrderFlag  no_store    has_store
 1                60391       7         
 (2 rows affected)
 */
+
+
+
+-- =========================================================
+-- Test: Check DWH Quality, Orphan Records in Fact Table
+-- =========================================================
 
 SELECT
   SUM(CASE WHEN c.customer_key     IS NULL THEN 1 ELSE 0 END) AS orphan_customer,
