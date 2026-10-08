@@ -49,3 +49,63 @@ orphan_customer  orphan_product  orphan_territory  orphan_store  orphan_salesper
 0                0               0                 0             0                   0          
 (1 row affected)
 */
+
+
+-- =========================================================
+-- Test: Check DWH Quality, Negative Order Quantity in Fact Table
+-- =========================================================
+
+SELECT
+  f.sales_order_key AS primary_key,
+  f.sales_order_id AS sales_order_nk,
+  f.order_quantity AS order_quantity
+FROM fact.fact_sales f
+WHERE f.order_quantity < 0;
+/*
+Result Set Batch 1 - Query 1
+========================================
+
+primary_key  sales_order_nk  order_quantity
+-----------  --------------  --------------
+(0 rows affected)
+*/
+
+-- ========================================================
+-- Test: Check DWH Quality, Negative Unit Price in Fact Table
+-- ========================================================
+
+SELECT
+  f.sales_order_key AS primary_key,
+  f.sales_order_id AS sales_order_nk,
+  f.unit_price AS unit_price
+FROM fact.fact_sales f
+WHERE f.unit_price < 0;
+/*
+Result Set Batch 1 - Query 1
+========================================
+
+primary_key  sales_order_nk  unit_price
+-----------  --------------  ----------
+(0 rows affected)
+*/
+
+
+-- ========================================================
+-- Test: Unit Price Discount is greater than Unit Price in Fact Table
+-- ========================================================
+
+SELECT
+  f.sales_order_key AS primary_key,
+  f.sales_order_id AS sales_order_nk,
+  f.unit_price AS unit_price,
+  f.unit_price_discount AS unit_price_discount
+FROM fact.fact_sales f
+WHERE f.unit_price_discount > f.unit_price;
+/*
+Result Set Batch 1 - Query 1
+========================================
+
+primary_key  sales_order_nk  unit_price  unit_price_discount
+-----------  --------------  ----------  -------------------
+(0 rows affected)
+*/
